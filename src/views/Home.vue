@@ -12,11 +12,16 @@
           <li>テキストエリアに連想配列を入力してカラーセットに変換できます</li>
           <li>逆に、調整したカラーセットを連想配列に変換できます</li>
         </ul>
+        <button class="Button" type="button" @click="handleClickToggleTextArea">
+          <i class="material-icons" aria-hidden="true">flip</i>
+          <span v-if="showsTextArea">テキストエリアを隠す</span>
+          <span v-else>テキストエリアを表示する</span>
+        </button>
       </div>
-      <div class="__textarea">
+      <div v-if="showsTextArea" class="__textarea">
         <TextArea :value="textAreaValue" @input="handleInputTextArea" />
       </div>
-      <div class="__action">
+      <div v-if="showsTextArea" class="__action">
         <button
           class="Button"
           type="button"
@@ -57,6 +62,7 @@ import ContrastRatioItemRow from '@/components/ContrastRatioItemRow.vue'
 import GlobalFooter from '@/components/GlobalFooter.vue'
 import GlobalHeader from '@/components/GlobalHeader.vue'
 import TextArea from '@/components/TextArea.vue'
+import { SampleColor12 } from '@/configs/SampleColor12'
 import { ColorSet } from '@/models/ColorSet'
 import { NullableString } from '@/models/NullableString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
@@ -81,18 +87,10 @@ export default class Home extends Vue {
   /**
    * 内部ステートを定義
    */
-  textAreaValue: string = `[
-    {
-      front: '#435a6c',
-      back: '#fefcfc'
-    }
-  ]`
-  items: ColorSet[] = [
-    {
-      front: '#435a6c',
-      back: '#fefcfc'
-    }
-  ]
+  items: ColorSet[] = SampleColor12
+  showsTextArea: boolean = false
+  textAreaValue: string = `${this.items}`
+
   /**
    * @listens Button@click - テキストエリアの値をItemsに変換する
    */
@@ -115,6 +113,13 @@ export default class Home extends Vue {
    */
   itemTitle(i: number) {
     return `カラーセット${i + 1}`
+  }
+
+  /**
+   * @listens Button@click - テキストエリアの表示をトグルする
+   */
+  handleClickToggleTextArea() {
+    this.showsTextArea = !this.showsTextArea
   }
 
   /**
