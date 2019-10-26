@@ -1,0 +1,34 @@
+// https://gist.github.com/MoOx/9137295
+%resetButton
+  border: none
+  margin: 0
+  padding: 0
+  width: auto
+  overflow: visible
+
+  background: transparent
+
+  /* inherit font & color from ancestor */
+  color: inherit
+  font: inherit
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit
+  -moz-osx-font-smoothing: inherit
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none
+
+%visuallyHidden
+  position: absolute !important
+  height: 1px !important
+  width: 1px !important
+  padding: 0 !important
+  border: 0 !important
+  white-space: nowrap !important
+  overflow: hidden !important
+  clip: rect(1px, 1px, 1px, 1px) !important
+  clip-path: inset(50%) !important
