@@ -1,6 +1,6 @@
 <template>
   <div class="ContrastRow">
-    <p class="-sr-only">{{ itemTitle }}</p>
+    <p class="VisuallyHidden">{{ itemTitle }}</p>
     <div class="__column __actions">
       <p class="-sr-only">アイテムの操作</p>
       <button class="__button" @click="$emit('add')">
@@ -19,7 +19,7 @@
 
     <div class="__column __inputs">
       <div class="__flex">
-        <p :class="['__label', { '-sr-only': !label }]">前景色</p>
+        <p :class="['__label', { VisuallyHidden: !label }]">前景色</p>
         <div class="__color">
           <input v-model="value.front" class="__input" type="text" />
           <input v-model="value.front" class="__preview" type="color" />
@@ -27,7 +27,7 @@
       </div>
 
       <div class="__flex">
-        <p :class="['__label', { '-sr-only': !label }]">背景色</p>
+        <p :class="['__label', { VisuallyHidden: !label }]">背景色</p>
         <div class="__color">
           <input v-model="value.back" class="__input" type="text" />
           <input v-model="value.back" class="__preview" type="color" />
@@ -37,12 +37,12 @@
 
     <div class="__column __results">
       <div class="__flex __ratio">
-        <p :class="['__label', { '-sr-only': !label }]">コントラスト比</p>
+        <p :class="['__label', { VisuallyHidden: !label }]">コントラスト比</p>
         <p class="__text">{{ contrastRetio }}</p>
       </div>
 
       <div class="__flex __level">
-        <p :class="['__label', { '-sr-only': !label }]">適合レベル</p>
+        <p :class="['__label', { VisuallyHidden: !label }]">適合レベル</p>
         <p
           class="__text"
           :style="`color: ${value.front}; background-color: ${value.back}`"
@@ -137,9 +137,7 @@ export default class ContrastRatioItemRow extends Vue {
 <style lang="sass" scoped>
 @import '../assets/styles/mixins'
 @import '../assets/styles/placeholders'
-
-.-sr-only
-  @extend %visuallyHidden
+@import '../assets/styles/utilities'
 
 .ContrastRow
   display: flex
