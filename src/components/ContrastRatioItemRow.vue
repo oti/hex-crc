@@ -105,9 +105,7 @@ export default class ContrastRatioItemRow extends Vue {
 </script>
 
 <style lang="sass" scoped>
-@import '../assets/styles/mixins'
-@import '../assets/styles/placeholders'
-@import '../assets/styles/utilities'
+@import '../assets/styles/configs'
 
 .ContrastRow
   display: flex

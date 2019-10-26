@@ -89,9 +89,7 @@ export default class ItemRatio extends Vue {
 </script>
 
 <style lang="sass" scoped>
-@import '../assets/styles/mixins'
-@import '../assets/styles/placeholders'
-@import '../assets/styles/utilities'
+@import '../assets/styles/configs'
 
 .ItemRatio
   position: relative

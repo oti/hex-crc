@@ -12,8 +12,7 @@ export default class GlobalHeader extends Vue {}
 </script>
 
 <style lang="sass" scoped>
-@import '../assets/styles/mixins'
-@import '../assets/styles/placeholders'
+@import '../assets/styles/configs'
 
 .GlobalHeader
   display: flex

@@ -19,7 +19,7 @@ export default class GlobalFooter extends Vue {}
 </script>
 
 <style lang="sass" scoped>
-@import '../assets/styles/mixins'
+@import '../assets/styles/configs'
 
 .GlobalFooter
   display: flex

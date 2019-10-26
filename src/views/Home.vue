@@ -117,6 +117,8 @@ export default class Home extends Vue {
 </script>
 
 <style lang="sass" scoped>
+@import '../assets/styles/configs'
+
 .Home
   .__inner
     margin-top: 3rem
