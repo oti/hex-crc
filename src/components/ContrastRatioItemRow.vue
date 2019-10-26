@@ -13,19 +13,21 @@
 
     <div class="__column __inputs">
       <div class="__flex">
-        <p :class="['__label', { VisuallyHidden: !label }]">前景色</p>
-        <div class="__color">
-          <input v-model="value.front" class="__input" type="text" />
-          <input v-model="value.front" class="__preview" type="color" />
-        </div>
+        <ItemInputs
+          :shows-label="label"
+          :value="value.front"
+          label-text="前景色"
+          @input="handleInputColor('front', $event)"
+        />
       </div>
 
       <div class="__flex">
-        <p :class="['__label', { VisuallyHidden: !label }]">背景色</p>
-        <div class="__color">
-          <input v-model="value.back" class="__input" type="text" />
-          <input v-model="value.back" class="__preview" type="color" />
-        </div>
+        <ItemInputs
+          :shows-label="label"
+          :value="value.back"
+          label-text="背景色"
+          @input="handleInputColor('back', $event)"
+        />
       </div>
     </div>
 
@@ -50,13 +52,16 @@
 
 <script lang="ts">
 import ItemActions from '@/components/ItemActions.vue'
+import ItemInputs from '@/components/ItemInputs.vue'
 import { ColorSet } from '@/models/ColorSet'
+import { NullableString } from '@/models/NullableString'
 import { isStringOfNotEmpty } from '@/utilities/isString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {
-    ItemActions
+    ItemActions,
+    ItemInputs
   }
 })
 export default class ContrastRatioItemRow extends Vue {
@@ -86,6 +91,15 @@ export default class ContrastRatioItemRow extends Vue {
     } else {
       return 'Fail'
     }
+  }
+
+  /**
+   * @listens ItemInputs.input
+   * @param target
+   * @param value
+   */
+  handleInputColor(target: 'front' | 'back', value: NullableString) {
+    return (this.value[target] = value)
   }
 
   convertHexToRgb(hex: string) {
