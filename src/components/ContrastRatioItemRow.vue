@@ -2,19 +2,13 @@
   <div class="ContrastRow">
     <p class="VisuallyHidden">{{ itemTitle }}</p>
     <div class="__column __actions">
-      <p class="-sr-only">アイテムの操作</p>
-      <button class="__button" @click="$emit('add')">
-        <span class="-sr-only">次の行に新しいアイテムを挿入する</span>
-        <i class="material-icons" aria-hidden="true">add_circle</i>
-      </button>
-      <button :disabled="!removable" class="__button" @click="$emit('remove')">
-        <span class="-sr-only">この行を削除する</span>
-        <i class="material-icons" aria-hidden="true">remove_circle</i>
-      </button>
-      <button :disabled="!clearable" class="__button" @click="$emit('clear')">
-        <span class="-sr-only">この行の値をクリアする</span>
-        <i class="material-icons" aria-hidden="true">format_color_reset</i>
-      </button>
+      <ItemActions
+        :clearable="clearable"
+        :removable="removable"
+        @add="$emit('add')"
+        @clear="$emit('clear')"
+        @remove="$emit('remove')"
+      />
     </div>
 
     <div class="__column __inputs">
@@ -55,11 +49,16 @@
 </template>
 
 <script lang="ts">
+import ItemActions from '@/components/ItemActions.vue'
 import { ColorSet } from '@/models/ColorSet'
 import { isStringOfNotEmpty } from '@/utilities/isString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
-@Component
+@Component({
+  components: {
+    ItemActions
+  }
+})
 export default class ContrastRatioItemRow extends Vue {
   @Prop({ required: true }) itemTitle!: string
   @Prop({ default: true }) label!: boolean
