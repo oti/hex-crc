@@ -33,17 +33,15 @@
 
     <div class="__column __results">
       <div class="__flex __ratio">
-        <ItemRatio :shows-label="label" :value="value" />
+        <ItemRatio
+          :shows-label="label"
+          :value="value"
+          @calc="handleCalcRatio"
+        />
       </div>
 
       <div class="__flex __level">
-        <p :class="['__label', { VisuallyHidden: !label }]">適合レベル</p>
-        <p
-          class="__text"
-          :style="`color: ${value.front}; background-color: ${value.back}`"
-        >
-          {{ level }}
-        </p>
+        <ItemLevel :ratio="ratio" :shows-label="label" :value="value" />
       </div>
     </div>
   </div>
@@ -52,6 +50,7 @@
 <script lang="ts">
 import ItemActions from '@/components/ItemActions.vue'
 import ItemInputs from '@/components/ItemInputs.vue'
+import ItemLevel from '@/components/ItemLevel.vue'
 import ItemRatio from '@/components/ItemRatio.vue'
 import { ColorSet } from '@/models/ColorSet'
 import { NullableString } from '@/models/NullableString'
@@ -62,6 +61,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   components: {
     ItemActions,
     ItemInputs,
+    ItemLevel,
     ItemRatio
   }
 })
@@ -71,21 +71,11 @@ export default class ContrastRatioItemRow extends Vue {
   @Prop({ default: true }) removable!: boolean
   @Prop({ required: true }) value!: ColorSet
 
+  ratio: number = NaN
+
   get clearable() {
     const { front, back } = this.value
     return isStringOfNotEmpty(front) || isStringOfNotEmpty(back)
-  }
-
-  get level() {
-    // const { contrastRetio } = this
-    const contrastRetio = 10
-    if (contrastRetio >= 7) {
-      return 'AAA'
-    } else if (contrastRetio >= 4.5) {
-      return 'AA'
-    } else {
-      return 'Fail'
-    }
   }
 
   /**
@@ -95,6 +85,14 @@ export default class ContrastRatioItemRow extends Vue {
    */
   handleInputColor(target: 'front' | 'back', value: NullableString) {
     return (this.value[target] = value)
+  }
+
+  /**
+   * @listens ItemRatio.calc
+   * @param ratio
+   */
+  handleCalcRatio(ratio: number) {
+    this.ratio = ratio
   }
 }
 </script>

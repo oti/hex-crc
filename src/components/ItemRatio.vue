@@ -20,9 +20,13 @@ export default class ItemRatio extends Vue {
 
   get ratio() {
     const { front, back } = this.value
-    return isStringOfNotEmpty(front) && isStringOfNotEmpty(back)
-      ? Math.round(this.calcurateContrastRatio(front, back) * 1000) / 1000
-      : ''
+    const _ratio =
+      isStringOfNotEmpty(front) && isStringOfNotEmpty(back)
+        ? Math.round(this.calcurateContrastRatio(front, back) * 1000) / 1000
+        : NaN
+
+    this.$emit('calc', _ratio)
+    return _ratio
   }
 
   convertHexToRgb(hex: string) {
