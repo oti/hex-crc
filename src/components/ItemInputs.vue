@@ -6,13 +6,13 @@
         :value="value"
         class="__typeText"
         type="text"
-        @input="handleInput"
+        @input="handleInputColor"
       />
       <input
         :value="value"
         class="__typeColor"
         type="color"
-        @input="handleInput"
+        @input="handleInputColor"
       />
     </div>
   </div>
@@ -39,10 +39,9 @@ export default class ItemInputs extends Vue {
   @Prop({ required: true }) value!: NullableString
 
   /**
-   * @listens input[type="text"].input
-   * @listens input[type="color"].input
+   * @listens input[type="text"][type="color"].input
    */
-  handleInput(event: HTMLElementEvent<HTMLInputElement>) {
+  handleInputColor(event: HTMLElementEvent<HTMLInputElement>) {
     this.$emit('input', event.target.value)
   }
 }

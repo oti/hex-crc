@@ -1,6 +1,6 @@
 <template>
   <div class="ItemLevel">
-    <p :class="['__label', { VisuallyHidden: !showsLabel }]">適合レベル</p>
+    <p :class="['__label', { VisuallyHidden: !showsLabel }]">WCAG2.0達成</p>
     <p
       class="__text"
       :style="`color: ${value.front}; background-color: ${value.back}`"
@@ -25,6 +25,9 @@ export default class ItemLevel extends Vue {
   @Prop({ default: true }) showsLabel!: boolean
   @Prop({ required: true }) value!: ColorSet
 
+  /**
+   * @get - WCAG2.0において達成しているレベルを返す
+   */
   get level() {
     const { ratio } = this
     if (ratio >= 7) {

@@ -18,6 +18,9 @@ export default class ItemRatio extends Vue {
   @Prop({ default: true }) showsLabel!: boolean
   @Prop({ required: true }) value!: ColorSet
 
+  /**
+   * @get - コントラスト比を返す
+   */
   get ratio() {
     const { front, back } = this.value
     const _ratio =
@@ -29,7 +32,10 @@ export default class ItemRatio extends Vue {
     return _ratio
   }
 
-  convertHexToRgb(hex: string) {
+  /**
+   * @method - HEXをr,g,bの配列に分割する
+   */
+  convertSplitedHex(hex: string) {
     const trimedHex = hex.charAt(0) == '#' ? hex.substring(1, 7) : hex
 
     return [
@@ -39,12 +45,16 @@ export default class ItemRatio extends Vue {
     ]
   }
 
-  // 0~1のsRGB値を返す
+  /**
+   * @method - 0~1のsRGB値に変換する
+   */
   convertToSrgbValue(valeu: number) {
     return valeu / 255
   }
 
-  // 相対輝度計算に使うためのRGBを返す
+  /**
+   * 輝度に変換する
+   */
   convertToLuminance(value: number) {
     if (value <= 0.03928) {
       return value / 12.92
@@ -53,7 +63,9 @@ export default class ItemRatio extends Vue {
     }
   }
 
-  // 相対輝度を返す
+  /**
+   * 相対輝度に変換する
+   */
   convertToRelativeLuminance(r: number, g: number, b: number) {
     let R = this.convertToLuminance(this.convertToSrgbValue(r))
     let G = this.convertToLuminance(this.convertToSrgbValue(g))
@@ -61,10 +73,12 @@ export default class ItemRatio extends Vue {
     return 0.2126 * R + 0.7152 * G + 0.0722 * B
   }
 
-  // コントラスト比を返す
+  /**
+   * コントラスト比を計算する
+   */
   calcurateContrastRatio(front: string, back: string) {
-    const rgb1 = this.convertHexToRgb(front)
-    const rgb2 = this.convertHexToRgb(back)
+    const rgb1 = this.convertSplitedHex(front)
+    const rgb2 = this.convertSplitedHex(back)
     const L1 = this.convertToRelativeLuminance(rgb1[0], rgb1[1], rgb1[2])
     const L2 = this.convertToRelativeLuminance(rgb2[0], rgb2[1], rgb2[2])
     const bright = L1 > L2 ? L1 : L2 // 明るい方の相対輝度

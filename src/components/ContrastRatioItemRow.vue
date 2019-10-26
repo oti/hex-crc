@@ -13,35 +13,35 @@
 
     <div class="__cell">
       <ItemInputs
-        class="__cellInner"
         :shows-label="label"
         :value="value.front"
         label-text="前景色"
-        @input="handleInputColor('front', $event)"
+        class="__cellInner"
+        @input="handleInputFrontColor"
       />
 
       <ItemInputs
-        class="__cellInner"
         :shows-label="label"
         :value="value.back"
         label-text="背景色"
-        @input="handleInputColor('back', $event)"
+        class="__cellInner"
+        @input="handleInputBackColor"
       />
     </div>
 
     <div class="__cell">
       <ItemRatio
-        class="__cellInner"
         :shows-label="label"
         :value="value"
+        class="__cellInner"
         @calc="handleCalcRatio"
       />
 
       <ItemLevel
-        class="__cellInner"
         :ratio="ratio"
         :shows-label="label"
         :value="value"
+        class="__cellInner"
       />
     </div>
   </div>
@@ -75,16 +75,23 @@ export default class ContrastRatioItemRow extends Vue {
 
   get clearable() {
     const { front, back } = this.value
-    return isStringOfNotEmpty(front) || isStringOfNotEmpty(back)
+    return [front, back].some(isStringOfNotEmpty)
   }
 
   /**
-   * @listens ItemInputs.input
-   * @param target
-   * @param value
+   * @listens ItemInputs(front).input
+   * @param color
    */
-  handleInputColor(target: 'front' | 'back', value: NullableString) {
-    return (this.value[target] = value)
+  handleInputFrontColor(color: NullableString) {
+    this.value.front = color
+  }
+
+  /**
+   * @listens ItemInputs(back).input
+   * @param color
+   */
+  handleInputBackColor(color: NullableString) {
+    this.value.back = color
   }
 
   /**
