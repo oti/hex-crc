@@ -2,17 +2,28 @@
   <div class="Home">
     <GlobalHeader />
     <div class="__content">
+      <div class="__intro">
+        <p>
+          HEXの2色からコントラスト比を計算し、WCAG2.0が定める基準を達成しているか判定します。
+        </p>
+        <ul>
+          <li>HEX以外を入力すると判定できません</li>
+          <li>複数のカラーセットを比較できます</li>
+          <li>テキストエリアに連想配列を入力してカラーセットに変換できます</li>
+          <li>逆に、調整したカラーセットを連想配列に変換できます</li>
+        </ul>
+      </div>
       <div class="__textarea">
         <TextArea :value="textAreaValue" @input="handleInputTextArea" />
       </div>
       <div class="__action">
         <button class="ConvertButton" type="button" @click="convertDataToItems">
           <i class="material-icons" aria-hidden="true">get_app</i>
-          <span>jsonからリストに反映</span>
+          <span>連想配列からリストに変換</span>
         </button>
         <button class="ConvertButton" type="button" @click="convertItemsToData">
           <i class="material-icons" aria-hidden="true">publish</i>
-          <span>リストからjsonに反映</span>
+          <span>リストから連想配列に変換</span>
         </button>
       </div>
       <div class="__list">
@@ -62,55 +73,16 @@ export default class Home extends Vue {
   /**
    * 内部ステートを定義
    */
-  textAreaValue: string = ''
+  textAreaValue: string = `[
+    {
+      front: '#435a6c',
+      back: '#fefcfc'
+    }
+  ]`
   items: ColorSet[] = [
     {
-      front: '#dc322f',
-      back: '#f5f4f5'
-    },
-    {
-      front: '#cb4b16',
-      back: '#f5f4f5'
-    },
-    {
-      front: '#b58900',
-      back: '#f5f4f5'
-    },
-    {
-      front: '#859900',
-      back: '#f5f4f5'
-    },
-    {
-      front: '#29a05e',
-      back: '#f5f4f5'
-    },
-    {
-      front: '#2aa198',
-      back: '#f5f4f5'
-    },
-    {
-      front: '#268bd2',
-      back: '#f5f4f5'
-    },
-    {
-      front: '#6c71c4',
-      back: '#f5f4f5'
-    },
-    {
-      front: '#a44ad3',
-      back: '#f5f4f5'
-    },
-    {
-      front: '#d33682',
-      back: '#f5f4f5'
-    },
-    {
-      front: '#657b83',
-      back: '#f5f4f5'
-    },
-    {
-      front: '#93a1a1',
-      back: '#f5f4f5'
+      front: '#435a6c',
+      back: '#fefcfc'
     }
   ]
   /**
@@ -176,27 +148,27 @@ export default class Home extends Vue {
 @import '../assets/styles/configs'
 .Home
   .__content
-    margin-top: 2rem
-    margin-bottom: 2rem
+    margin: 2rem auto
+    max-width: 600px
+
+  .__intro
+    padding-right: calc(var(--spaceGap) * 2);
+    padding-left: calc(var(--spaceGap) * 2);
+    font-size: 0.75rem
 
   .__textarea
-    margin: auto
     padding-right: calc(var(--spaceGap) * 2)
     padding-left: calc(var(--spaceGap) * 2)
-    max-width: 540px
     + .__action
       margin-top: 0.5rem
 
   .__action
-    margin: auto
-    max-width: 580px
     text-align: center
 
     + .__list
       margin-top: 3rem
 
   .__list
-    margin: auto
 
 .ConvertButton
   @extend %resetButton
