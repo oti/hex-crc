@@ -1,5 +1,5 @@
 <template>
-  <div class="ContrastRow">
+  <div class="ContrastRatioItemRow">
     <p class="VisuallyHidden">{{ itemTitle }}</p>
     <div class="__cell">
       <ItemActions
@@ -24,7 +24,7 @@
         :shows-label="label"
         :value="value.back"
         label-text="背景色"
-        class="__cellInner"
+        :class="['__cellInner', { '-no-label': !label }]"
         @input="handleInputBackColor"
       />
     </div>
@@ -41,7 +41,7 @@
         :ratio="ratio"
         :shows-label="label"
         :value="value"
-        class="__cellInner"
+        :class="['__cellInner', { '-no-label': !label }]"
       />
     </div>
   </div>
@@ -107,7 +107,7 @@ export default class ContrastRatioItemRow extends Vue {
 <style lang="sass" scoped>
 @import '../assets/styles/configs'
 
-.ContrastRow
+.ContrastRatioItemRow
   display: flex
   justify-content: center
   align-items: center
@@ -115,21 +115,26 @@ export default class ContrastRatioItemRow extends Vue {
   width: auto
   line-height: 1
 
-  + .ContrastRow
-    margin-top: var(--spaceGap)
+  + .ContrastRatioItemRow
+    @include max()
+      margin-top: calc(var(--spaceGap) * 2.5)
+    @include min()
+      margin-top: var(--spaceGap)
 
   .__cell
     flex-shrink: 1
     @include min()
       display: flex
     + .__cell
-      @include min()
-        margin-left: var(--spaceGap)
+      margin-left: var(--spaceGap)
 
   .__cellInner
-    @include min()
-      min-width: 100px
+    min-width: 100px
     + .__cellInner
+      @include max()
+        margin-top: calc(var(--spaceGap) * 2.5)
+        &.-no-label
+          margin-top: calc(var(--spaceGap) / 2)
       @include min()
         margin-left: var(--spaceGap)
 </style>

@@ -58,11 +58,14 @@ export default class ItemInputs extends Vue {
   .__label
     position: absolute
     top: 50%
-    left: 0
+    left: 2px
     z-index: 1
-    transform: translateY(calc((40px) * -1))
     margin: 0
     font-size: 0.5rem
+    @include max()
+      transform: translateY(-36px)
+    @include min()
+      transform: translateY(-40px)
 
   .__inputs
     position: relative
@@ -70,6 +73,7 @@ export default class ItemInputs extends Vue {
     border-radius: 3px
     background-color: #fff
     .__typeText
+      margin: 0
       padding: 5px var(--spaceGap)
       border: none
       width: 5em
@@ -80,7 +84,7 @@ export default class ItemInputs extends Vue {
       position: absolute
       top: 0
       right: 0
-      border-left: 1px solid var(--colorBorder)
+      margin: 0
       width: 0.5rem
       height: 100%
       &::-moz-color-swatch-wrapper
@@ -91,11 +95,13 @@ export default class ItemInputs extends Vue {
         width: 100%
         height: 100%
         border: none
+        border-left: 1px solid var(--colorBorder)
         border-radius: 0 2px 2px 0
       &::-webkit-color-swatch
         width: 100%
         height: 100%
         border: none
+        border-left: 1px solid var(--colorBorder)
         border-radius: 0 2px 2px 0
       &::-moz-focus-inner
         border: none

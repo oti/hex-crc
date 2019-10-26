@@ -18,12 +18,18 @@ export default class GlobalHeader extends Vue {}
   display: flex
   justify-content: center
   align-items: center
-  padding: 1.25rem
   color: var(--colorBg)
   background-color: var(--colorText)
+  @include max()
+    padding: 0.75rem
+  @include min()
+    padding: 1.25rem
 
   .__heading
     margin: 0
-    font-size: 1.6rem
     line-height: 1.2
+    @include max()
+      font-size: 0.85rem
+    @include min()
+      font-size: 1.6rem
 </style>
