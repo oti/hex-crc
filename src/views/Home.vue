@@ -93,21 +93,34 @@ export default class Home extends Vue {
     }
   ]
 
+  /**
+   * @method - カラーセットアイテムのタイトルを返す
+   * @param i
+   */
   itemTitle(i: number) {
     return `カラーセット${i + 1}`
   }
 
+  /**
+  /**
+   * @listens ContrastRatioItemRow@add - カラーセットアイテムの追加
+   * @param i
+   */
   handleAddItem(i: number) {
     const { front, back } = this.items[i]
     this.items.splice(i + 1, 0, getDefaultItem(front, back))
   }
 
+  /**
+   * @listens ContrastRatioItemRow@clear - カラーセットアイテムの色情報のクリア
+   * @param i
+   */
   handleClearItem(i: number) {
     this.items.splice(i, 1, getDefaultItem())
   }
 
   /**
-   * @listens CompositeCardTextEnrollmentSiblingInfo@remove - 兄弟枠の削除
+   * @listens ContrastRatioItemRow@remove - カラーセットアイテムの削除
    * @param i
    */
   handleRemoveItem(i: number) {

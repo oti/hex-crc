@@ -39,7 +39,7 @@ export default class ItemInputs extends Vue {
   @Prop({ required: true }) value!: NullableString
 
   /**
-   * @listens input[type="text"][type="color"].input
+   * @listens input[type="text"][type="color"]@input
    */
   handleInputColor(event: HTMLElementEvent<HTMLInputElement>) {
     this.$emit('input', event.target.value)

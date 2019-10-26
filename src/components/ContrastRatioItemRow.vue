@@ -79,7 +79,7 @@ export default class ContrastRatioItemRow extends Vue {
   }
 
   /**
-   * @listens ItemInputs(front).input
+   * @listens ItemInputs(front)@input
    * @param color
    */
   handleInputFrontColor(color: NullableString) {
@@ -87,7 +87,7 @@ export default class ContrastRatioItemRow extends Vue {
   }
 
   /**
-   * @listens ItemInputs(back).input
+   * @listens ItemInputs(back)@input
    * @param color
    */
   handleInputBackColor(color: NullableString) {
@@ -95,7 +95,7 @@ export default class ContrastRatioItemRow extends Vue {
   }
 
   /**
-   * @listens ItemRatio.calc
+   * @listens ItemRatio@calc
    * @param ratio
    */
   handleCalcRatio(ratio: number) {

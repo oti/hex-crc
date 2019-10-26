@@ -1,12 +1,12 @@
 <template>
   <footer class="GlobalFooter">
-    <p class="__credit">
-      Made by oti [<a href="https://twitter.com/otiext">Twitter</a>][<a
-        href="https://github.com/oti/hex-crc/"
-        >GitHub</a
-      >]
-    </p>
-    <p class="__lisence">MIT Lisence.</p>
+    <div class="__inner">
+      <p class="__credit">
+        Made by oti [ <a href="https://twitter.com/otiext">Twitter</a> /
+        <a href="https://github.com/oti/hex-crc/">GitHub</a> ]
+      </p>
+      <p class="__lisence">MIT Lisence.</p>
+    </div>
   </footer>
 </template>
 
@@ -21,20 +21,24 @@ export default class GlobalFooter extends Vue {}
 @import '../assets/styles/configs'
 
 .GlobalFooter
-  display: flex
-  justify-content: center
-  align-items: center
   color: var(--colorBg)
-  padding: 1rem
-  font-size: 1rem
+  font-size: 0.6rem
   line-height: 1.2
   background-color: var(--colorText)
-  @include max()
-    padding: 0.5rem
-    font-size: 0.5rem
+  @include min()
+    font-size: 0.75rem
+
+  .__inner
+    box-sizing: border-box
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin: auto
+    padding: 1rem 0.5rem
+    max-width: 580px
 
   .__credit
-    margin: 0.5rem
+    margin: 0
     a:link,
     a:visited,
     a:hover,
@@ -43,5 +47,5 @@ export default class GlobalFooter extends Vue {}
       color: var(--colorLink)
 
   .__lisence
-    margin: 0 0 0 1rem
+    margin: 0
 </style>
