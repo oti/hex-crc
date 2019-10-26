@@ -62,7 +62,7 @@ import ContrastRatioItemRow from '@/components/ContrastRatioItemRow.vue'
 import GlobalFooter from '@/components/GlobalFooter.vue'
 import GlobalHeader from '@/components/GlobalHeader.vue'
 import TextArea from '@/components/TextArea.vue'
-import { SampleColor12 } from '@/configs/SampleColor12'
+import { PresetColorSet } from '@/configs/PresetColorSet'
 import { ColorSet } from '@/models/ColorSet'
 import { NullableString } from '@/models/NullableString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
@@ -87,9 +87,9 @@ export default class Home extends Vue {
   /**
    * 内部ステートを定義
    */
-  items: ColorSet[] = SampleColor12
+  items: ColorSet[] = PresetColorSet
   showsTextArea: boolean = false
-  textAreaValue: string = `${this.items}`
+  textAreaValue: string = `${JSON.stringify(PresetColorSet)}`
 
   /**
    * @listens Button@click - テキストエリアの値をItemsに変換する
