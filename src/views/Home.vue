@@ -17,13 +17,21 @@
         <TextArea :value="textAreaValue" @input="handleInputTextArea" />
       </div>
       <div class="__action">
-        <button class="ConvertButton" type="button" @click="convertDataToItems">
+        <button
+          class="Button"
+          type="button"
+          @click="handleClickConvertDataToItems"
+        >
           <i class="material-icons" aria-hidden="true">get_app</i>
-          <span>連想配列からリストに変換</span>
+          <span>連想配列からセットに変換</span>
         </button>
-        <button class="ConvertButton" type="button" @click="convertItemsToData">
+        <button
+          class="Button"
+          type="button"
+          @click="handleClickConvertItemsToData"
+        >
           <i class="material-icons" aria-hidden="true">publish</i>
-          <span>リストから連想配列に変換</span>
+          <span>セットから連想配列に変換</span>
         </button>
       </div>
       <div class="__list">
@@ -86,18 +94,18 @@ export default class Home extends Vue {
     }
   ]
   /**
-   * @method - テキストをItemsのJSONに変換する
+   * @listens Button@click - テキストエリアの値をItemsに変換する
    */
-  convertDataToItems() {
+  handleClickConvertDataToItems() {
     this.items = JSON.parse(
       JSON.parse(JSON.stringify(this.textAreaValue))
     ) as ColorSet[]
   }
 
   /**
-   * @method - Itemsのjsonをテキストに変換する
+   * @listens Button@click - Itemsをテキストエリアの値に変換する
    */
-  convertItemsToData() {
+  handleClickConvertItemsToData() {
     this.textAreaValue = JSON.stringify(this.items)
   }
 
@@ -154,35 +162,41 @@ export default class Home extends Vue {
   .__intro
     padding-right: calc(var(--spaceGap) * 2);
     padding-left: calc(var(--spaceGap) * 2);
-    font-size: 0.75rem
+    font-size: 0.7rem
+    + .__textarea
+      margin-top: calc(var(--spaceGap) * 1)
+    + .__list
+      margin-top: calc(var(--spaceGap) * 7)
 
   .__textarea
     padding-right: calc(var(--spaceGap) * 2)
     padding-left: calc(var(--spaceGap) * 2)
     + .__action
-      margin-top: 0.5rem
+      margin-top: calc(var(--spaceGap) * 1)
 
   .__action
     text-align: center
-
     + .__list
-      margin-top: 3rem
+      margin-top: calc(var(--spaceGap) * 7)
 
   .__list
 
-.ConvertButton
+.Button
   @extend %resetButton
   display: inline-flex
   justify-content: center
   align-items: center
-  margin: calc(var(--spaceGap) / 2)
-  padding: calc(var(--spaceGap) / 1.5) calc(var(--spaceGap) * 2)
+  margin: 0
+  padding: calc(var(--spaceGap) / 1.5) calc(var(--spaceGap) * 1.5) calc(var(--spaceGap) / 1.625)
   border: 1px solid var(--colorBorder)
   border-radius: 4px
-  font-size: 0.7rem
+  font-size: 0.65rem
   line-height: 1.2
   vartical-align: top
   background-color: #f5f4f5
   &:active
     transform: translateY(1px)
+
+  .material-icons
+    margin-right: 0.125rem
 </style>
