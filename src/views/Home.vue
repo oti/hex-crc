@@ -5,6 +5,16 @@
       <div class="__textarea">
         <TextArea :value="textAreaValue" @input="handleInputTextArea" />
       </div>
+      <div class="__action">
+        <button class="ConvertButton" type="button" @click="convertDataToItems">
+          <i class="material-icons" aria-hidden="true">get_app</i>
+          <span>jsonからリストに反映</span>
+        </button>
+        <button class="ConvertButton" type="button" @click="convertItemsToData">
+          <i class="material-icons" aria-hidden="true">publish</i>
+          <span>リストからjsonに反映</span>
+        </button>
+      </div>
       <div class="__list">
         <ContrastRatioItemRow
           v-for="(item, i) in items"
@@ -164,7 +174,6 @@ export default class Home extends Vue {
 
 <style lang="sass" scoped>
 @import '../assets/styles/configs'
-
 .Home
   .__content
     margin-top: 2rem
@@ -175,6 +184,33 @@ export default class Home extends Vue {
     padding-right: calc(var(--spaceGap) * 2)
     padding-left: calc(var(--spaceGap) * 2)
     max-width: 540px
+    + .__action
+      margin-top: 0.5rem
+
+  .__action
+    margin: auto
+    max-width: 580px
+    text-align: center
+
+    + .__list
+      margin-top: 3rem
+
   .__list
     margin: auto
+
+.ConvertButton
+  @extend %resetButton
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  margin: calc(var(--spaceGap) / 2)
+  padding: calc(var(--spaceGap) / 1.5) calc(var(--spaceGap) * 2)
+  border: 1px solid var(--colorBorder)
+  border-radius: 4px
+  font-size: 0.7rem
+  line-height: 1.2
+  vartical-align: top
+  background-color: #f5f4f5
+  &:active
+    transform: translateY(1px)
 </style>
