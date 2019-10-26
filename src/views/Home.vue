@@ -1,18 +1,23 @@
 <template>
   <div class="Home">
     <GlobalHeader />
-    <div class="__inner">
-      <ContrastRatioItemRow
-        v-for="(item, i) in items"
-        :key="i"
-        :label="i === 0"
-        :item-title="itemTitle(i)"
-        :removable="items.length > 1"
-        :value="item"
-        @add="handleAddItem(i)"
-        @clear="handleClearItem(i)"
-        @remove="handleRemoveItem(i)"
-      />
+    <div class="__content">
+      <div class="__textarea">
+        <TextArea :value="textAreaValue" @input="handleInputTextArea" />
+      </div>
+      <div class="__list">
+        <ContrastRatioItemRow
+          v-for="(item, i) in items"
+          :key="i"
+          :label="i === 0"
+          :item-title="itemTitle(i)"
+          :removable="items.length > 1"
+          :value="item"
+          @add="handleAddItem(i)"
+          @clear="handleClearItem(i)"
+          @remove="handleRemoveItem(i)"
+        />
+      </div>
     </div>
     <GlobalFooter />
   </div>
@@ -22,6 +27,7 @@
 import ContrastRatioItemRow from '@/components/ContrastRatioItemRow.vue'
 import GlobalFooter from '@/components/GlobalFooter.vue'
 import GlobalHeader from '@/components/GlobalHeader.vue'
+import TextArea from '@/components/TextArea.vue'
 import { ColorSet } from '@/models/ColorSet'
 import { NullableString } from '@/models/NullableString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
@@ -38,10 +44,15 @@ const getDefaultItem = (
   components: {
     ContrastRatioItemRow,
     GlobalFooter,
-    GlobalHeader
+    GlobalHeader,
+    TextArea
   }
 })
 export default class Home extends Vue {
+  /**
+   * 内部ステートを定義
+   */
+  textAreaValue: string = ''
   items: ColorSet[] = [
     {
       front: '#dc322f',
@@ -92,6 +103,21 @@ export default class Home extends Vue {
       back: '#f5f4f5'
     }
   ]
+  /**
+   * @method - テキストをItemsのJSONに変換する
+   */
+  convertDataToItems() {
+    this.items = JSON.parse(
+      JSON.parse(JSON.stringify(this.textAreaValue))
+    ) as ColorSet[]
+  }
+
+  /**
+   * @method - Itemsのjsonをテキストに変換する
+   */
+  convertItemsToData() {
+    this.textAreaValue = JSON.stringify(this.items)
+  }
 
   /**
    * @method - カラーセットアイテムのタイトルを返す
@@ -102,6 +128,13 @@ export default class Home extends Vue {
   }
 
   /**
+   * @listens TextArea@input - textareaの入力
+   * @param value
+   */
+  handleInputTextArea(value: string) {
+    this.textAreaValue = value
+  }
+
   /**
    * @listens ContrastRatioItemRow@add - カラーセットアイテムの追加
    * @param i
@@ -133,7 +166,15 @@ export default class Home extends Vue {
 @import '../assets/styles/configs'
 
 .Home
-  .__inner
-    margin-top: 3rem
-    margin-bottom: 3rem
+  .__content
+    margin-top: 2rem
+    margin-bottom: 2rem
+
+  .__textarea
+    margin: auto
+    padding-right: calc(var(--spaceGap) * 2)
+    padding-left: calc(var(--spaceGap) * 2)
+    max-width: 540px
+  .__list
+    margin: auto
 </style>
