@@ -14,11 +14,13 @@
         @remove="handleRemoveItem(i)"
       />
     </div>
+    <GlobalFooter />
   </div>
 </template>
 
 <script lang="ts">
 import ContrastRatioItemRow from '@/components/ContrastRatioItemRow.vue'
+import GlobalFooter from '@/components/GlobalFooter.vue'
 import GlobalHeader from '@/components/GlobalHeader.vue'
 import { ColorSet } from '@/models/ColorSet'
 import { NullableString } from '@/models/NullableString'
@@ -35,6 +37,7 @@ const getDefaultItem = (
 @Component({
   components: {
     ContrastRatioItemRow,
+    GlobalFooter,
     GlobalHeader
   }
 })
@@ -95,11 +98,8 @@ export default class Home extends Vue {
   }
 
   handleAddItem(i: number) {
-    // const items = this.items.concat([])
     const { front, back } = this.items[i]
     this.items.splice(i + 1, 0, getDefaultItem(front, back))
-
-    // return items
   }
 
   handleClearItem(i: number) {
@@ -111,10 +111,7 @@ export default class Home extends Vue {
    * @param i
    */
   handleRemoveItem(i: number) {
-    // const items = this.items.concat([])
     this.items.splice(i, 1)
-
-    // return items
   }
 }
 </script>
@@ -122,5 +119,6 @@ export default class Home extends Vue {
 <style lang="sass" scoped>
 .Home
   .__inner
-    padding-top: 2em
+    margin-top: 3rem
+    margin-bottom: 3rem
 </style>
