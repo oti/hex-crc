@@ -90,4 +90,9 @@ export default class ItemRatio extends Vue {
     transform: translateY(calc((40px) * -1))
     margin: 0
     font-size: 0.5rem
+
+  .__text
+    margin: 0
+    padding: 7px
+    border-bottom: 1px solid var(--colorBorder)
 </style>

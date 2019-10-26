@@ -37,6 +37,9 @@ export default class ItemActions extends Vue {
 .ItemActions
   @include max()
     width: 1rem
+  @include min()
+    height: 1rem
+
   .__button
     @extend %resetButton
     height: 1rem

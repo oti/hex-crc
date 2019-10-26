@@ -1,7 +1,7 @@
 <template>
   <div class="ContrastRow">
     <p class="VisuallyHidden">{{ itemTitle }}</p>
-    <div class="__column __actions">
+    <div class="__cell">
       <ItemActions
         :clearable="clearable"
         :removable="removable"
@@ -11,38 +11,38 @@
       />
     </div>
 
-    <div class="__column __inputs">
-      <div class="__flex">
-        <ItemInputs
-          :shows-label="label"
-          :value="value.front"
-          label-text="前景色"
-          @input="handleInputColor('front', $event)"
-        />
-      </div>
+    <div class="__cell">
+      <ItemInputs
+        class="__cellInner"
+        :shows-label="label"
+        :value="value.front"
+        label-text="前景色"
+        @input="handleInputColor('front', $event)"
+      />
 
-      <div class="__flex">
-        <ItemInputs
-          :shows-label="label"
-          :value="value.back"
-          label-text="背景色"
-          @input="handleInputColor('back', $event)"
-        />
-      </div>
+      <ItemInputs
+        class="__cellInner"
+        :shows-label="label"
+        :value="value.back"
+        label-text="背景色"
+        @input="handleInputColor('back', $event)"
+      />
     </div>
 
-    <div class="__column __results">
-      <div class="__flex __ratio">
-        <ItemRatio
-          :shows-label="label"
-          :value="value"
-          @calc="handleCalcRatio"
-        />
-      </div>
+    <div class="__cell">
+      <ItemRatio
+        class="__cellInner"
+        :shows-label="label"
+        :value="value"
+        @calc="handleCalcRatio"
+      />
 
-      <div class="__flex __level">
-        <ItemLevel :ratio="ratio" :shows-label="label" :value="value" />
-      </div>
+      <ItemLevel
+        class="__cellInner"
+        :ratio="ratio"
+        :shows-label="label"
+        :value="value"
+      />
     </div>
   </div>
 </template>
@@ -113,89 +113,18 @@ export default class ContrastRatioItemRow extends Vue {
   + .ContrastRow
     margin-top: var(--spaceGap)
 
-  .__column
+  .__cell
     flex-shrink: 1
-    + .__column
+    @include min()
+      display: flex
+    + .__cell
       @include min()
         margin-left: var(--spaceGap)
 
-  .__flex
-    position: relative
+  .__cellInner
     @include min()
       min-width: 100px
-    + .__flex
+    + .__cellInner
       @include min()
         margin-left: var(--spaceGap)
-
-  .__label
-    position: absolute
-    top: 50%
-    left: 0
-    z-index: 1
-    transform: translateY(calc((40px) * -1))
-    margin: 0
-    font-size: 0.5rem
-
-  .__actions
-    @include max()
-      width: 1rem
-    .__button
-      @extend %resetButton
-      height: 1rem
-      line-height: 1
-      &:disabled
-        opacity: 0.5
-
-  .__inputs
-    @include min()
-      display: flex
-    .__color
-      position: relative
-      border: 1px solid var(--colorBorder)
-      border-radius: 3px
-      background-color: #fff
-      .__input
-        padding: 5px var(--spaceGap)
-        border: none
-        width: 5em
-        font-size: inherit
-        background-color: transparent
-      .__preview
-        @extend %resetButton
-        position: absolute
-        top: 0
-        right: 0
-        border-left: 1px solid var(--colorBorder)
-        width: 0.5rem
-        height: 100%
-        &::-moz-color-swatch-wrapper
-          padding: 0
-        &::-webkit-color-swatch-wrapper
-          padding: 0
-        &::-moz-color-swatch
-          width: 100%
-          height: 100%
-          border: none
-          border-radius: 0 2px 2px 0
-        &::-webkit-color-swatch
-          width: 100%
-          height: 100%
-          border: none
-          border-radius: 0 2px 2px 0
-        &::-moz-focus-inner
-          border: none
-          padding: 0
-
-  .__results
-    @include min()
-      display: flex
-
-    .__ratio
-
-    .__level
-      .__text
-        text-align: center
-
-  .__text
-    margin: 0
 </style>
