@@ -34,7 +34,7 @@ export default class GlobalFooter extends Vue {}
     justify-content: space-between
     align-items: center
     margin: auto
-    padding: 1rem 0.5rem
+    padding: 0.5rem
     max-width: 580px
 
   .__credit

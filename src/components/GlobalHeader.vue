@@ -21,15 +21,17 @@ export default class GlobalHeader extends Vue {}
   color: var(--colorBg)
   background-color: var(--colorText)
   @include max()
-    padding: 0.75rem 0.5rem
+    padding-top: 0.75rem
+    padding-bottom: 0.75rem
   @include min()
-    padding: 1rem 0.5rem
+    padding-top: 1rem
+    padding-bottom: 1rem
 
   .__heading
     margin: 0
     line-height: 1.2
     @include max()
-      font-size: 1rem
+      font-size: 0.9rem
     @include min()
       font-size: 1.4rem
 </style>
