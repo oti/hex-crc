@@ -1,6 +1,6 @@
 <template>
   <VApp>
-    <RouterView role="main" />
+    <RouterView />
     <GlobalLoading v-if="ui.hasGlobalLoadingQueue" />
   </VApp>
 </template>

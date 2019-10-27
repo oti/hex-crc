@@ -1,6 +1,24 @@
+@import 'configs'
+
+\:root
+  font-size: 24px
+  --spaceGap: 10px
+  --colorText: #435a6c
+  --colorLink: #e9eaf5
+  --colorBg: #fefcfc
+  --colorBorder: #d4d7d7
+
+
 html, body
   margin: 0
   padding: 0
 
 body
   font-family: 'Noto Sans JP', sans-serif
+  font-size: 1rem
+  color: var(--colorText)
+  background-color: var(--colorBg)
+
+code
+  padding: calc(var(--spaceGap) / 3)
+  font-family: 'Anonymous Pro', monospace
