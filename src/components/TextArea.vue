@@ -41,6 +41,7 @@ export default class TextArea extends Vue {
   width: 100%
   height: calc((2rem * 1.2) + (var(--spaceGap) * 2))
   min-height: calc((1em * 1.2) + (var(--spaceGap) * 2))
+  font-family: 'Anonymous Pro', monospace
   font-size: 0.75rem
   line-height: 1.2
   vertical-align: top

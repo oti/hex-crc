@@ -77,6 +77,7 @@ export default class ItemInputs extends Vue {
       padding: 5px var(--spaceGap)
       border: none
       width: 5em
+      font-family: 'Anonymous Pro', monospace
       font-size: inherit
       background-color: transparent
     .__typeColor
