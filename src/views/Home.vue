@@ -13,7 +13,11 @@
           <li>テキストエリアに連想配列を入力してカラーセットに変換できます</li>
           <li>逆に、調整したカラーセットを連想配列に変換できます</li>
         </ul>
-        <button class="Button" type="button" @click="handleClickToggleTextArea">
+        <button
+          class="Button -invert"
+          type="button"
+          @click="handleClickToggleTextArea"
+        >
           <i class="material-icons" aria-hidden="true">flip</i>
           <span v-if="showsTextArea">テキストエリアを隠す</span>
           <span v-else>テキストエリアを表示する</span>
@@ -205,8 +209,12 @@ export default class Home extends Vue {
   border-radius: 4px
   font-size: 0.65rem
   line-height: 1.2
-  vartical-align: top
+  vertical-align: top
   background-color: #f5f4f5
+  &.-invert
+    border-color: transparent
+    color: #ffffff
+    background-color: var(--colorText)
   &:active
     transform: translateY(1px)
 
