@@ -5,7 +5,7 @@
         Made by oti [ <a href="https://twitter.com/otiext">Twitter</a> /
         <a href="https://github.com/oti/hex-crc/">GitHub</a> ]
       </p>
-      <p class="__lisence">MIT Lisence.</p>
+      <p class="__license">MIT License.</p>
     </div>
   </footer>
 </template>
@@ -46,6 +46,6 @@ export default class GlobalFooter extends Vue {}
     a:active
       color: var(--colorLink)
 
-  .__lisence
+  .__license
     margin: 0
 </style>
