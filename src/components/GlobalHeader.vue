@@ -21,8 +21,7 @@ export default class GlobalHeader extends Vue {}
   color: var(--colorBg)
   background-color: var(--colorText)
   @include max()
-    padding-top: 0.75rem
-    padding-bottom: 0.75rem
+    padding: 0.75rem
   @include min()
     padding-top: 1rem
     padding-bottom: 1rem

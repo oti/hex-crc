@@ -114,6 +114,8 @@ export default class ContrastRatioItemRow extends Vue {
   margin: auto
   width: auto
   line-height: 1
+  .__heading + &
+    margin-top: calc(var(--spaceGap) * 4)
 
   + .ContrastRatioItemRow
     @include max()

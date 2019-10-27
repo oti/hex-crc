@@ -174,29 +174,30 @@ export default class Home extends Vue {
 .Home
   .__content
     margin: 2rem auto
-    max-width: 600px
-
-  .__intro
     padding-right: calc(var(--spaceGap) * 2);
     padding-left: calc(var(--spaceGap) * 2);
+    max-width: calc(var(--spaceGap) * 4 + 600px)
     font-size: 0.7rem
-    + .__textarea
-      margin-top: calc(var(--spaceGap) * 1)
-    + .__list
-      margin-top: calc(var(--spaceGap) * 7)
+
+  .__heading
+    margin: 0
+    font-size: 1rem
+
+  .__intro
+    margin-top: calc(var(--spaceGap) * 4)
 
   .__textarea
-    padding-right: calc(var(--spaceGap) * 2)
-    padding-left: calc(var(--spaceGap) * 2)
-    + .__action
-      margin-top: calc(var(--spaceGap) * 1)
+    margin-top: calc(var(--spaceGap) * 1.5)
 
   .__action
+    margin-top: calc(var(--spaceGap) * 1.5)
     text-align: center
-    + .__list
-      margin-top: calc(var(--spaceGap) * 7)
+    .Button
+      margin: 0 calc(var(--spaceGap) / 2) calc(var(--spaceGap) * 1)
 
   .__list
+    margin-top: calc(var(--spaceGap) * 4)
+    font-size: 1rem
 
 .Button
   @extend %resetButton
