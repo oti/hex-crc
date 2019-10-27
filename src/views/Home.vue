@@ -1,13 +1,14 @@
 <template>
   <div class="Home">
     <GlobalHeader />
-    <div class="__content">
-      <div class="__intro">
+    <main class="__content" role="main">
+      <section class="__intro">
+        <h2 class="__heading">なにこれ？</h2>
         <p>
-          HEXの2色からコントラスト比を計算し、WCAG2.0が定める基準を達成しているか判定します。
+          HEXの2色（前景色と背景色）のカラーセットからコントラスト比を計算し、WCAG2.0が定める基準を達成しているかを判定します。
         </p>
         <ul>
-          <li>HEX以外を入力すると判定できません</li>
+          <li>HEX以外を入力すると正しく判定できません</li>
           <li>複数のカラーセットを比較できます</li>
           <li>テキストエリアに連想配列を入力してカラーセットに変換できます</li>
           <li>逆に、調整したカラーセットを連想配列に変換できます</li>
@@ -17,11 +18,16 @@
           <span v-if="showsTextArea">テキストエリアを隠す</span>
           <span v-else>テキストエリアを表示する</span>
         </button>
-      </div>
-      <div v-if="showsTextArea" class="__textarea">
+      </section>
+
+      <section v-if="showsTextArea" class="__textarea">
+        <p>
+          ※連想配列は<code>key</code>と<code>value</code>をダブルクォーテーションで囲ってください。
+        </p>
         <TextArea :value="textAreaValue" @input="handleInputTextArea" />
-      </div>
-      <div v-if="showsTextArea" class="__action">
+      </section>
+
+      <section v-if="showsTextArea" class="__action">
         <button
           class="Button"
           type="button"
@@ -38,8 +44,10 @@
           <i class="material-icons" aria-hidden="true">publish</i>
           <span>セットから連想配列に変換</span>
         </button>
-      </div>
-      <div class="__list">
+      </section>
+
+      <section class="__list">
+        <h2 class="__heading">カラーセット</h2>
         <ContrastRatioItemRow
           v-for="(item, i) in items"
           :key="i"
@@ -51,8 +59,8 @@
           @clear="handleClearItem(i)"
           @remove="handleRemoveItem(i)"
         />
-      </div>
-    </div>
+      </section>
+    </main>
     <GlobalFooter />
   </div>
 </template>
