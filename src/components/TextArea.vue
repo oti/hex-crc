@@ -4,15 +4,10 @@
 
 <script lang="ts">
 import { ColorSet } from '@/models/ColorSet'
+import { HTMLElementEvent } from '@/models/HTMLElementEvent'
 import { Nullable } from '@/models/Nullable'
 import { isStringOfNotEmpty } from '@/utilities/isString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
-/**
- * @sees https://qiita.com/wamei/items/43753e03821964719f31
- */
-interface HTMLElementEvent<T extends HTMLElement> extends Event {
-  target: T
-}
 
 @Component
 export default class TextArea extends Vue {

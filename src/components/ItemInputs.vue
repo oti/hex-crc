@@ -19,15 +19,9 @@
 </template>
 
 <script lang="ts">
+import { HTMLElementEvent } from '@/models/HTMLElementEvent'
 import { NullableString } from '@/models/NullableString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
-
-/**
- * @sees https://qiita.com/wamei/items/43753e03821964719f31
- */
-interface HTMLElementEvent<T extends HTMLElement> extends Event {
-  target: T
-}
 
 @Component
 export default class ItemInputs extends Vue {
