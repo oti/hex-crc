@@ -3,6 +3,7 @@
     <GlobalHeader />
     <main class="__content" role="main">
       <section class="__intro">
+        <ThemeToggler />
         <h2 class="__heading">なにこれ？</h2>
         <p>
           HEXの2色（前景色と背景色）のカラーセットからコントラスト比を計算し、WCAG2.0が定める基準を達成しているかを判定します。
@@ -74,6 +75,7 @@ import ContrastRatioItemRow from '@/components/ContrastRatioItemRow.vue'
 import GlobalFooter from '@/components/GlobalFooter.vue'
 import GlobalHeader from '@/components/GlobalHeader.vue'
 import TextArea from '@/components/TextArea.vue'
+import ThemeToggler from '@/components/ThemeToggler.vue'
 import { PresetColorSet } from '@/configs/PresetColorSet'
 import { ColorSet } from '@/models/ColorSet'
 import { NullableString } from '@/models/NullableString'
@@ -92,7 +94,8 @@ const getDefaultItem = (
     ContrastRatioItemRow,
     GlobalFooter,
     GlobalHeader,
-    TextArea
+    TextArea,
+    ThemeToggler
   }
 })
 export default class Home extends Vue {
