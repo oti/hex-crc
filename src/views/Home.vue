@@ -177,8 +177,8 @@ export default class Home extends Vue {
 .Home
   .__content
     margin: 2rem auto
-    padding-right: calc(var(--spaceGap) * 2);
-    padding-left: calc(var(--spaceGap) * 2);
+    padding-right: calc(var(--spaceGap) * 2)
+    padding-left: calc(var(--spaceGap) * 2)
     max-width: calc(var(--spaceGap) * 4 + 600px)
     font-size: 0.7rem
 
