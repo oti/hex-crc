@@ -25,23 +25,15 @@
         <p>
           ※連想配列は<code>key</code>と<code>value</code>をダブルクォーテーションで囲ってください。
         </p>
-        <TextArea :value="textAreaValue" @input="handleInputTextArea" />
+        <TextArea />
       </section>
 
       <section v-if="ui.showsTextArea" class="__action">
-        <button
-          class="Button"
-          type="button"
-          @click="handleClickConvertDataToItems"
-        >
+        <button class="Button" type="button" @click="convertStringToColorItems">
           <i class="material-icons" aria-hidden="true">get_app</i>
           <span>連想配列からセットに変換</span>
         </button>
-        <button
-          class="Button"
-          type="button"
-          @click="handleClickConvertItemsToData"
-        >
+        <button class="Button" type="button" @click="convertColorItemsToString">
           <i class="material-icons" aria-hidden="true">publish</i>
           <span>セットから連想配列に変換</span>
         </button>
@@ -50,15 +42,15 @@
       <section class="__list">
         <h2 class="__heading">カラーセット</h2>
         <ContrastRatioItemRow
-          v-for="(item, i) in items"
+          v-for="(item, i) in data.colorItems"
           :key="i"
           :label="i === 0"
           :item-title="itemTitle(i)"
-          :removable="items.length > 1"
+          :removable="data.colorItems.length > 1"
           :value="item"
-          @add="handleAddItem(i)"
-          @clear="handleClearItem(i)"
-          @remove="handleRemoveItem(i)"
+          @add="addColorItem(i)"
+          @clear="clearColorItem(i)"
+          @remove="removeColorItem(i)"
         />
       </section>
     </main>
@@ -75,16 +67,12 @@ import ThemeToggler from '@/components/ThemeToggler.vue'
 import { PresetColorItems } from '@/configs/PresetColorItems'
 import { ColorItem } from '@/models/ColorItem'
 import { NullableString } from '@/models/NullableString'
+import {
+  DataActionDispatchers,
+  DataViewModel
+} from '@/store/modules/data/models'
 import { UiActionDispatchers, UiViewModel } from '@/store/modules/ui/models'
 import { Component, Prop, Vue } from 'vue-property-decorator'
-
-const getDefaultItem = (
-  front: NullableString = null,
-  back: NullableString = null
-): ColorSet => ({
-  front,
-  back
-})
 import { Action, Getter } from 'vuex-class'
 
 @Component({
@@ -98,31 +86,24 @@ import { Action, Getter } from 'vuex-class'
 })
 export default class Home extends Vue {
   // viewModel を引き当てる
+  @Getter('data/viewModel') data!: DataViewModel
   @Getter('ui/viewModel') ui!: UiViewModel
 
   /**
    * アクションを引き当てる
    */
-  showsTextArea: boolean = false
-  textAreaValue: string = `${JSON.stringify(PresetColorSet)}`
+  @Action('data/convertStringToColorItems')
+  convertStringToColorItems!: DataActionDispatchers['convertStringToColorItems']
+  @Action('data/convertColorItemsToString')
+  convertColorItemsToString!: DataActionDispatchers['convertColorItemsToString']
+  @Action('data/addColorItem')
+  addColorItem!: DataActionDispatchers['addColorItem']
+  @Action('data/clearColorItem')
+  clearColorItem!: DataActionDispatchers['clearColorItem']
+  @Action('data/removeColorItem')
+  removeColorItem!: DataActionDispatchers['removeColorItem']
   @Action('ui/toggleTextArea')
   toggleTextArea!: UiActionDispatchers['toggleTextArea']
-
-  /**
-   * @listens Button@click - テキストエリアの値をItemsに変換する
-   */
-  handleClickConvertDataToItems() {
-    this.items = JSON.parse(
-      JSON.parse(JSON.stringify(this.textAreaValue))
-    ) as ColorSet[]
-  }
-
-  /**
-   * @listens Button@click - Itemsをテキストエリアの値に変換する
-   */
-  handleClickConvertItemsToData() {
-    this.textAreaValue = JSON.stringify(this.items)
-  }
 
   /**
    * @method - カラーセットアイテムのタイトルを返す
@@ -130,31 +111,6 @@ export default class Home extends Vue {
    */
   itemTitle(i: number) {
     return `カラーセット${i + 1}`
-  }
-
-  /**
-   * @listens ContrastRatioItemRow@add - カラーセットアイテムの追加
-   * @param i
-   */
-  handleAddItem(i: number) {
-    const { front, back } = this.items[i]
-    this.items.splice(i + 1, 0, getDefaultItem(front, back))
-  }
-
-  /**
-   * @listens ContrastRatioItemRow@clear - カラーセットアイテムの色情報のクリア
-   * @param i
-   */
-  handleClearItem(i: number) {
-    this.items.splice(i, 1, getDefaultItem())
-  }
-
-  /**
-   * @listens ContrastRatioItemRow@remove - カラーセットアイテムの削除
-   * @param i
-   */
-  handleRemoveItem(i: number) {
-    this.items.splice(i, 1)
   }
 }
 </script>
