@@ -144,27 +144,4 @@ export default class Home extends Vue {
   .__list
     margin-top: calc(var(--spaceGap) * 4)
     font-size: 1rem
-
-.Button
-  @extend %resetButton
-  display: inline-flex
-  justify-content: center
-  align-items: center
-  margin: 0
-  padding: calc(var(--spaceGap) / 1.5) calc(var(--spaceGap) * 1.5) calc(var(--spaceGap) / 1.625)
-  border: 1px solid var(--colorBorder)
-  border-radius: 4px
-  font-size: 0.65rem
-  line-height: 1.2
-  vertical-align: top
-  background-color: #f5f4f5
-  &.-invert
-    border-color: transparent
-    color: #ffffff
-    background-color: var(--colorText)
-  &:active
-    transform: translateY(1px)
-
-  .material-icons
-    margin-right: 0.125rem
 </style>
