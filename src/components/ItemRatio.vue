@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { ColorSet } from '@/models/ColorSet'
+import { ColorItem } from '@/models/ColorItem'
 import { isStringOfNotEmpty } from '@/utilities/isString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
@@ -16,7 +16,7 @@ export default class ItemRatio extends Vue {
    * 入力プロパティを定義する
    */
   @Prop({ default: true }) showsLabel!: boolean
-  @Prop({ required: true }) value!: ColorSet
+  @Prop({ required: true }) value!: ColorItem
 
   /**
    * @get - コントラスト比を返す

@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { ColorSet } from '@/models/ColorSet'
+import { ColorItem } from '@/models/ColorItem'
 import { HTMLElementEvent } from '@/models/HTMLElementEvent'
 import { Nullable } from '@/models/Nullable'
 import { isStringOfNotEmpty } from '@/utilities/isString'

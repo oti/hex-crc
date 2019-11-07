@@ -52,8 +52,7 @@ import ItemActions from '@/components/ItemActions.vue'
 import ItemInputs from '@/components/ItemInputs.vue'
 import ItemLevel from '@/components/ItemLevel.vue'
 import ItemRatio from '@/components/ItemRatio.vue'
-import { ColorSet } from '@/models/ColorSet'
-import { NullableString } from '@/models/NullableString'
+import { ColorItem } from '@/models/ColorItem'
 import { isStringOfNotEmpty } from '@/utilities/isString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
@@ -69,7 +68,7 @@ export default class ContrastRatioItemRow extends Vue {
   @Prop({ required: true }) itemTitle!: string
   @Prop({ default: true }) label!: boolean
   @Prop({ default: true }) removable!: boolean
-  @Prop({ required: true }) value!: ColorSet
+  @Prop({ required: true }) value!: ColorItem
 
   ratio: number = NaN
 
@@ -82,7 +81,7 @@ export default class ContrastRatioItemRow extends Vue {
    * @listens ItemInputs(front)@input
    * @param color
    */
-  handleInputFrontColor(color: NullableString) {
+  handleInputFrontColor(color: string) {
     this.value.front = color
   }
 
@@ -90,7 +89,7 @@ export default class ContrastRatioItemRow extends Vue {
    * @listens ItemInputs(back)@input
    * @param color
    */
-  handleInputBackColor(color: NullableString) {
+  handleInputBackColor(color: string) {
     this.value.back = color
   }
 

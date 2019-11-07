@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { ColorSet } from '@/models/ColorSet'
+import { ColorItem } from '@/models/ColorItem'
 import { Nullable } from '@/models/Nullable'
 import { isStringOfNotEmpty } from '@/utilities/isString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
@@ -23,7 +23,7 @@ export default class ItemLevel extends Vue {
    */
   @Prop({ default: NaN }) ratio!: number
   @Prop({ default: true }) showsLabel!: boolean
-  @Prop({ required: true }) value!: ColorSet
+  @Prop({ required: true }) value!: ColorItem
 
   /**
    * @get - WCAG2.0において達成しているレベルを返す
