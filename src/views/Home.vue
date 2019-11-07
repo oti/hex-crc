@@ -1,6 +1,6 @@
 <template>
   <div class="Home">
-    <GlobalHeader />
+    <Header />
     <main class="__main" role="main">
       <SectionIntro class="__intro" />
 
@@ -8,13 +8,13 @@
 
       <SectionColorSet class="__set" />
     </main>
-    <GlobalFooter />
+    <Footer />
   </div>
 </template>
 
 <script lang="ts">
-import GlobalFooter from '@/components/GlobalFooter.vue'
-import GlobalHeader from '@/components/GlobalHeader.vue'
+import Footer from '@/components/Footer.vue'
+import Header from '@/components/Header.vue'
 import SectionColorSet from '@/components/SectionColorSet.vue'
 import SectionIntro from '@/components/SectionIntro.vue'
 import SectionTextArea from '@/components/SectionTextArea.vue'
@@ -24,8 +24,8 @@ import { Getter } from 'vuex-class'
 
 @Component({
   components: {
-    GlobalFooter,
-    GlobalHeader,
+    Footer,
+    Header,
     SectionColorSet,
     SectionIntro,
     SectionTextArea

@@ -1,5 +1,5 @@
 <template>
-  <header class="GlobalHeader">
+  <header class="Header">
     <h1 class="__heading">HEX Contrast Ratio Calcurator</h1>
   </header>
 </template>
@@ -8,13 +8,13 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component
-export default class GlobalHeader extends Vue {}
+export default class Header extends Vue {}
 </script>
 
 <style lang="sass" scoped>
 @import '../assets/styles/configs'
 
-.GlobalHeader
+.Header
   display: flex
   justify-content: center
   align-items: center

@@ -1,5 +1,5 @@
 <template>
-  <footer class="GlobalFooter">
+  <footer class="Footer">
     <div class="__inner">
       <p class="__credit">
         Made by oti [ <a href="https://twitter.com/otiext">Twitter</a> /
@@ -14,13 +14,13 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component
-export default class GlobalFooter extends Vue {}
+export default class Footer extends Vue {}
 </script>
 
 <style lang="sass" scoped>
 @import '../assets/styles/configs'
 
-.GlobalFooter
+.Footer
   color: var(--colorBg)
   font-size: 0.6rem
   line-height: 1.2
