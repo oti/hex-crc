@@ -20,19 +20,19 @@
           @click="handleClickToggleTextArea"
         >
           <i class="material-icons" aria-hidden="true">flip</i>
-          <span v-if="showsTextArea">テキストエリアを隠す</span>
+          <span v-if="ui.showsTextArea">テキストエリアを隠す</span>
           <span v-else>テキストエリアを表示する</span>
         </button>
       </section>
 
-      <section v-if="showsTextArea" class="__textarea">
+      <section v-if="ui.showsTextArea" class="__textarea">
         <p>
           ※連想配列は<code>key</code>と<code>value</code>をダブルクォーテーションで囲ってください。
         </p>
         <TextArea :value="textAreaValue" @input="handleInputTextArea" />
       </section>
 
-      <section v-if="showsTextArea" class="__action">
+      <section v-if="ui.showsTextArea" class="__action">
         <button
           class="Button"
           type="button"
@@ -79,6 +79,7 @@ import ThemeToggler from '@/components/ThemeToggler.vue'
 import { PresetColorSet } from '@/configs/PresetColorSet'
 import { ColorSet } from '@/models/ColorSet'
 import { NullableString } from '@/models/NullableString'
+import { UiActionDispatchers, UiViewModel } from '@/store/modules/ui/models'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 const getDefaultItem = (
@@ -88,6 +89,7 @@ const getDefaultItem = (
   front,
   back
 })
+import { Action, Getter } from 'vuex-class'
 
 @Component({
   components: {
@@ -99,12 +101,16 @@ const getDefaultItem = (
   }
 })
 export default class Home extends Vue {
+  // viewModel を引き当てる
+  @Getter('ui/viewModel') ui!: UiViewModel
+
   /**
-   * 内部ステートを定義
+   * アクションを引き当てる
    */
-  items: ColorSet[] = PresetColorSet
   showsTextArea: boolean = false
   textAreaValue: string = `${JSON.stringify(PresetColorSet)}`
+  @Action('ui/toggleTextArea')
+  toggleTextArea!: UiActionDispatchers['toggleTextArea']
 
   /**
    * @listens Button@click - テキストエリアの値をItemsに変換する
@@ -134,15 +140,7 @@ export default class Home extends Vue {
    * @listens Button@click - テキストエリアの表示をトグルする
    */
   handleClickToggleTextArea() {
-    this.showsTextArea = !this.showsTextArea
-  }
-
-  /**
-   * @listens TextArea@input - textareaの入力
-   * @param value
-   */
-  handleInputTextArea(value: string) {
-    this.textAreaValue = value
+    this.toggleTextArea(this.ui.showsTextArea)
   }
 
   /**
