@@ -6,9 +6,11 @@
       class="__input"
       type="checkbox"
       name="darkMode"
-      @change="handleToggleDarkMode"
+      @change="toggleDarkMode"
     />
-    <label class="__label" for="ThemeTogglerInput">{{ toggleThemeText }}</label>
+    <label class="__label" for="ThemeTogglerInput">{{
+      toggleThemeLabel
+    }}</label>
   </div>
 </template>
 
@@ -31,15 +33,8 @@ export default class ThemeToggler extends Vue {
   /**
    * @get テーマトグルのテキストを返す
    */
-  get toggleThemeText() {
+  get toggleThemeLabel() {
     return this.ui.darkMode ? 'ライトモードにする' : 'ダークモードにする'
-  }
-
-  /**
-   * @listens input.change
-   */
-  handleToggleDarkMode() {
-    this.toggleDarkMode(this.ui.darkMode)
   }
 }
 </script>

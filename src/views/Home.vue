@@ -14,11 +14,7 @@
           <li>テキストエリアに連想配列を入力してカラーセットに変換できます</li>
           <li>逆に、調整したカラーセットを連想配列に変換できます</li>
         </ul>
-        <button
-          class="Button -invert"
-          type="button"
-          @click="handleClickToggleTextArea"
-        >
+        <button class="Button -invert" type="button" @click="toggleTextArea">
           <i class="material-icons" aria-hidden="true">flip</i>
           <span v-if="ui.showsTextArea">テキストエリアを隠す</span>
           <span v-else>テキストエリアを表示する</span>
@@ -134,13 +130,6 @@ export default class Home extends Vue {
    */
   itemTitle(i: number) {
     return `カラーセット${i + 1}`
-  }
-
-  /**
-   * @listens Button@click - テキストエリアの表示をトグルする
-   */
-  handleClickToggleTextArea() {
-    this.toggleTextArea(this.ui.showsTextArea)
   }
 
   /**
