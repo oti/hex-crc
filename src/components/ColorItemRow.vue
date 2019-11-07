@@ -15,7 +15,7 @@
       <ColorItemInputs
         :shows-label="label"
         :value="value.front"
-        label-text="前景色"
+        :label="inputFrontLabel"
         class="__cellInner"
         @input="handleInputFrontColor"
       />
@@ -23,7 +23,7 @@
       <ColorItemInputs
         :shows-label="label"
         :value="value.back"
-        label-text="背景色"
+        :label="inputBackLabel"
         :class="['__cellInner', { '-no-label': !label }]"
         @input="handleInputBackColor"
       />
@@ -71,6 +71,8 @@ export default class ColorItemRow extends Vue {
   @Prop({ required: true }) value!: ColorItem
 
   ratio: number = NaN
+  inputFrontLabel: string = '前景色'
+  inputBackLabel: string = '背景色'
 
   get clearable() {
     const { front, back } = this.value
@@ -113,7 +115,7 @@ export default class ColorItemRow extends Vue {
   margin: auto
   width: auto
   line-height: 1
-  .__heading + &
+  .SectionHeading + &
     margin-top: calc(var(--spaceGap) * 4)
 
   + .ColorItemRow
