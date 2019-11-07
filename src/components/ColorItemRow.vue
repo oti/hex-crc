@@ -12,7 +12,7 @@
     </div>
 
     <div class="__cell">
-      <ItemInputs
+      <ColorItemInputs
         :shows-label="label"
         :value="value.front"
         label-text="前景色"
@@ -20,7 +20,7 @@
         @input="handleInputFrontColor"
       />
 
-      <ItemInputs
+      <ColorItemInputs
         :shows-label="label"
         :value="value.back"
         label-text="背景色"
@@ -49,7 +49,7 @@
 
 <script lang="ts">
 import ColorItemActions from '@/components/ColorItemActions.vue'
-import ItemInputs from '@/components/ItemInputs.vue'
+import ColorItemInputs from '@/components/ColorItemInputs.vue'
 import ItemLevel from '@/components/ItemLevel.vue'
 import ItemRatio from '@/components/ItemRatio.vue'
 import { ColorItem } from '@/models/ColorItem'
@@ -59,7 +59,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component({
   components: {
     ColorItemActions,
-    ItemInputs,
+    ColorItemInputs,
     ItemLevel,
     ItemRatio
   }
@@ -78,7 +78,7 @@ export default class ColorItemRow extends Vue {
   }
 
   /**
-   * @listens ItemInputs(front)@input
+   * @listens ColorItemInputs(front)@input
    * @param color
    */
   handleInputFrontColor(color: string) {
@@ -86,7 +86,7 @@ export default class ColorItemRow extends Vue {
   }
 
   /**
-   * @listens ItemInputs(back)@input
+   * @listens ColorItemInputs(back)@input
    * @param color
    */
   handleInputBackColor(color: string) {

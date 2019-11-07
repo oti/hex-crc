@@ -1,6 +1,6 @@
 <template>
-  <div class="ItemInputs">
-    <p :class="['__label', { VisuallyHidden: !showsLabel }]">{{ labelText }}</p>
+  <div class="ColorItemInputs">
+    <p :class="['__label', { VisuallyHidden: !showsLabel }]">{{ label }}</p>
     <div class="__inputs">
       <input
         :value="value"
@@ -24,11 +24,11 @@ import { NullableString } from '@/models/NullableString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
-export default class ItemInputs extends Vue {
+export default class ColorItemInputs extends Vue {
   /**
    * 入力プロパティを定義する
    */
-  @Prop({ default: '' }) labelText!: string
+  @Prop({ default: '' }) label!: string
   @Prop({ default: true }) showsLabel!: boolean
   @Prop({ required: true }) value!: NullableString
 
@@ -44,7 +44,7 @@ export default class ItemInputs extends Vue {
 <style lang="sass" scoped>
 @import '../assets/styles/configs'
 
-.ItemInputs
+.ColorItemInputs
   position: relative
   @include min()
     display: flex
