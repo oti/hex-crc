@@ -37,7 +37,7 @@
         @calc="handleCalcRatio"
       />
 
-      <ItemLevel
+      <ColorItemLevel
         :ratio="ratio"
         :shows-label="label"
         :value="value"
@@ -50,7 +50,7 @@
 <script lang="ts">
 import ColorItemActions from '@/components/ColorItemActions.vue'
 import ColorItemInputs from '@/components/ColorItemInputs.vue'
-import ItemLevel from '@/components/ItemLevel.vue'
+import ColorItemLevel from '@/components/ColorItemLevel.vue'
 import ColorItemRatio from '@/components/ColorItemRatio.vue'
 import { ColorItem } from '@/models/ColorItem'
 import { isStringOfNotEmpty } from '@/utilities/isString'
@@ -60,7 +60,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   components: {
     ColorItemActions,
     ColorItemInputs,
-    ItemLevel,
+    ColorItemLevel,
     ColorItemRatio
   }
 })

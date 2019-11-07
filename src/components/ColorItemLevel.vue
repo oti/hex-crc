@@ -1,5 +1,5 @@
 <template>
-  <div class="ItemLevel">
+  <div class="ColorItemLevel">
     <p :class="['__label', { VisuallyHidden: !showsLabel }]">WCAG2.0達成</p>
     <p
       class="__text"
@@ -12,12 +12,10 @@
 
 <script lang="ts">
 import { ColorItem } from '@/models/ColorItem'
-import { Nullable } from '@/models/Nullable'
-import { isStringOfNotEmpty } from '@/utilities/isString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
-export default class ItemLevel extends Vue {
+export default class ColorItemLevel extends Vue {
   /**
    * 入力プロパティを定義する
    */
@@ -44,7 +42,7 @@ export default class ItemLevel extends Vue {
 <style lang="sass" scoped>
 @import '../assets/styles/configs'
 
-.ItemLevel
+.ColorItemLevel
   position: relative
 
   .__label
