@@ -1,5 +1,9 @@
 <template>
-  <textarea class="TextArea" :value="value" @input="handleInputTextArea" />
+  <textarea
+    class="TextArea"
+    :value="data.string"
+    @input="handleInputTextArea"
+  />
 </template>
 
 <script lang="ts">
@@ -7,20 +11,29 @@ import { ColorItem } from '@/models/ColorItem'
 import { HTMLElementEvent } from '@/models/HTMLElementEvent'
 import { Nullable } from '@/models/Nullable'
 import { isStringOfNotEmpty } from '@/utilities/isString'
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import {
+  DataActionDispatchers,
+  DataViewModel
+} from '@/store/modules/data/models'
+import { Component, Vue } from 'vue-property-decorator'
+import { Action, Getter } from 'vuex-class'
 
 @Component
 export default class TextArea extends Vue {
+  // viewModel を引き当てる
+  @Getter('data/viewModel') data!: DataViewModel
+
   /**
-   * 入力プロパティを定義する
+   * アクションを引き当てる
    */
-  @Prop({ required: true }) value!: string
+  @Action('data/updateTextAreaValue')
+  updateTextAreaValue!: DataActionDispatchers['updateTextAreaValue']
 
   /**
    * @listens textarea@input
    */
   handleInputTextArea(event: HTMLElementEvent<HTMLTextAreaElement>) {
-    this.$emit('input', event.target.value)
+    this.updateTextAreaValue(event.target.value)
   }
 }
 </script>
