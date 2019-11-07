@@ -1,5 +1,5 @@
 <template>
-  <div class="ItemRatio">
+  <div class="ColorItemRatio">
     <p :class="['__label', { VisuallyHidden: !showsLabel }]">コントラスト比</p>
     <p class="__text">{{ ratio }}</p>
   </div>
@@ -11,7 +11,7 @@ import { isStringOfNotEmpty } from '@/utilities/isString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
-export default class ItemRatio extends Vue {
+export default class ColorItemRatio extends Vue {
   /**
    * 入力プロパティを定義する
    */
@@ -91,7 +91,7 @@ export default class ItemRatio extends Vue {
 <style lang="sass" scoped>
 @import '../assets/styles/configs'
 
-.ItemRatio
+.ColorItemRatio
   position: relative
 
   .__label

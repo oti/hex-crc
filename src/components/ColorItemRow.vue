@@ -30,7 +30,7 @@
     </div>
 
     <div class="__cell">
-      <ItemRatio
+      <ColorItemRatio
         :shows-label="label"
         :value="value"
         class="__cellInner"
@@ -51,7 +51,7 @@
 import ColorItemActions from '@/components/ColorItemActions.vue'
 import ColorItemInputs from '@/components/ColorItemInputs.vue'
 import ItemLevel from '@/components/ItemLevel.vue'
-import ItemRatio from '@/components/ItemRatio.vue'
+import ColorItemRatio from '@/components/ColorItemRatio.vue'
 import { ColorItem } from '@/models/ColorItem'
 import { isStringOfNotEmpty } from '@/utilities/isString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
@@ -61,7 +61,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
     ColorItemActions,
     ColorItemInputs,
     ItemLevel,
-    ItemRatio
+    ColorItemRatio
   }
 })
 export default class ColorItemRow extends Vue {
@@ -94,7 +94,7 @@ export default class ColorItemRow extends Vue {
   }
 
   /**
-   * @listens ItemRatio@calc
+   * @listens ColorItemRatio@calc
    * @param ratio
    */
   handleCalcRatio(ratio: number) {
