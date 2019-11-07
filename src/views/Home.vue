@@ -6,17 +6,6 @@
 
       <SectionTextArea v-if="ui.showsTextArea" class="__textarea" />
 
-      <section v-if="ui.showsTextArea" class="__action">
-        <button class="Button" type="button" @click="convertStringToColorItems">
-          <i class="material-icons" aria-hidden="true">get_app</i>
-          <span>連想配列からセットに変換</span>
-        </button>
-        <button class="Button" type="button" @click="convertColorItemsToString">
-          <i class="material-icons" aria-hidden="true">publish</i>
-          <span>セットから連想配列に変換</span>
-        </button>
-      </section>
-
       <section class="__list">
         <h2 class="__heading">カラーセット</h2>
         <ContrastRatioItemRow
@@ -67,10 +56,6 @@ export default class Home extends Vue {
   /**
    * アクションを引き当てる
    */
-  @Action('data/convertStringToColorItems')
-  convertStringToColorItems!: DataActionDispatchers['convertStringToColorItems']
-  @Action('data/convertColorItemsToString')
-  convertColorItemsToString!: DataActionDispatchers['convertColorItemsToString']
   @Action('data/addColorItem')
   addColorItem!: DataActionDispatchers['addColorItem']
   @Action('data/clearColorItem')
@@ -107,12 +92,6 @@ export default class Home extends Vue {
 
   .__textarea
     margin-top: calc(var(--spaceGap) * 1.5)
-
-  .__action
-    margin-top: calc(var(--spaceGap) * 1.5)
-    text-align: center
-    .Button
-      margin: 0 calc(var(--spaceGap) / 2) calc(var(--spaceGap) * 1)
 
   .__list
     margin-top: calc(var(--spaceGap) * 4)
