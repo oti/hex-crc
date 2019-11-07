@@ -2,7 +2,7 @@
   <div class="ColorItemRow">
     <p class="VisuallyHidden">{{ itemTitle }}</p>
     <div class="__cell">
-      <ItemActions
+      <ColorItemActions
         :clearable="clearable"
         :removable="removable"
         @add="$emit('add')"
@@ -48,7 +48,7 @@
 </template>
 
 <script lang="ts">
-import ItemActions from '@/components/ItemActions.vue'
+import ColorItemActions from '@/components/ColorItemActions.vue'
 import ItemInputs from '@/components/ItemInputs.vue'
 import ItemLevel from '@/components/ItemLevel.vue'
 import ItemRatio from '@/components/ItemRatio.vue'
@@ -58,7 +58,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {
-    ItemActions,
+    ColorItemActions,
     ItemInputs,
     ItemLevel,
     ItemRatio
