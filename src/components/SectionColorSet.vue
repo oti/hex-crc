@@ -1,7 +1,7 @@
 <template>
   <section class="SectionColorSet">
     <h2 class="SectionHeading">カラーセット</h2>
-    <ContrastRatioItemRow
+    <ColorItemRow
       v-for="(item, i) in data.colorItems"
       :key="i"
       :label="i === 0"
@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import ContrastRatioItemRow from '@/components/ContrastRatioItemRow.vue'
+import ColorItemRow from '@/components/ColorItemRow.vue'
 import {
   DataActionDispatchers,
   DataViewModel
@@ -26,7 +26,7 @@ import { Action, Getter } from 'vuex-class'
 
 @Component({
   components: {
-    ContrastRatioItemRow
+    ColorItemRow
   }
 })
 export default class SectionColorSet extends Vue {

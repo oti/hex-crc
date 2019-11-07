@@ -1,5 +1,5 @@
 <template>
-  <div class="ContrastRatioItemRow">
+  <div class="ColorItemRow">
     <p class="VisuallyHidden">{{ itemTitle }}</p>
     <div class="__cell">
       <ItemActions
@@ -64,7 +64,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
     ItemRatio
   }
 })
-export default class ContrastRatioItemRow extends Vue {
+export default class ColorItemRow extends Vue {
   @Prop({ required: true }) itemTitle!: string
   @Prop({ default: true }) label!: boolean
   @Prop({ default: true }) removable!: boolean
@@ -106,7 +106,7 @@ export default class ContrastRatioItemRow extends Vue {
 <style lang="sass" scoped>
 @import '../assets/styles/configs'
 
-.ContrastRatioItemRow
+.ColorItemRow
   display: flex
   justify-content: center
   align-items: center
@@ -116,7 +116,7 @@ export default class ContrastRatioItemRow extends Vue {
   .__heading + &
     margin-top: calc(var(--spaceGap) * 4)
 
-  + .ContrastRatioItemRow
+  + .ColorItemRow
     @include max()
       margin-top: calc(var(--spaceGap) * 2.5)
     @include min()
