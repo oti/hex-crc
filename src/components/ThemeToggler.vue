@@ -2,7 +2,7 @@
   <div class="ThemeToggler">
     <input
       id="ThemeTogglerInput"
-      v-model="ui.dark"
+      v-model="ui.darkMode"
       class="__input"
       type="checkbox"
       name="darkMode"
@@ -32,14 +32,14 @@ export default class ThemeToggler extends Vue {
    * @get テーマトグルのテキストを返す
    */
   get toggleThemeText() {
-    return this.ui.dark ? 'ライトモードにする' : 'ダークモードにする'
+    return this.ui.darkMode ? 'ライトモードにする' : 'ダークモードにする'
   }
 
   /**
    * @listens input.change
    */
   handleToggleDarkMode() {
-    this.toggleDarkMode(this.ui.dark)
+    this.toggleDarkMode(this.ui.darkMode)
   }
 }
 </script>

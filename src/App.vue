@@ -1,5 +1,5 @@
 <template>
-  <VApp :class="[{ '-dark': ui.dark }]">
+  <VApp :class="[{ '-dark': ui.darkMode }]">
     <RouterView />
     <GlobalLoading v-if="ui.hasGlobalLoadingQueue" />
   </VApp>

@@ -3,13 +3,13 @@ import {
   DECREMENT_GLOBAL_LOADING_QUEUE,
   INCREMENT_GLOBAL_LOADING_QUEUE,
   TOGGLE_DARK_MODE,
-  TOGGLE_TEXT_AREA,
+  TOGGLE_TEXT_AREA
 } from '@/store/modules/ui/mutation-types'
 
 export interface UiState {
-  dark: boolean
+  darkMode: boolean
   globalLadingQueue: number
-  textData: string
+  showsTextArea: boolean
 }
 
 export interface UiViewModel extends UiState {

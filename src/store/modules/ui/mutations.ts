@@ -4,7 +4,7 @@ import {
   DECREMENT_GLOBAL_LOADING_QUEUE,
   INCREMENT_GLOBAL_LOADING_QUEUE,
   TOGGLE_DARK_MODE,
-  TOGGLE_TEXT_AREA,
+  TOGGLE_TEXT_AREA
 } from '@/store/modules/ui/mutation-types'
 
 export const mutations: DefinedMutationTree<UiState, UiMutationPayloads> = {
@@ -42,7 +42,7 @@ export const mutations: DefinedMutationTree<UiState, UiMutationPayloads> = {
    * @param state
    */
   [TOGGLE_DARK_MODE](state) {
-    state.dark = !state.dark
+    state.darkMode = !state.darkMode
   },
 
   /**

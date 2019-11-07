@@ -3,7 +3,7 @@ import {
   DECREMENT_GLOBAL_LOADING_QUEUE,
   INCREMENT_GLOBAL_LOADING_QUEUE,
   TOGGLE_DARK_MODE,
-  TOGGLE_TEXT_AREA,
+  TOGGLE_TEXT_AREA
 } from '@/store/modules/ui/mutation-types'
 
 export const actions: UiActionTree = {
