@@ -2,24 +2,7 @@
   <div class="Home">
     <GlobalHeader />
     <main class="__content" role="main">
-      <section class="__intro">
-        <ThemeToggler />
-        <h2 class="__heading">なにこれ？</h2>
-        <p>
-          HEXの2色（前景色と背景色）のカラーセットからコントラスト比を計算し、WCAG2.0が定める基準を達成しているかを判定します。
-        </p>
-        <ul>
-          <li>HEX以外を入力すると正しく判定できません</li>
-          <li>複数のカラーセットを比較できます</li>
-          <li>テキストエリアに連想配列を入力してカラーセットに変換できます</li>
-          <li>逆に、調整したカラーセットを連想配列に変換できます</li>
-        </ul>
-        <button class="Button -invert" type="button" @click="toggleTextArea">
-          <i class="material-icons" aria-hidden="true">flip</i>
-          <span v-if="ui.showsTextArea">テキストエリアを隠す</span>
-          <span v-else>テキストエリアを表示する</span>
-        </button>
-      </section>
+      <SectionIntro class="__intro" />
 
       <section v-if="ui.showsTextArea" class="__textarea">
         <p>
@@ -62,11 +45,8 @@
 import ContrastRatioItemRow from '@/components/ContrastRatioItemRow.vue'
 import GlobalFooter from '@/components/GlobalFooter.vue'
 import GlobalHeader from '@/components/GlobalHeader.vue'
+import SectionIntro from '@/components/SectionIntro.vue'
 import TextArea from '@/components/TextArea.vue'
-import ThemeToggler from '@/components/ThemeToggler.vue'
-import { PresetColorItems } from '@/configs/PresetColorItems'
-import { ColorItem } from '@/models/ColorItem'
-import { NullableString } from '@/models/NullableString'
 import {
   DataActionDispatchers,
   DataViewModel
@@ -80,8 +60,8 @@ import { Action, Getter } from 'vuex-class'
     ContrastRatioItemRow,
     GlobalFooter,
     GlobalHeader,
-    TextArea,
-    ThemeToggler
+    SectionIntro,
+    TextArea
   }
 })
 export default class Home extends Vue {
@@ -102,8 +82,6 @@ export default class Home extends Vue {
   clearColorItem!: DataActionDispatchers['clearColorItem']
   @Action('data/removeColorItem')
   removeColorItem!: DataActionDispatchers['removeColorItem']
-  @Action('ui/toggleTextArea')
-  toggleTextArea!: UiActionDispatchers['toggleTextArea']
 
   /**
    * @method - カラーセットアイテムのタイトルを返す
