@@ -4,12 +4,7 @@
     <main class="__content" role="main">
       <SectionIntro class="__intro" />
 
-      <section v-if="ui.showsTextArea" class="__textarea">
-        <p>
-          ※連想配列は<code>key</code>と<code>value</code>をダブルクォーテーションで囲ってください。
-        </p>
-        <TextArea />
-      </section>
+      <SectionTextArea v-if="ui.showsTextArea" class="__textarea" />
 
       <section v-if="ui.showsTextArea" class="__action">
         <button class="Button" type="button" @click="convertStringToColorItems">
@@ -46,7 +41,7 @@ import ContrastRatioItemRow from '@/components/ContrastRatioItemRow.vue'
 import GlobalFooter from '@/components/GlobalFooter.vue'
 import GlobalHeader from '@/components/GlobalHeader.vue'
 import SectionIntro from '@/components/SectionIntro.vue'
-import TextArea from '@/components/TextArea.vue'
+import SectionTextArea from '@/components/SectionTextArea.vue'
 import {
   DataActionDispatchers,
   DataViewModel
@@ -61,7 +56,7 @@ import { Action, Getter } from 'vuex-class'
     GlobalFooter,
     GlobalHeader,
     SectionIntro,
-    TextArea
+    SectionTextArea
   }
 })
 export default class Home extends Vue {
