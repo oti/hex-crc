@@ -1,5 +1,6 @@
 <template>
   <section class="SectionColorSet">
+    <TextSizeToggler />
     <h2 class="SectionHeading">カラーセット</h2>
     <ColorItemRow
       v-for="(item, i) in data.colorItems"
@@ -17,6 +18,7 @@
 
 <script lang="ts">
 import ColorItemRow from '@/components/ColorItemRow.vue'
+import TextSizeToggler from '@/components/TextSizeToggler.vue'
 import {
   DataActionDispatchers,
   DataViewModel
@@ -26,7 +28,8 @@ import { Action, Getter } from 'vuex-class'
 
 @Component({
   components: {
-    ColorItemRow
+    ColorItemRow,
+    TextSizeToggler
   }
 })
 export default class SectionColorSet extends Vue {
