@@ -4,7 +4,8 @@ import {
   DECREMENT_GLOBAL_LOADING_QUEUE,
   INCREMENT_GLOBAL_LOADING_QUEUE,
   TOGGLE_DARK_MODE,
-  TOGGLE_TEXT_AREA
+  TOGGLE_TEXT_AREA,
+  TOGGLE_TEXT_SIZE
 } from '@/store/modules/ui/mutation-types'
 
 export const mutations: DefinedMutationTree<UiState, UiMutationPayloads> = {
@@ -50,5 +51,12 @@ export const mutations: DefinedMutationTree<UiState, UiMutationPayloads> = {
    */
   [TOGGLE_TEXT_AREA](state) {
     state.showsTextArea = !state.showsTextArea
+  },
+
+  /**
+   * テキストの大きさをトグルする
+   */
+  [TOGGLE_TEXT_SIZE](state) {
+    state.largeText = !state.largeText
   }
 }

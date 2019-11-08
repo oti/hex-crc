@@ -3,7 +3,8 @@ import {
   DECREMENT_GLOBAL_LOADING_QUEUE,
   INCREMENT_GLOBAL_LOADING_QUEUE,
   TOGGLE_DARK_MODE,
-  TOGGLE_TEXT_AREA
+  TOGGLE_TEXT_AREA,
+  TOGGLE_TEXT_SIZE
 } from '@/store/modules/ui/mutation-types'
 
 export const actions: UiActionTree = {
@@ -38,5 +39,12 @@ export const actions: UiActionTree = {
    */
   toggleTextArea({ commit }) {
     commit(TOGGLE_TEXT_AREA)
+  },
+
+  /**
+   * テキストの大きさをトグルする
+   */
+  toggleTextSize({ commit }) {
+    commit(TOGGLE_TEXT_SIZE)
   }
 }
