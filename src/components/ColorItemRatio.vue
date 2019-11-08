@@ -1,25 +1,25 @@
 <template>
-  <div class="ItemRatio">
+  <div class="ColorItemRatio">
     <p :class="['__label', { VisuallyHidden: !showsLabel }]">コントラスト比</p>
     <p class="__text">{{ ratio }}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { ColorSet } from '@/models/ColorSet'
+import { ColorItem } from '@/models/ColorItem'
 import { isStringOfNotEmpty } from '@/utilities/isString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
-export default class ItemRatio extends Vue {
+export default class ColorItemRatio extends Vue {
   /**
    * 入力プロパティを定義する
    */
   @Prop({ default: true }) showsLabel!: boolean
-  @Prop({ required: true }) value!: ColorSet
+  @Prop({ required: true }) value!: ColorItem
 
   /**
-   * @get - コントラスト比を返す
+   * @get コントラスト比を返す
    */
   get ratio() {
     const { front, back } = this.value
@@ -33,9 +33,9 @@ export default class ItemRatio extends Vue {
   }
 
   /**
-   * @method - HEXをr,g,bの配列に分割する
+   * HEXをr,g,bの配列に分割する
    */
-  convertSplitedHex(hex: string) {
+  convertToSplitedHex(hex: string) {
     const trimedHex = hex.charAt(0) == '#' ? hex.substring(1, 7) : hex
 
     return [
@@ -46,10 +46,10 @@ export default class ItemRatio extends Vue {
   }
 
   /**
-   * @method - 0~1のsRGB値に変換する
+   * 0~1のsRGB値に変換する
    */
-  convertToSrgbValue(valeu: number) {
-    return valeu / 255
+  convertToSrgbValue(value: number) {
+    return value / 255
   }
 
   /**
@@ -77,8 +77,8 @@ export default class ItemRatio extends Vue {
    * コントラスト比を計算する
    */
   calcurateContrastRatio(front: string, back: string) {
-    const rgb1 = this.convertSplitedHex(front)
-    const rgb2 = this.convertSplitedHex(back)
+    const rgb1 = this.convertToSplitedHex(front)
+    const rgb2 = this.convertToSplitedHex(back)
     const L1 = this.convertToRelativeLuminance(rgb1[0], rgb1[1], rgb1[2])
     const L2 = this.convertToRelativeLuminance(rgb2[0], rgb2[1], rgb2[2])
     const bright = L1 > L2 ? L1 : L2 // 明るい方の相対輝度
@@ -91,7 +91,7 @@ export default class ItemRatio extends Vue {
 <style lang="sass" scoped>
 @import '../assets/styles/configs'
 
-.ItemRatio
+.ColorItemRatio
   position: relative
 
   .__label

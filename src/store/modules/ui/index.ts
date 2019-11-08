@@ -10,7 +10,10 @@ import {
 import { mutations } from '@/store/modules/ui/mutations'
 
 export const state: StateCreator<UiState> = () => ({
-  globalLadingQueue: 0
+  darkMode: false,
+  globalLadingQueue: 0,
+  largeText: false,
+  showsTextArea: false
 })
 
 export const storeModule: DefinedModule<

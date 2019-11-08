@@ -1,5 +1,5 @@
 <template>
-  <div class="GlobalLoading">
+  <div class="Loading">
     <div class="__inner">
       <div class="__charm" />
     </div>
@@ -10,12 +10,12 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component
-export default class GlobalLoading extends Vue {}
+export default class Loading extends Vue {}
 </script>
 
 <style lang="sass" scoped>
 
-.GlobalLoading
+.Loading
   position: fixed
   top: 0
   bottom: 0

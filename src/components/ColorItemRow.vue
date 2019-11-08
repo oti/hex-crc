@@ -1,8 +1,8 @@
 <template>
-  <div class="ContrastRatioItemRow">
+  <div class="ColorItemRow">
     <p class="VisuallyHidden">{{ itemTitle }}</p>
     <div class="__cell">
-      <ItemActions
+      <ColorItemActions
         :clearable="clearable"
         :removable="removable"
         @add="$emit('add')"
@@ -12,32 +12,32 @@
     </div>
 
     <div class="__cell">
-      <ItemInputs
+      <ColorItemInputs
         :shows-label="label"
         :value="value.front"
-        label-text="前景色"
+        :label="inputFrontLabel"
         class="__cellInner"
         @input="handleInputFrontColor"
       />
 
-      <ItemInputs
+      <ColorItemInputs
         :shows-label="label"
         :value="value.back"
-        label-text="背景色"
+        :label="inputBackLabel"
         :class="['__cellInner', { '-no-label': !label }]"
         @input="handleInputBackColor"
       />
     </div>
 
     <div class="__cell">
-      <ItemRatio
+      <ColorItemRatio
         :shows-label="label"
         :value="value"
         class="__cellInner"
         @calc="handleCalcRatio"
       />
 
-      <ItemLevel
+      <ColorItemLevel
         :ratio="ratio"
         :shows-label="label"
         :value="value"
@@ -48,30 +48,31 @@
 </template>
 
 <script lang="ts">
-import ItemActions from '@/components/ItemActions.vue'
-import ItemInputs from '@/components/ItemInputs.vue'
-import ItemLevel from '@/components/ItemLevel.vue'
-import ItemRatio from '@/components/ItemRatio.vue'
-import { ColorSet } from '@/models/ColorSet'
-import { NullableString } from '@/models/NullableString'
+import ColorItemActions from '@/components/ColorItemActions.vue'
+import ColorItemInputs from '@/components/ColorItemInputs.vue'
+import ColorItemLevel from '@/components/ColorItemLevel.vue'
+import ColorItemRatio from '@/components/ColorItemRatio.vue'
+import { ColorItem } from '@/models/ColorItem'
 import { isStringOfNotEmpty } from '@/utilities/isString'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {
-    ItemActions,
-    ItemInputs,
-    ItemLevel,
-    ItemRatio
+    ColorItemActions,
+    ColorItemInputs,
+    ColorItemLevel,
+    ColorItemRatio
   }
 })
-export default class ContrastRatioItemRow extends Vue {
+export default class ColorItemRow extends Vue {
   @Prop({ required: true }) itemTitle!: string
   @Prop({ default: true }) label!: boolean
   @Prop({ default: true }) removable!: boolean
-  @Prop({ required: true }) value!: ColorSet
+  @Prop({ required: true }) value!: ColorItem
 
   ratio: number = NaN
+  inputFrontLabel: string = '前景色'
+  inputBackLabel: string = '背景色'
 
   get clearable() {
     const { front, back } = this.value
@@ -79,23 +80,23 @@ export default class ContrastRatioItemRow extends Vue {
   }
 
   /**
-   * @listens ItemInputs(front)@input
+   * @listens ColorItemInputs(front)@input
    * @param color
    */
-  handleInputFrontColor(color: NullableString) {
+  handleInputFrontColor(color: string) {
     this.value.front = color
   }
 
   /**
-   * @listens ItemInputs(back)@input
+   * @listens ColorItemInputs(back)@input
    * @param color
    */
-  handleInputBackColor(color: NullableString) {
+  handleInputBackColor(color: string) {
     this.value.back = color
   }
 
   /**
-   * @listens ItemRatio@calc
+   * @listens ColorItemRatio@calc
    * @param ratio
    */
   handleCalcRatio(ratio: number) {
@@ -107,17 +108,17 @@ export default class ContrastRatioItemRow extends Vue {
 <style lang="sass" scoped>
 @import '../assets/styles/configs'
 
-.ContrastRatioItemRow
+.ColorItemRow
   display: flex
   justify-content: center
   align-items: center
   margin: auto
   width: auto
   line-height: 1
-  .__heading + &
+  .SectionHeading + &
     margin-top: calc(var(--spaceGap) * 4)
 
-  + .ContrastRatioItemRow
+  + .ColorItemRow
     @include max()
       margin-top: calc(var(--spaceGap) * 2.5)
     @include min()

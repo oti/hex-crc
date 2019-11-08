@@ -1,6 +1,6 @@
-import { ColorSet } from '@/models/ColorSet'
+import { ColorItem } from '@/models/ColorItem'
 
-export const SampleColor12: ColorSet[] = [
+export const SampleColor12: ColorItem[] = [
   {
     front: '#dc322f',
     back: '#f5f4f5'

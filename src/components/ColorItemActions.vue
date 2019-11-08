@@ -1,5 +1,5 @@
 <template>
-  <div class="ItemActions">
+  <div class="ColorItemActions">
     <p class="VisuallyHidden">アイテムの操作</p>
     <button class="__button" @click="$emit('add')">
       <span class="VisuallyHidden">次の行に新しいアイテムを挿入する</span>
@@ -20,7 +20,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
-export default class ItemActions extends Vue {
+export default class ColorItemActions extends Vue {
   /**
    * 入力プロパティを定義する
    */
@@ -32,7 +32,7 @@ export default class ItemActions extends Vue {
 <style lang="sass" scoped>
 @import '../assets/styles/configs'
 
-.ItemActions
+.ColorItemActions
   @include max()
     width: 1rem
   @include min()

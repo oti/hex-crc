@@ -1,19 +1,19 @@
 <template>
-  <VApp>
+  <VApp :class="[{ '-dark': ui.darkMode }]">
     <RouterView />
-    <GlobalLoading v-if="ui.hasGlobalLoadingQueue" />
+    <Loading v-if="ui.hasGlobalLoadingQueue" />
   </VApp>
 </template>
 
 <script lang="ts">
-import GlobalLoading from '@/components/GlobalLoading.vue'
+import Loading from '@/components/Loading.vue'
 import { UiActionDispatchers, UiViewModel } from '@/store/modules/ui/models'
 import { Component, Vue } from 'vue-property-decorator'
 import { Action, Getter } from 'vuex-class'
 
 @Component({
   components: {
-    GlobalLoading
+    Loading
   }
 })
 export default class App extends Vue {
