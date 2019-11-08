@@ -8,9 +8,9 @@
       name="darkMode"
       @change="toggleDarkMode"
     />
-    <label class="__label" for="ThemeTogglerInput">{{
-      toggleThemeLabel
-    }}</label>
+    <label class="__label" for="ThemeTogglerInput">
+      ダークモードにする
+    </label>
   </div>
 </template>
 
@@ -29,13 +29,6 @@ export default class ThemeToggler extends Vue {
    */
   @Action('ui/toggleDarkMode')
   toggleDarkMode!: UiActionDispatchers['toggleDarkMode']
-
-  /**
-   * @get テーマトグルのテキストを返す
-   */
-  get toggleThemeLabel() {
-    return this.ui.darkMode ? 'ライトモードにする' : 'ダークモードにする'
-  }
 }
 </script>
 
