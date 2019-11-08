@@ -35,7 +35,7 @@ export default class Footer extends Vue {}
     align-items: center
     margin: auto
     padding: 0.5rem
-    max-width: 580px
+    max-width: 680px
 
   .__credit
     margin: 0
