@@ -1,7 +1,7 @@
 <template>
   <section class="SectionTextArea">
     <p>
-      ※連想配列は<code>key</code>と<code>value</code>をダブルクォーテーションで囲ってください。
+      ※オブジェクトの<code>key</code>と<code>value</code>はダブルクォーテーションで囲ってください。
     </p>
 
     <textarea
@@ -13,11 +13,11 @@
     <div class="__action">
       <button class="Button" type="button" @click="convertStringToColorItems">
         <i class="material-icons" aria-hidden="true">get_app</i>
-        <span>連想配列からセットに変換</span>
+        <span>JSONからカラーセットに変換</span>
       </button>
       <button class="Button" type="button" @click="convertColorItemsToString">
         <i class="material-icons" aria-hidden="true">publish</i>
-        <span>セットから連想配列に変換</span>
+        <span>カラーセットからJSONに変換</span>
       </button>
     </div>
   </section>
