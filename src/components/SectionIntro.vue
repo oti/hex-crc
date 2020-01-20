@@ -59,37 +59,19 @@
         </p>
       </div>
     </details>
-    <button class="Button -invert" type="button" @click="toggleTextArea">
-      <i class="material-icons" aria-hidden="true">flip</i>
-      <span v-if="ui.showsTextArea">テキストエリアを隠す</span>
-      <span v-else>テキストエリアを表示する</span>
-    </button>
   </section>
 </template>
 
 <script lang="ts">
 import ThemeToggler from '@/components/ThemeToggler.vue'
-import { UiActionDispatchers, UiViewModel } from '@/store/modules/ui/models'
 import { Component, Vue } from 'vue-property-decorator'
-import { Action, Getter } from 'vuex-class'
 
 @Component({
   components: {
     ThemeToggler
   }
 })
-export default class SectionIntro extends Vue {
-  /**
-   * viewModel を引き当てる
-   */
-  @Getter('ui/viewModel') ui!: UiViewModel
-
-  /**
-   * アクションを引き当てる
-   */
-  @Action('ui/toggleTextArea')
-  toggleTextArea!: UiActionDispatchers['toggleTextArea']
-}
+export default class SectionIntro extends Vue {}
 </script>
 
 <style lang="sass" scoped></style>
