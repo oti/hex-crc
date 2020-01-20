@@ -1,25 +1,40 @@
 <template>
   <section class="SectionTextArea">
-    <p>
-      ※オブジェクトの<code>key</code>と<code>value</code>はダブルクォーテーションで囲ってください。
-    </p>
+    <details class="Details">
+      <summary calss="__summary">
+        テキストエリアから色を入力する
+      </summary>
+      <div class="__content">
+        <p>
+          ※オブジェクトの<code>key</code>と<code>value</code>はダブルクォーテーションで囲ってください。
+        </p>
 
-    <textarea
-      class="__textarea"
-      :value="data.string"
-      @input="handleInputTextArea"
-    />
+        <textarea
+          class="__textarea"
+          :value="data.string"
+          @input="handleInputTextArea"
+        />
 
-    <div class="__action">
-      <button class="Button" type="button" @click="convertStringToColorItems">
-        <i class="material-icons" aria-hidden="true">get_app</i>
-        <span>JSONからカラーセットに変換</span>
-      </button>
-      <button class="Button" type="button" @click="convertColorItemsToString">
-        <i class="material-icons" aria-hidden="true">publish</i>
-        <span>カラーセットからJSONに変換</span>
-      </button>
-    </div>
+        <div class="__action">
+          <button
+            class="Button"
+            type="button"
+            @click="convertStringToColorItems"
+          >
+            <i class="material-icons" aria-hidden="true">get_app</i>
+            <span>JSONからカラーセットに変換</span>
+          </button>
+          <button
+            class="Button"
+            type="button"
+            @click="convertColorItemsToString"
+          >
+            <i class="material-icons" aria-hidden="true">publish</i>
+            <span>カラーセットからJSONに変換</span>
+          </button>
+        </div>
+      </div>
+    </details>
   </section>
 </template>
 

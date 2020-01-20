@@ -2,7 +2,7 @@
   <main class="Main" role="main">
     <SectionIntro class="__intro" />
 
-    <SectionTextArea v-if="ui.showsTextArea" class="__textarea" />
+    <SectionTextArea class="__textarea" />
 
     <SectionColorSet class="__set" />
   </main>
@@ -12,9 +12,7 @@
 import SectionColorSet from '@/components/SectionColorSet.vue'
 import SectionIntro from '@/components/SectionIntro.vue'
 import SectionTextArea from '@/components/SectionTextArea.vue'
-import { UiViewModel } from '@/store/modules/ui/models'
 import { Component, Vue } from 'vue-property-decorator'
-import { Getter } from 'vuex-class'
 
 @Component({
   components: {
@@ -23,12 +21,7 @@ import { Getter } from 'vuex-class'
     SectionTextArea
   }
 })
-export default class Main extends Vue {
-  /**
-   * viewModel を引き当てる
-   */
-  @Getter('ui/viewModel') ui!: UiViewModel
-}
+export default class Main extends Vue {}
 </script>
 
 <style lang="sass" scoped>
