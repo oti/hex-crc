@@ -1,5 +1,7 @@
 # HEX Contrast Ratio Calcurator
 
+![](./public/assets/images/ogp.png)
+
 https://hex-crc.dskd.jp
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/dd371e46-f0e0-4664-ada0-dcc93fe9023e/deploy-status)](https://app.netlify.com/sites/hex-crc/deploys)
