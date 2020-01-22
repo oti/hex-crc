@@ -8,11 +8,17 @@
     width: 100%
     height: calc((4rem * 1.2) + (var(--spaceGap) * 2))
     min-height: calc((1em * 1.2) + (var(--spaceGap) * 2))
+    color: var(--colorInputText)
     font-family: 'Anonymous Pro', monospace
-    font-size: 0.75rem
+    font-size: var(--textTextarea)
     line-height: 1.2
     vertical-align: top
     resize: vertical
+    background-color: var(--colorInputBg)
+    .-dark &
+      border-color: var(--colorBorder-dark)
+      color: var(--colorInputText-dark)
+      background-color: var(--colorInputBg-dark)
 
   .__action
     margin-top: calc(var(--spaceGap) * 1.5)

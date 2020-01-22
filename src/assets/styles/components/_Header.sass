@@ -3,8 +3,12 @@
   justify-content: center
   align-items: center
   padding: var(--paddingHeader)
-  color: var(--colorBg)
-  background-color: var(--colorText)
+  color: var(--colorMarginalsText)
+  background-color: var(--colorMarginalsBg)
+
+  .-dark &
+    color: var(--colorMarginalsText-dark)
+    background-color: var(--colorMarginalsBg-dark)
 
   .__heading
     margin: 0

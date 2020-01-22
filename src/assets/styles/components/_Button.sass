@@ -10,13 +10,16 @@
   font-size: var(--textButton)
   line-height: 1.2
   vertical-align: top
-  background-color: #f5f4f5
-  &.-invert
-    border-color: transparent
-    color: #ffffff
-    background-color: var(--colorText)
+  background-color: var(--colorButtonBg)
+  .-dark &
+    border-color: var(--colorBorder-dark)
+    color: var(--colorButtonText-dark)
+    background-color: var(--colorButtonBg-dark)
   &:active
     transform: translateY(1px)
+
+  .-dark &
+    border-color: var(--colorBorder-dark)
 
   .material-icons
     margin-right: 0.125rem

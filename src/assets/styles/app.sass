@@ -5,13 +5,39 @@
   --spaceGap: 10px
   --colorText: #435a6c
   --colorLink: #e9eaf5
+  --colorStrongText: #c90000
+  --colorStrongTextBg: #c90000
+  --colorTargetBg: #ffff00
   --colorBg: #fefcfc
+  // コンテンツに対してそれ以外、今回だとヘッダーとフッターを総称する目的で Marginals と命名している。
+  // ref: https://english.stackexchange.com/questions/24060/what-word-defines-a-category-suited-for-both-header-and-footer
+  --colorMarginalsText: #fefcfc
+  --colorMarginalsBg: #435a6c
   --colorBorder: #d4d7d7
+  --colorButtonBg: #f5f4f5
+  --colorInputText: #435a6c
+  --colorInputBg: #ffffff
+
+  --colorText-dark: #fefcfc
+  --colorLink-dark: #ffc100
+  --colorStrongText-dark: #d1e200
+  --colorStrongTextBg-dark: #d1e200
+  --colorTargetBg-dark: #243848
+  --colorBg-dark: #435a6c
+  --colorMarginalsText-dark: #a6b5c1
+  --colorMarginalsBg-dark: #243848
+  --colorBorder-dark: #657380
+  --colorButtonText-dark: #d4d7d7
+  --colorButtonBg-dark: #243848
+  --colorInputText-dark: #d4d7d7
+  --colorInputBg-dark: #243848
+
   --textHeader: 1.4rem
   --textHeading: 1rem
   --textMain: 0.7rem
   --textColorSet: 1rem
   --textButton: 0.65rem
+  --textTextarea: 0.75rem
   --textSub: 0.5rem
   --textFooter: 0.6rem
   --paddingHeader: 1rem
@@ -31,12 +57,27 @@ body
   color: var(--colorText)
   background-color: var(--colorBg)
 
+.-dark
+  color: var(--colorText-dark)
+  background-color: var(--colorBg-dark)
+
 code
   padding: calc(var(--spaceGap) / 3)
   font-family: 'Anonymous Pro', monospace
 
 *:target
-  background-color: yellow
+  background-color: var(--colorTargetBg)
+  .-dark &
+    background-color: var(--colorTargetBg-dark)
+
+.-dark
+  a
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus
+      color: var(--colorLink-dark)
 
 a[href^="#"]
   &:link,

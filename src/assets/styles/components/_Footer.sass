@@ -1,8 +1,12 @@
 .Footer
-  color: var(--colorBg)
+  color: var(--colorMarginalsText)
   font-size: var(--textFooter)
   line-height: 1.2
-  background-color: var(--colorText)
+  background-color: var(--colorMarginalsBg)
+
+  .-dark &
+    color: var(--colorMarginalsText-dark)
+    background-color: var(--colorMarginalsBg-dark)
 
   .__inner
     box-sizing: border-box
@@ -21,6 +25,8 @@
     a:focus,
     a:active
       color: var(--colorLink)
+      .-dark &
+        color: var(--colorLink-dark)
 
   .__license
     margin: 0
@@ -30,3 +36,5 @@
     a:focus,
     a:active
       color: var(--colorLink)
+      .-dark &
+        color: var(--colorLink-dark)
