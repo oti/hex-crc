@@ -74,28 +74,3 @@ export default class SectionTextArea extends Vue {
   }
 }
 </script>
-
-<style lang="sass" scoped>
-@import '../assets/styles/configs'
-
-.SectionTextArea
-  .__textarea
-    box-sizing: border-box
-    padding: var(--spaceGap)
-    border: 1px solid var(--colorBorder)
-    border-radius: 4px
-    width: 100%
-    height: calc((4rem * 1.2) + (var(--spaceGap) * 2))
-    min-height: calc((1em * 1.2) + (var(--spaceGap) * 2))
-    font-family: 'Anonymous Pro', monospace
-    font-size: 0.75rem
-    line-height: 1.2
-    vertical-align: top
-    resize: vertical
-
-  .__action
-    margin-top: calc(var(--spaceGap) * 1.5)
-    text-align: center
-    .Button
-      margin: 0 calc(var(--spaceGap) / 2) calc(var(--spaceGap) * 1)
-</style>

@@ -31,22 +31,3 @@ export default class ThemeToggler extends Vue {
   toggleDarkMode!: UiActionDispatchers['toggleDarkMode']
 }
 </script>
-
-<style lang="sass" scoped>
-@import '../assets/styles/configs'
-
-.ThemeToggler
-  float: right
-  display: flex
-  align-items: center
-  font-size: 0.5rem
-
-  .__input
-    margin: 0
-    padding: 0
-    line-height: 0
-    vartical-align: top
-
-  .__label
-    margin-left: 5px
-</style>

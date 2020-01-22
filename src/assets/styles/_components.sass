@@ -1,3 +1,18 @@
+.ThemeToggler
+  float: right
+  display: flex
+  align-items: center
+  font-size: 0.5rem
+
+  .__input
+    margin: 0
+    padding: 0
+    line-height: 0
+    vartical-align: top
+
+  .__label
+    margin-left: 5px
+
 .Button
   @extend %resetButton
   display: inline-flex
@@ -28,3 +43,295 @@
 .Details
   margin-top: 1rem
   margin-bottom: 1rem
+
+.Strong
+  color: #c90000
+
+.ColorItemActions
+  @include max()
+    width: 1rem
+  @include min()
+    height: 1rem
+
+  .__button
+    @extend %resetButton
+    height: 1rem
+    line-height: 1
+    &:disabled
+      opacity: 0.5
+
+.ColorItemInputs
+  position: relative
+  @include min()
+    display: flex
+
+  .__label
+    position: absolute
+    top: 50%
+    left: 2px
+    z-index: 1
+    margin: 0
+    font-size: 0.5rem
+    @include max()
+      transform: translateY(-36px)
+    @include min()
+      transform: translateY(-40px)
+
+  .__inputs
+    position: relative
+    border: 1px solid var(--colorBorder)
+    border-radius: 3px
+    background-color: #fff
+    .__typeText
+      margin: 0
+      padding: 5px var(--spaceGap)
+      border: none
+      width: 5em
+      font-family: 'Anonymous Pro', monospace
+      font-size: inherit
+      background-color: transparent
+    .__typeColor
+      @extend %resetButton
+      position: absolute
+      top: 0
+      right: 0
+      margin: 0
+      width: 0.5rem
+      height: 100%
+      &::-moz-color-swatch-wrapper
+        padding: 0
+      &::-webkit-color-swatch-wrapper
+        padding: 0
+      &::-moz-color-swatch
+        width: 100%
+        height: 100%
+        border: none
+        border-left: 1px solid var(--colorBorder)
+        border-radius: 0 2px 2px 0
+      &::-webkit-color-swatch
+        width: 100%
+        height: 100%
+        border: none
+        border-left: 1px solid var(--colorBorder)
+        border-radius: 0 2px 2px 0
+      &::-moz-focus-inner
+        border: none
+        padding: 0
+
+.ColorItemLevel
+  position: relative
+
+  .__label
+    position: absolute
+    top: 50%
+    left: 2px
+    z-index: 1
+    margin: 0
+    font-size: 0.5rem
+    @include max()
+      transform: translateY(-36px)
+    @include min()
+      transform: translateY(-40px)
+
+  .__text
+    margin: 0
+    padding-top: 8px
+    padding-bottom: 7px
+    border-bottom: 1px solid var(--colorBorder)
+    text-align: center
+
+.ColorItemRatio
+  position: relative
+
+  .__label
+    position: absolute
+    top: 50%
+    left: 2px
+    z-index: 1
+    margin: 0
+    font-size: 0.5rem
+    @include max()
+      transform: translateY(-36px)
+    @include min()
+      transform: translateY(-40px)
+
+  .__text
+    margin: 0
+    padding-top: 8px
+    padding-bottom: 7px
+    border-bottom: 1px solid var(--colorBorder)
+    text-align: center
+
+.ColorItemRow
+  display: flex
+  justify-content: center
+  align-items: center
+  margin: auto
+  width: auto
+  line-height: 1
+  .SectionHeading + &
+    margin-top: calc(var(--spaceGap) * 4)
+
+  + .ColorItemRow
+    @include max()
+      margin-top: calc(var(--spaceGap) * 2.5)
+    @include min()
+      margin-top: var(--spaceGap)
+
+  .__cell
+    flex-shrink: 1
+    @include min()
+      display: flex
+    + .__cell
+      margin-left: var(--spaceGap)
+
+  .__cellInner
+    min-width: 100px
+    + .__cellInner
+      @include max()
+        margin-top: calc(var(--spaceGap) * 2.5)
+        &.-no-label
+          margin-top: calc(var(--spaceGap) / 2)
+      @include min()
+        margin-left: var(--spaceGap)
+
+.ColorPreview
+  position: sticky
+  bottom: 0
+  display: flex
+
+  .__back
+    flex: 1 0 auto
+    padding: 4px 2px
+
+  .__front
+    height: 1rem
+
+.Footer
+  color: var(--colorBg)
+  font-size: 0.6rem
+  line-height: 1.2
+  background-color: var(--colorText)
+
+  .__inner
+    box-sizing: border-box
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin: auto
+    padding: 0.5rem
+    max-width: 680px
+
+  .__credit
+    margin: 0
+    a:link,
+    a:visited,
+    a:hover,
+    a:focus,
+    a:active
+      color: var(--colorLink)
+
+  .__license
+    margin: 0
+    a:link,
+    a:visited,
+    a:hover,
+    a:focus,
+    a:active
+      color: var(--colorLink)
+
+.Header
+  display: flex
+  justify-content: center
+  align-items: center
+  color: var(--colorBg)
+  background-color: var(--colorText)
+  @include max()
+    padding: 0.75rem
+  @include min()
+    padding-top: 1rem
+    padding-bottom: 1rem
+
+  .__heading
+    margin: 0
+    line-height: 1.2
+    @include max()
+      font-size: 0.9rem
+    @include min()
+      font-size: 1.4rem
+
+.Loading
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: 1
+  background-color: #f4f5f4
+
+  .__inner
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    display: flex
+    justify-content: center
+    align-items: center
+
+.Main
+  margin: 2rem auto
+  padding-right: calc(var(--spaceGap) * 2)
+  padding-left: calc(var(--spaceGap) * 2)
+  max-width: calc(var(--spaceGap) * 4 + 600px)
+  font-size: 0.7rem
+
+  .__intro
+    margin-top: calc(var(--spaceGap) * 4)
+
+  .__textarea
+    margin-top: calc(var(--spaceGap) * 1.5)
+
+  .__set
+    margin-top: calc(var(--spaceGap) * 4)
+    font-size: 1rem
+
+.SectionTextArea
+  .__textarea
+    box-sizing: border-box
+    padding: var(--spaceGap)
+    border: 1px solid var(--colorBorder)
+    border-radius: 4px
+    width: 100%
+    height: calc((4rem * 1.2) + (var(--spaceGap) * 2))
+    min-height: calc((1em * 1.2) + (var(--spaceGap) * 2))
+    font-family: 'Anonymous Pro', monospace
+    font-size: 0.75rem
+    line-height: 1.2
+    vertical-align: top
+    resize: vertical
+
+  .__action
+    margin-top: calc(var(--spaceGap) * 1.5)
+    text-align: center
+    .Button
+      margin: 0 calc(var(--spaceGap) / 2) calc(var(--spaceGap) * 1)
+
+.Spectrum
+  height: 2px
+  background-image: linear-gradient(to left, red, yellow, lime, cyan, blue, magenta)
+
+.TextSizeToggler
+  float: right
+  display: flex
+  align-items: center
+  font-size: 0.5rem
+
+  .__input
+    margin: 0
+    padding: 0
+    line-height: 0
+    vartical-align: top
+
+  .__label
+    margin-left: 5px

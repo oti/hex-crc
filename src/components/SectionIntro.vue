@@ -1,6 +1,6 @@
 <template>
   <section class="SectionIntro">
-    <!-- <ThemeToggler /> -->
+    <ThemeToggler />
     <h2 class="SectionHeading">なにこれ？</h2>
     <p>
       HEXの2色（前景色と背景色）のカラーセットからコントラスト比を計算し、WCAG2.1が定める基準を達成しているかを検証します。
@@ -75,8 +75,3 @@ import { Component, Vue } from 'vue-property-decorator'
 })
 export default class SectionIntro extends Vue {}
 </script>
-
-<style lang="sass" scoped>
-.Strong
-  color: #c90000
-</style>
