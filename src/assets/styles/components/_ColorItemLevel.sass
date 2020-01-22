@@ -1,0 +1,22 @@
+.ColorItemLevel
+  position: relative
+
+  .__label
+    position: absolute
+    top: 50%
+    left: 2px
+    z-index: 1
+    margin: 0
+    font-size: var(--textSub)
+    transform: translateY(-40px)
+    @include max()
+      transform: translateY(-36px)
+
+  .__text
+    margin: 0
+    padding-top: 8px
+    padding-bottom: 7px
+    border-bottom: 1px solid var(--colorBorder)
+    text-align: center
+    .-dark &
+      border-color: var(--colorBorder-dark)

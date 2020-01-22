@@ -23,23 +23,3 @@ import { Component, Vue } from 'vue-property-decorator'
 })
 export default class Main extends Vue {}
 </script>
-
-<style lang="sass" scoped>
-@import '../assets/styles/configs'
-.Main
-  margin: 2rem auto
-  padding-right: calc(var(--spaceGap) * 2)
-  padding-left: calc(var(--spaceGap) * 2)
-  max-width: calc(var(--spaceGap) * 4 + 600px)
-  font-size: 0.7rem
-
-  .__intro
-    margin-top: calc(var(--spaceGap) * 4)
-
-  .__textarea
-    margin-top: calc(var(--spaceGap) * 1.5)
-
-  .__set
-    margin-top: calc(var(--spaceGap) * 4)
-    font-size: 1rem
-</style>

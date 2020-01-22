@@ -24,19 +24,3 @@ export default class ColorPreview extends Vue {
   @Getter('data/viewModel') data!: DataViewModel
 }
 </script>
-
-<style lang="sass" scoped>
-@import '../assets/styles/configs'
-
-.ColorPreview
-  position: sticky
-  bottom: 0
-  display: flex
-
-  .__back
-    flex: 1 0 auto
-    padding: 4px 2px
-
-  .__front
-    height: 1rem
-</style>

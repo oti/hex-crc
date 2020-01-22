@@ -1,0 +1,40 @@
+.Footer
+  color: var(--colorMarginalsText)
+  font-size: var(--textFooter)
+  line-height: 1.2
+  background-color: var(--colorMarginalsBg)
+
+  .-dark &
+    color: var(--colorMarginalsText-dark)
+    background-color: var(--colorMarginalsBg-dark)
+
+  .__inner
+    box-sizing: border-box
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin: auto
+    padding: 0.5rem
+    max-width: 680px
+
+  .__credit
+    margin: 0
+    a:link,
+    a:visited,
+    a:hover,
+    a:focus,
+    a:active
+      color: var(--colorLink)
+      .-dark &
+        color: var(--colorLink-dark)
+
+  .__license
+    margin: 0
+    a:link,
+    a:visited,
+    a:hover,
+    a:focus,
+    a:active
+      color: var(--colorLink)
+      .-dark &
+        color: var(--colorLink-dark)

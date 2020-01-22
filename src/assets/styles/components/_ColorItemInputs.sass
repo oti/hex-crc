@@ -1,0 +1,69 @@
+.ColorItemInputs
+  position: relative
+  @include min()
+    display: flex
+
+  .__label
+    position: absolute
+    top: 50%
+    left: 2px
+    z-index: 1
+    margin: 0
+    font-size: var(--textSub)
+    transform: translateY(-40px)
+    @include max()
+      transform: translateY(-36px)
+
+  .__inputs
+    position: relative
+    border: 1px solid var(--colorBorder)
+    border-radius: 3px
+    background-color: var(--colorInputBg)
+    .-dark &
+      border-color: var(--colorBorder-dark)
+      background-color: var(--colorInputBg-dark)
+
+    .__typeText
+      margin: 0
+      padding: 5px var(--spaceGap)
+      border: none
+      width: 5em
+      color: var(--colorInputText)
+      font-family: 'Anonymous Pro', monospace
+      font-size: inherit
+      background-color: transparent
+      .-dark &
+        color: var(--colorInputText-dark)
+
+    .__typeColor
+      @extend %resetButton
+      position: absolute
+      top: 0
+      right: 0
+      margin: 0
+      width: 0.5rem
+      height: 100%
+      cursor: pointer
+      &::-moz-color-swatch-wrapper
+        padding: 0
+      &::-webkit-color-swatch-wrapper
+        padding: 0
+      &::-moz-color-swatch
+        width: 100%
+        height: 100%
+        border: none
+        border-left: 1px solid var(--colorBorder)
+        border-radius: 0 2px 2px 0
+        .-dark &
+          border-left-color: var(--colorBorder-dark)
+      &::-webkit-color-swatch
+        width: 100%
+        height: 100%
+        border: none
+        border-left: 1px solid var(--colorBorder)
+        border-radius: 0 2px 2px 0
+        .-dark &
+          border-left-color: var(--colorBorder-dark)
+      &::-moz-focus-inner
+        border: none
+        padding: 0

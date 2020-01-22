@@ -1,5 +1,5 @@
 <template>
-  <div :class="[{ '-dark': ui.darkMode }]">
+  <div :class="{ '-dark': ui.darkMode }">
     <RouterView />
     <Loading v-if="ui.hasGlobalLoadingQueue" />
   </div>

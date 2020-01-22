@@ -30,20 +30,3 @@ export default class ColorItemActions extends Vue {
   @Prop({ default: true }) removable!: boolean
 }
 </script>
-
-<style lang="sass" scoped>
-@import '../assets/styles/configs'
-
-.ColorItemActions
-  @include max()
-    width: 1rem
-  @include min()
-    height: 1rem
-
-  .__button
-    @extend %resetButton
-    height: 1rem
-    line-height: 1
-    &:disabled
-      opacity: 0.5
-</style>

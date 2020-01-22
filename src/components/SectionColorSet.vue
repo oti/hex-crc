@@ -57,5 +57,3 @@ export default class SectionColorSet extends Vue {
   }
 }
 </script>
-
-<style lang="sass" scoped></style>

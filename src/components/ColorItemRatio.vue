@@ -87,29 +87,3 @@ export default class ColorItemRatio extends Vue {
   }
 }
 </script>
-
-<style lang="sass" scoped>
-@import '../assets/styles/configs'
-
-.ColorItemRatio
-  position: relative
-
-  .__label
-    position: absolute
-    top: 50%
-    left: 2px
-    z-index: 1
-    margin: 0
-    font-size: 0.5rem
-    @include max()
-      transform: translateY(-36px)
-    @include min()
-      transform: translateY(-40px)
-
-  .__text
-    margin: 0
-    padding-top: 8px
-    padding-bottom: 7px
-    border-bottom: 1px solid var(--colorBorder)
-    text-align: center
-</style>
