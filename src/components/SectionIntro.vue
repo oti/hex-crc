@@ -42,7 +42,7 @@
           Bad」とし、3.0 未満は「Fail」としています。
         </p>
         <p>
-          <strong>
+          <strong id="not-bad-and-fail" class="Strong">
             「Not
             Bad」「Fail」の区分は本検証ツールが独自に提案しているものであり、WCAGが公式に示している指標ではありません。
           </strong>

@@ -5,7 +5,7 @@
       class="__text"
       :style="`color: ${value.front}; background-color: ${value.back}`"
     >
-      {{ result }}
+      <a :href="noteref" :aria-describedby="describedby">{{ result }}</a>
     </p>
   </div>
 </template>
@@ -32,25 +32,51 @@ export default class ColorItemLevel extends Vue {
   @Prop({ required: true }) value!: ColorItem
 
   /**
-   * @get - WCAG2.1において達成している結果を返す
+   * 内部ステートを定義する
    */
-  get result() {
+  resultMap: Result[] = ['Fail', 'Not Bad', 'AA', 'AAA']
+
+  /**
+   * @get - 達成レベルを返す
+   */
+  get level() {
     const { ratio, ui } = this
     const AAA: number = ui.largeText ? 4.5 : 7
     const AA: number = ui.largeText ? 3 : 4.5
-    let result: Result = 'Fail'
+    let level: number = 0
 
     if (ratio >= 3) {
-      result = 'Not Bad'
+      level++
     }
     if (ratio >= AA) {
-      result = 'AA'
+      level++
     }
     if (ratio >= AAA) {
-      result = 'AAA'
+      level++
     }
 
-    return result
+    return level
+  }
+
+  /**
+   * 達成レベルに応じて結果を返す
+   */
+  get result() {
+    return this.resultMap[this.level]
+  }
+
+  /**
+   * ページ内リンクの参照先を返す
+   */
+  get noteref() {
+    return this.level < 2 ? '#not-bad-and-fail' : null
+  }
+
+  /**
+   * aria-describledbyの参照先を返す
+   */
+  get describedby() {
+    return this.level < 2 ? 'not-bad-and-fail' : null
   }
 }
 </script>

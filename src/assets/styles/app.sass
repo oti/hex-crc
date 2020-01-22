@@ -23,4 +23,15 @@ code
   padding: calc(var(--spaceGap) / 3)
   font-family: 'Anonymous Pro', monospace
 
+*:target
+  background-color: yellow
+
+a[href^="#"]
+  &:link,
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus
+    color: inherit
+
 @import 'components'
