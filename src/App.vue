@@ -1,8 +1,8 @@
 <template>
-  <VApp :class="[{ '-dark': ui.darkMode }]">
+  <div :class="[{ '-dark': ui.darkMode }]">
     <RouterView />
     <Loading v-if="ui.hasGlobalLoadingQueue" />
-  </VApp>
+  </div>
 </template>
 
 <script lang="ts">
@@ -27,10 +27,5 @@ export default class App extends Vue {
   decrementGlobalLoadingQueue!: UiActionDispatchers['decrementGlobalLoadingQueue']
   @Action('ui/incrementGlobalLoadingQueue')
   incrementGlobalLoadingQueue!: UiActionDispatchers['incrementGlobalLoadingQueue']
-
-  /**
-   * @lifecycles
-   */
-  created() {}
 }
 </script>
