@@ -9,7 +9,7 @@
       @change="toggleTextSize"
     />
     <label class="__label" for="TextSizeTogglerInput">
-      大きなテキスト<sup>*</sup>
+      大きなテキスト
     </label>
   </div>
 </template>

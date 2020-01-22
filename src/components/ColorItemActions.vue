@@ -1,16 +1,18 @@
 <template>
   <div class="ColorItemActions">
-    <p class="VisuallyHidden">アイテムの操作</p>
+    <p class="VisuallyHidden">カラーセットの操作</p>
     <button class="__button" @click="$emit('add')">
-      <span class="VisuallyHidden">次の行に新しいアイテムを挿入する</span>
+      <span class="VisuallyHidden">新しいカラーセットを挿入する</span>
       <i class="material-icons" aria-hidden="true">add_circle</i>
     </button>
     <button :disabled="!removable" class="__button" @click="$emit('remove')">
-      <span class="VisuallyHidden">この行を削除する</span>
+      <span class="VisuallyHidden">このカラーセットを削除する</span>
       <i class="material-icons" aria-hidden="true">remove_circle</i>
     </button>
     <button :disabled="!clearable" class="__button" @click="$emit('clear')">
-      <span class="VisuallyHidden">この行の値をクリアする</span>
+      <span class="VisuallyHidden"
+        >このカラーセットの前景色と背景色の値をクリアする</span
+      >
       <i class="material-icons" aria-hidden="true">format_color_reset</i>
     </button>
   </div>
