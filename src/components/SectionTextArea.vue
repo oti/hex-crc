@@ -22,7 +22,7 @@
             @click="convertStringToColorItems"
           >
             <i class="material-icons" aria-hidden="true">get_app</i>
-            <span>JSONからカラーセットに変換</span>
+            <span>カラーセットに変換</span>
           </button>
           <button
             class="Button"
@@ -30,7 +30,7 @@
             @click="convertColorItemsToString"
           >
             <i class="material-icons" aria-hidden="true">publish</i>
-            <span>カラーセットからJSONに変換</span>
+            <span>連想配列に変換</span>
           </button>
         </div>
       </div>
@@ -85,7 +85,7 @@ export default class SectionTextArea extends Vue {
     border: 1px solid var(--colorBorder)
     border-radius: 4px
     width: 100%
-    height: calc((2rem * 1.2) + (var(--spaceGap) * 2))
+    height: calc((4rem * 1.2) + (var(--spaceGap) * 2))
     min-height: calc((1em * 1.2) + (var(--spaceGap) * 2))
     font-family: 'Anonymous Pro', monospace
     font-size: 0.75rem
