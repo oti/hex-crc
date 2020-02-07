@@ -3,12 +3,6 @@
 \:root
   font-size: 24px
   --spaceGap: 10px
-  --colorText: #435a6c
-  --colorLink: #e9eaf5
-  --colorStrongText: #c90000
-  --colorStrongTextBg: #c90000
-  --colorTargetBg: #ffff00
-  --colorBg: #fefcfc
 
   // color vars
   --colorWhite1: #ffffff
@@ -25,28 +19,22 @@
   --colorYellow1: #ffff00
   --colorYellow2: #d1e200
   --colorYellow3: #ffc100
+
+  // color vars mapping
+  --colorText: var(--colorGray1)
+  --colorBodyLink: var(--colorGray2)
+  --colorStrongText: var(--colorRed1)
+  --colorTargetBg: var(--colorYellow1)
+  --colorBg: var(--colorRed2)
   // コンテンツに対してそれ以外、今回だとヘッダーとフッターを総称する目的で Marginals と命名している。
   // ref: https://english.stackexchange.com/questions/24060/what-word-defines-a-category-suited-for-both-header-and-footer
-  --colorMarginalsText: #fefcfc
-  --colorMarginalsBg: #435a6c
-  --colorBorder: #d4d7d7
-  --colorButtonBg: #f5f4f5
-  --colorInputText: #435a6c
-  --colorInputBg: #ffffff
-
-  --colorText-dark: #fefcfc
-  --colorLink-dark: #ffc100
-  --colorStrongText-dark: #d1e200
-  --colorStrongTextBg-dark: #d1e200
-  --colorTargetBg-dark: #243848
-  --colorBg-dark: #435a6c
-  --colorMarginalsText-dark: #a6b5c1
-  --colorMarginalsBg-dark: #243848
-  --colorBorder-dark: #657380
-  --colorButtonText-dark: #d4d7d7
-  --colorButtonBg-dark: #243848
-  --colorInputText-dark: #d4d7d7
-  --colorInputBg-dark: #243848
+  --colorMarginalsText: var(--colorRed2)
+  --colorMarginalsLink: var(--colorGray5)
+  --colorMarginalsBg: var(--colorGray1)
+  --colorBorder: var(--colorGray4)
+  --colorButtonBg: var(--colorWhite2)
+  --colorInputText: var(--colorGray1)
+  --colorInputBg: var(--colorWhite1)
 
   --textHeader: 1.4rem
   --textHeading: 1rem
@@ -74,8 +62,20 @@ body
   background-color: var(--colorBg)
 
 .-dark
-  color: var(--colorText-dark)
-  background-color: var(--colorBg-dark)
+  // color vars re-mapping
+  --colorText: var(--colorRed2)
+  --colorBodyLink: var(--colorYellow3)
+  --colorStrongText: var(--colorYellow2)
+  --colorTargetBg: var(--colorGray2)
+  --colorBg: var(--colorGray1)
+  --colorMarginalsText: var(--colorGray6)
+  --colorMarginalsLink: var(--colorYellow3)
+  --colorMarginalsBg: var(--colorGray2)
+  --colorBorder: var(--colorGray7)
+  --colorButtonText: var(--colorGray4)
+  --colorButtonBg: var(--colorGray2)
+  --colorInputText: var(--colorGray4)
+  --colorInputBg: var(--colorGray2)
 
 code
   padding: calc(var(--spaceGap) / 3)
@@ -90,7 +90,7 @@ a
   &:hover,
   &:active,
   &:focus
-    color: var(--colorLink)
+    color: var(--colorBodyLink)
 
 a[href^="#"]
   &:link,
