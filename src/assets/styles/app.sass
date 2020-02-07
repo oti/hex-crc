@@ -36,19 +36,30 @@
   --colorInputText: var(--colorGray1)
   --colorInputBg: var(--colorWhite1)
 
-  --textHeader: 2rem
-  --textHeading: 1.5rem
-  --textMain: 1rem
-  --textColorSet: 1.5rem
-  --textButton: 0.975rem
-  --textTextarea: 1.125rem
-  --textSub: 0.75rem
-  --textFooter: 1rem
-  --paddingHeader: 1.5rem
+  // rem vars
+  --remXXL: 2rem
+  --remXL: 1.5rem
+  --remL: 1.125rem
+  --remM: 1rem
+  --remS: 0.975rem
+  --remXS: 0.75rem
+
+  // rem vars mapping
+  --textHeader: var(--remXXL)
+  --textHeading: var(--remXL)
+  --textMain: var(--remM)
+  --textColorSet: var(--remXL)
+  --textButton: var(--remS)
+  --textTextarea: var(--remL)
+  --textSub: var(--remXS)
+  --textFooter: var(--remM)
+  --paddingHeader: var(--remXL)
+
   @include max()
-    --paddingHeader: 1.125rem
-    --textHeader: 1rem
-    --textFooter: 0.75rem
+    // rem vars re-mapping
+    --paddingHeader: var(--remL)
+    --textHeader: var(--remM)
+    --textFooter: var(--remXS)
 
 html, body
   margin: 0
@@ -56,7 +67,7 @@ html, body
 
 body
   font-family: 'Noto Sans JP', sans-serif
-  font-size: 1.5rem
+  font-size: var(--remXL)
   color: var(--colorText)
   background-color: var(--colorBg)
 
