@@ -1,7 +1,7 @@
 @import 'configs'
 
 \:root
-  font-size: 24px
+  // generic space vars
   --spaceGap: 10px
 
   // color vars
@@ -36,20 +36,19 @@
   --colorInputText: var(--colorGray1)
   --colorInputBg: var(--colorWhite1)
 
-  --textHeader: 1.4rem
-  --textHeading: 1rem
-  --textMain: 0.7rem
-  --textColorSet: 1rem
-  --textButton: 0.65rem
-  --textTextarea: 0.75rem
-  --textSub: 0.5rem
-  --textFooter: 0.6rem
-  --paddingHeader: 1rem
+  --textHeader: 2rem
+  --textHeading: 1.5rem
+  --textMain: 1rem
+  --textColorSet: 1.5rem
+  --textButton: 0.975rem
+  --textTextarea: 1.125rem
+  --textSub: 0.75rem
+  --textFooter: 1rem
+  --paddingHeader: 1.5rem
   @include max()
-    --paddingHeader: 0.75rem
-    --textHeader: 0.9rem
-    --textFooter: 0.5rem
-
+    --paddingHeader: 1.125rem
+    --textHeader: 1rem
+    --textFooter: 0.75rem
 
 html, body
   margin: 0
@@ -57,7 +56,7 @@ html, body
 
 body
   font-family: 'Noto Sans JP', sans-serif
-  font-size: 1rem
+  font-size: 1.5rem
   color: var(--colorText)
   background-color: var(--colorBg)
 
