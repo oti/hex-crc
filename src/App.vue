@@ -1,8 +1,8 @@
 <template>
-  <div :class="{ '-dark': ui.darkMode }">
+  <body :class="{ '-dark': ui.darkMode }">
     <RouterView />
     <Loading v-if="ui.hasGlobalLoadingQueue" />
-  </div>
+  </body>
 </template>
 
 <script lang="ts">
