@@ -5,9 +5,9 @@
     <ColorItemRow
       v-for="(item, i) in data.colorItems"
       :key="i"
-      :label="i === 0"
       :item-title="itemTitle(i)"
       :removable="data.colorItems.length > 1"
+      :shows-label="i === 0"
       :value="item"
       @add="addColorItem(i)"
       @clear="clearColorItem(i)"
