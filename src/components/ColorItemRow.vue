@@ -13,7 +13,7 @@
 
     <div class="__cell">
       <ColorItemInputs
-        :shows-label="label"
+        :shows-label="showsLabel"
         :value="value.front"
         :label="inputFrontLabel"
         class="__cellInner"
@@ -21,17 +21,17 @@
       />
 
       <ColorItemInputs
-        :shows-label="label"
+        :shows-label="showsLabel"
         :value="value.back"
         :label="inputBackLabel"
-        :class="['__cellInner', { '-no-label': !label }]"
+        :class="['__cellInner', { '-no-label': !showsLabel }]"
         @input="handleInputBackColor"
       />
     </div>
 
     <div class="__cell">
       <ColorItemRatio
-        :shows-label="label"
+        :shows-label="showsLabel"
         :value="value"
         class="__cellInner"
         @calc="handleCalcRatio"
@@ -39,9 +39,9 @@
 
       <ColorItemLevel
         :ratio="ratio"
-        :shows-label="label"
+        :shows-label="showsLabel"
         :value="value"
-        :class="['__cellInner', { '-no-label': !label }]"
+        :class="['__cellInner', { '-no-label': !showsLabel }]"
       />
     </div>
   </div>
@@ -66,7 +66,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 })
 export default class ColorItemRow extends Vue {
   @Prop({ required: true }) itemTitle!: string
-  @Prop({ default: true }) label!: boolean
+  @Prop({ default: true }) showsLabel!: boolean
   @Prop({ default: true }) removable!: boolean
   @Prop({ required: true }) value!: ColorItem
 
