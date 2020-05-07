@@ -28,7 +28,6 @@ export default class ColorItemRatio extends Vue {
         ? Math.round(this.calculateContrastRatio(front, back) * 1000) / 1000
         : NaN
 
-    this.$emit('calc', _ratio)
     return _ratio
   }
 
