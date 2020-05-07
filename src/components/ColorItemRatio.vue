@@ -25,7 +25,7 @@ export default class ColorItemRatio extends Vue {
     const { front, back } = this.value
     const _ratio =
       isStringOfNotEmpty(front) && isStringOfNotEmpty(back)
-        ? Math.round(this.calcurateContrastRatio(front, back) * 1000) / 1000
+        ? Math.round(this.calculateContrastRatio(front, back) * 1000) / 1000
         : NaN
 
     this.$emit('calc', _ratio)
@@ -76,7 +76,7 @@ export default class ColorItemRatio extends Vue {
   /**
    * コントラスト比を計算する
    */
-  calcurateContrastRatio(front: string, back: string) {
+  calculateContrastRatio(front: string, back: string) {
     const rgb1 = this.convertToSplitedHex(front)
     const rgb2 = this.convertToSplitedHex(back)
     const L1 = this.convertToRelativeLuminance(rgb1[0], rgb1[1], rgb1[2])
