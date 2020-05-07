@@ -34,7 +34,6 @@
         :shows-label="showsLabel"
         :value="value"
         class="__cellInner"
-        @calc="handleCalcRatio"
       />
 
       <ColorItemLevel
@@ -84,7 +83,7 @@ export default class ColorItemRow extends Vue {
    * @param color
    */
   handleInputFrontColor(color: string) {
-    this.value.front = color
+    this.$emit('input:front', color)
   }
 
   /**
@@ -92,7 +91,7 @@ export default class ColorItemRow extends Vue {
    * @param color
    */
   handleInputBackColor(color: string) {
-    this.value.back = color
+    this.$emit('input:back', color)
   }
 
   /**

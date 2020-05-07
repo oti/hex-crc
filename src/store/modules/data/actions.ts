@@ -6,6 +6,7 @@ import {
   REMOVE_COLOR_ITEM,
   CONVERT_COLOR_ITEMS_TO_STRING,
   CONVERT_STRING_TO_COLOR_ITEMS,
+  UPDATE_COLOR,
   UPDATE_TEXT_AREA_VALUE
 } from '@/store/modules/data/mutation-types'
 
@@ -45,6 +46,14 @@ export const actions: DataActionTree = {
    */
   convertColorItemsToString({ commit }, payload) {
     commit(CONVERT_COLOR_ITEMS_TO_STRING, payload)
+  },
+
+  /**
+   * あるカラーセットの back か front の値を更新する
+   * @param commit
+   */
+  updateColor({ commit }, index) {
+    commit(UPDATE_COLOR, index)
   },
 
   /**
