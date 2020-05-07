@@ -1,6 +1,6 @@
 <template>
   <header class="Header">
-    <h1 class="__heading">HEX Contrast Ratio Calcurator</h1>
+    <h1 class="__heading">HEX Contrast Ratio Calculator</h1>
   </header>
 </template>
 
