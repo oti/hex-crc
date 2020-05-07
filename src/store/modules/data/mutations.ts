@@ -7,6 +7,7 @@ import {
   REMOVE_COLOR_ITEM,
   CONVERT_COLOR_ITEMS_TO_STRING,
   CONVERT_STRING_TO_COLOR_ITEMS,
+  UPDATE_COLOR,
   UPDATE_TEXT_AREA_VALUE
 } from '@/store/modules/data/mutation-types'
 
@@ -51,6 +52,13 @@ export const mutations: DefinedMutationTree<DataState, DataMutationPayloads> = {
    */
   [CONVERT_STRING_TO_COLOR_ITEMS](state) {
     state.colorItems = JSON.parse(JSON.parse(JSON.stringify(state.string)))
+  },
+
+  /**
+   * あるカラーセットの back キー か front キーの value を更新する
+   */
+  [UPDATE_COLOR](state, payload) {
+    state.colorItems[payload.index][payload.target] = payload.color
   },
 
   /**
