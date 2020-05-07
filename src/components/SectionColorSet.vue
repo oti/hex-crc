@@ -12,6 +12,20 @@
       @add="addColorItem(i)"
       @clear="clearColorItem(i)"
       @remove="removeColorItem(i)"
+      @input:front="
+        updateColor({
+          target: 'front',
+          color: $event,
+          index: i
+        })
+      "
+      @input:back="
+        updateColor({
+          target: 'back',
+          color: $event,
+          index: i
+        })
+      "
     />
   </section>
 </template>
@@ -47,6 +61,8 @@ export default class SectionColorSet extends Vue {
   clearColorItem!: DataActionDispatchers['clearColorItem']
   @Action('data/removeColorItem')
   removeColorItem!: DataActionDispatchers['removeColorItem']
+  @Action('data/updateColor')
+  updateColor!: DataActionDispatchers['updateColor']
 
   /**
    * @method - カラーセットアイテムのタイトルを返す
