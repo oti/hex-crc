@@ -34,6 +34,7 @@
         :shows-label="showsLabel"
         :value="value"
         class="__cellInner"
+        @calc="handleCalcRatio"
       />
 
       <ColorItemLevel
