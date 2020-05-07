@@ -1,4 +1,4 @@
-# HEX Contrast Ratio Calcurator
+# HEX Contrast Ratio Calculator
 
 ![](./public/assets/images/ogp.png)
 
