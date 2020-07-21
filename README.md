@@ -56,4 +56,4 @@ HEXを入力するとリアルタイムにコントラスト比を算出し、AA
 
 ## ライセンス
 
-MIT License.
+Copyright (c) oti. Under the [MIT License](LICENSE).
