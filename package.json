@@ -36,8 +36,11 @@
     "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.2",
+    "commitizen": "^4.1.2",
+    "cz-customizable": "^6.2.1",
     "eslint": "^5.13.0",
     "eslint-plugin-vue": "^5.2.1",
+    "husky": "^4.2.5",
     "jest": "^24.8.0",
     "lint-staged": "^8.2.1",
     "node-sass": "^4.13.0",
@@ -48,17 +51,17 @@
     "typescript": "^3.6.3",
     "vue-template-compiler": "^2.6.6"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
   },
-  "lint-staged": {
-    "*.js": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "*.vue": [
-      "vue-cli-service lint",
-      "git add"
-    ]
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./.cz-config.js"
+    }
   }
 }
