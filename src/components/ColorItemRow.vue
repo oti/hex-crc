@@ -48,35 +48,35 @@
 </template>
 
 <script lang="ts">
-import ColorItemActions from '@/components/ColorItemActions.vue'
-import ColorItemInputs from '@/components/ColorItemInputs.vue'
-import ColorItemLevel from '@/components/ColorItemLevel.vue'
-import ColorItemRatio from '@/components/ColorItemRatio.vue'
-import { ColorItem } from '@/models/ColorItem'
-import { isStringOfNotEmpty } from '@/utilities/isString'
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import ColorItemActions from "@/components/ColorItemActions.vue";
+import ColorItemInputs from "@/components/ColorItemInputs.vue";
+import ColorItemLevel from "@/components/ColorItemLevel.vue";
+import ColorItemRatio from "@/components/ColorItemRatio.vue";
+import { ColorItem } from "@/models/ColorItem";
+import { isStringOfNotEmpty } from "@/utilities/isString";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({
   components: {
     ColorItemActions,
     ColorItemInputs,
     ColorItemLevel,
-    ColorItemRatio
-  }
+    ColorItemRatio,
+  },
 })
 export default class ColorItemRow extends Vue {
-  @Prop({ required: true }) itemTitle!: string
-  @Prop({ default: true }) showsLabel!: boolean
-  @Prop({ default: true }) removable!: boolean
-  @Prop({ required: true }) value!: ColorItem
+  @Prop({ required: true }) itemTitle!: string;
+  @Prop({ default: true }) showsLabel!: boolean;
+  @Prop({ default: true }) removable!: boolean;
+  @Prop({ required: true }) value!: ColorItem;
 
-  ratio: number = NaN
-  inputFrontLabel: string = '前景色'
-  inputBackLabel: string = '背景色'
+  ratio: number = NaN;
+  inputFrontLabel: string = "前景色";
+  inputBackLabel: string = "背景色";
 
   get clearable() {
-    const { front, back } = this.value
-    return [front, back].some(isStringOfNotEmpty)
+    const { front, back } = this.value;
+    return [front, back].some(isStringOfNotEmpty);
   }
 
   /**
@@ -84,7 +84,7 @@ export default class ColorItemRow extends Vue {
    * @param color
    */
   handleInputFrontColor(color: string) {
-    this.$emit('input:front', color)
+    this.$emit("input:front", color);
   }
 
   /**
@@ -92,7 +92,7 @@ export default class ColorItemRow extends Vue {
    * @param color
    */
   handleInputBackColor(color: string) {
-    this.$emit('input:back', color)
+    this.$emit("input:back", color);
   }
 
   /**
@@ -100,7 +100,7 @@ export default class ColorItemRow extends Vue {
    * @param ratio
    */
   handleCalcRatio(ratio: number) {
-    this.ratio = ratio
+    this.ratio = ratio;
   }
 }
 </script>

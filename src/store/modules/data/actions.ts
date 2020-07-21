@@ -1,5 +1,5 @@
-import { ColorItem } from '@/models/ColorItem'
-import { DataActionTree } from '@/store/modules/data/models'
+import { ColorItem } from "@/models/ColorItem";
+import { DataActionTree } from "@/store/modules/data/models";
 import {
   ADD_COLOR_ITEM,
   CLEAR_COLOR_ITEM,
@@ -7,29 +7,29 @@ import {
   CONVERT_COLOR_ITEMS_TO_STRING,
   CONVERT_STRING_TO_COLOR_ITEMS,
   UPDATE_COLOR,
-  UPDATE_TEXT_AREA_VALUE
-} from '@/store/modules/data/mutation-types'
+  UPDATE_TEXT_AREA_VALUE,
+} from "@/store/modules/data/mutation-types";
 
 export const actions: DataActionTree = {
   /**
    * カラーセットを１つ追加する
    */
   addColorItem({ commit }, index) {
-    commit(ADD_COLOR_ITEM, index)
+    commit(ADD_COLOR_ITEM, index);
   },
 
   /**
    * カラーセットの１つをクリアする
    */
   clearColorItem({ commit }, index) {
-    commit(CLEAR_COLOR_ITEM, index)
+    commit(CLEAR_COLOR_ITEM, index);
   },
 
   /**
    * カラーセットの１つを削除する
    */
   removeColorItem({ commit }, index) {
-    commit(REMOVE_COLOR_ITEM, index)
+    commit(REMOVE_COLOR_ITEM, index);
   },
 
   /**
@@ -37,7 +37,7 @@ export const actions: DataActionTree = {
    * @param commit
    */
   convertStringToColorItems({ commit }, payload) {
-    commit(CONVERT_STRING_TO_COLOR_ITEMS, payload)
+    commit(CONVERT_STRING_TO_COLOR_ITEMS, payload);
   },
 
   /**
@@ -45,7 +45,7 @@ export const actions: DataActionTree = {
    * @param commit
    */
   convertColorItemsToString({ commit }, payload) {
-    commit(CONVERT_COLOR_ITEMS_TO_STRING, payload)
+    commit(CONVERT_COLOR_ITEMS_TO_STRING, payload);
   },
 
   /**
@@ -53,7 +53,7 @@ export const actions: DataActionTree = {
    * @param commit
    */
   updateColor({ commit }, index) {
-    commit(UPDATE_COLOR, index)
+    commit(UPDATE_COLOR, index);
   },
 
   /**
@@ -61,6 +61,6 @@ export const actions: DataActionTree = {
    * @param commit
    */
   updateTextAreaValue({ commit }, payload) {
-    commit(UPDATE_TEXT_AREA_VALUE, payload)
-  }
-}
+    commit(UPDATE_TEXT_AREA_VALUE, payload);
+  },
+};

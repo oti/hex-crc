@@ -1,7 +1,7 @@
-import { DefinedGetterTree } from '@/store/models'
-import { state as defaultState } from '@/store/modules/ui/index'
-import { UiGetterReturns, UiState } from '@/store/modules/ui/models'
-import { pickState } from '@/store/utilities'
+import { DefinedGetterTree } from "@/store/models";
+import { state as defaultState } from "@/store/modules/ui/index";
+import { UiGetterReturns, UiState } from "@/store/modules/ui/models";
+import { pickState } from "@/store/utilities";
 
 export const getters: DefinedGetterTree<UiState, UiGetterReturns> = {
   /**
@@ -17,6 +17,6 @@ export const getters: DefinedGetterTree<UiState, UiGetterReturns> = {
    */
   viewModel: (state, { hasGlobalLoadingQueue }) => ({
     ...pickState(defaultState, state),
-    hasGlobalLoadingQueue
-  })
-}
+    hasGlobalLoadingQueue,
+  }),
+};

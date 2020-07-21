@@ -1,4 +1,4 @@
 export interface ColorItem {
-  front: string
-  back: string
+  front: string;
+  back: string;
 }

@@ -1,24 +1,24 @@
-import { RootState } from '@/store/models'
-import { storeModule as data } from '@/store/modules/data'
-import { storeModule as ui } from '@/store/modules/ui'
-import Vue from 'vue'
-import Vuex, { StoreOptions } from 'vuex'
+import { RootState } from "@/store/models";
+import { storeModule as data } from "@/store/modules/data";
+import { storeModule as ui } from "@/store/modules/ui";
+import Vue from "vue";
+import Vuex, { StoreOptions } from "vuex";
 
 export const storeOptions: StoreOptions<RootState> = {
-  strict: process.env.NODE_ENV === 'development',
+  strict: process.env.NODE_ENV === "development",
   state: {},
   modules: {
     data,
-    ui
+    ui,
   },
-  plugins: []
-}
+  plugins: [],
+};
 
 /**
  * プラグインを引き当てる
  */
 export function useVuex(ctx = Vue) {
-  return ctx.use(Vuex)
+  return ctx.use(Vuex);
 }
 
 /**
@@ -33,8 +33,8 @@ export default function createStore(
   ctx = Vue
 ) {
   if (init) {
-    useVuex(ctx)
+    useVuex(ctx);
   }
 
-  return new Vuex.Store(options)
+  return new Vuex.Store(options);
 }

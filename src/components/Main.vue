@@ -9,17 +9,17 @@
 </template>
 
 <script lang="ts">
-import SectionColorSet from '@/components/SectionColorSet.vue'
-import SectionIntro from '@/components/SectionIntro.vue'
-import SectionTextArea from '@/components/SectionTextArea.vue'
-import { Component, Vue } from 'vue-property-decorator'
+import SectionColorSet from "@/components/SectionColorSet.vue";
+import SectionIntro from "@/components/SectionIntro.vue";
+import SectionTextArea from "@/components/SectionTextArea.vue";
+import { Component, Vue } from "vue-property-decorator";
 
 @Component({
   components: {
     SectionColorSet,
     SectionIntro,
-    SectionTextArea
-  }
+    SectionTextArea,
+  },
 })
 export default class Main extends Vue {}
 </script>

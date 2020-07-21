@@ -1,4 +1,4 @@
-import { StateCreator } from '@/store/models'
+import { StateCreator } from "@/store/models";
 
 /**
  * 直属のステートを取り出す
@@ -9,15 +9,15 @@ export function pickState<T extends { [K: string]: any }>(
   defaultState: StateCreator<T>,
   actualState: T
 ) {
-  const state = defaultState()
+  const state = defaultState();
 
   return Object.keys(state).reduce<T>(
     (memo: any, key) => {
       if (state && state.hasOwnProperty(key)) {
-        memo[key] = actualState[key]
+        memo[key] = actualState[key];
       }
-      return memo
+      return memo;
     },
     { ...state }
-  )
+  );
 }

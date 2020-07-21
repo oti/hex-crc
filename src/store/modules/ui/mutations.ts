@@ -1,11 +1,11 @@
-import { DefinedMutationTree } from '@/store/models'
-import { UiMutationPayloads, UiState } from '@/store/modules/ui/models'
+import { DefinedMutationTree } from "@/store/models";
+import { UiMutationPayloads, UiState } from "@/store/modules/ui/models";
 import {
   DECREMENT_GLOBAL_LOADING_QUEUE,
   INCREMENT_GLOBAL_LOADING_QUEUE,
   TOGGLE_DARK_MODE,
-  TOGGLE_TEXT_SIZE
-} from '@/store/modules/ui/mutation-types'
+  TOGGLE_TEXT_SIZE,
+} from "@/store/modules/ui/mutation-types";
 
 export const mutations: DefinedMutationTree<UiState, UiMutationPayloads> = {
   /**
@@ -15,13 +15,13 @@ export const mutations: DefinedMutationTree<UiState, UiMutationPayloads> = {
    */
   [DECREMENT_GLOBAL_LOADING_QUEUE](state, length = 1) {
     if (length <= 0) {
-      return
+      return;
     }
 
     state.globalLadingQueue = Math.max(
       0,
       state.globalLadingQueue - Math.ceil(length)
-    )
+    );
   },
 
   /**
@@ -31,10 +31,10 @@ export const mutations: DefinedMutationTree<UiState, UiMutationPayloads> = {
    */
   [INCREMENT_GLOBAL_LOADING_QUEUE](state, length = 1) {
     if (length <= 0) {
-      return
+      return;
     }
 
-    state.globalLadingQueue = state.globalLadingQueue + Math.ceil(length)
+    state.globalLadingQueue = state.globalLadingQueue + Math.ceil(length);
   },
 
   /**
@@ -42,13 +42,13 @@ export const mutations: DefinedMutationTree<UiState, UiMutationPayloads> = {
    * @param state
    */
   [TOGGLE_DARK_MODE](state) {
-    state.darkMode = !state.darkMode
+    state.darkMode = !state.darkMode;
   },
 
   /**
    * テキストの大きさをトグルする
    */
   [TOGGLE_TEXT_SIZE](state) {
-    state.largeText = !state.largeText
-  }
-}
+    state.largeText = !state.largeText;
+  },
+};

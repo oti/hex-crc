@@ -1,19 +1,19 @@
-import { DefinedModule, StateCreator } from '@/store/models'
-import { actions } from '@/store/modules/ui/actions'
-import { getters } from '@/store/modules/ui/getters'
+import { DefinedModule, StateCreator } from "@/store/models";
+import { actions } from "@/store/modules/ui/actions";
+import { getters } from "@/store/modules/ui/getters";
 import {
   UiActionPayloads,
   UiGetterReturns,
   UiMutationPayloads,
-  UiState
-} from '@/store/modules/ui/models'
-import { mutations } from '@/store/modules/ui/mutations'
+  UiState,
+} from "@/store/modules/ui/models";
+import { mutations } from "@/store/modules/ui/mutations";
 
 export const state: StateCreator<UiState> = () => ({
   darkMode: false,
   globalLadingQueue: 0,
-  largeText: false
-})
+  largeText: false,
+});
 
 export const storeModule: DefinedModule<
   UiState,
@@ -25,5 +25,5 @@ export const storeModule: DefinedModule<
   state,
   getters,
   mutations,
-  actions
-}
+  actions,
+};

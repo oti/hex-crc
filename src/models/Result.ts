@@ -1,1 +1,1 @@
-export type Result = 'AAA' | 'AA' | 'Not Bad' | 'Fail'
+export type Result = "AAA" | "AA" | "Not Bad" | "Fail";

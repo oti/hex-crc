@@ -1,22 +1,22 @@
-import NotFound from '@/views/404NotFound.vue'
-import Home from '@/views/Home.vue'
-import Vue from 'vue'
-import { Component } from 'vue-property-decorator'
-import Router, { RouterOptions } from 'vue-router'
+import NotFound from "@/views/404NotFound.vue";
+import Home from "@/views/Home.vue";
+import Vue from "vue";
+import { Component } from "vue-property-decorator";
+import Router, { RouterOptions } from "vue-router";
 
-const { BASE_URL, NODE_ENV } = process.env
+const { BASE_URL, NODE_ENV } = process.env;
 
 /**
  * ルート
  */
-export const routes: RouterOptions['routes'] = [
+export const routes: RouterOptions["routes"] = [
   // ホーム
   {
-    path: '/',
-    name: 'home',
-    component: Home
-  }
-]
+    path: "/",
+    name: "home",
+    component: Home,
+  },
+];
 
 /**
  * スクロールの振る舞い
@@ -25,21 +25,21 @@ export const routes: RouterOptions['routes'] = [
  * @param from
  * @param savedPosition
  */
-export const scrollBehavior: RouterOptions['scrollBehavior'] = (
+export const scrollBehavior: RouterOptions["scrollBehavior"] = (
   to,
   from,
   savedPosition
-) => savedPosition || { x: 0, y: 0 }
+) => savedPosition || { x: 0, y: 0 };
 
 /**
  * ルーターオプション
  */
 export const routerOptions: RouterOptions = {
-  mode: 'history',
+  mode: "history",
   base: BASE_URL,
   routes,
-  scrollBehavior
-}
+  scrollBehavior,
+};
 
 /**
  * プラグインを引き当てる
@@ -47,12 +47,12 @@ export const routerOptions: RouterOptions = {
 export function useRouter(ctx = Vue) {
   // ルーターフックをコンポーネントに引き当てる
   Component.registerHooks([
-    'beforeRouteEnter',
-    'beforeRouteLeave',
-    'beforeRouteUpdate'
-  ])
+    "beforeRouteEnter",
+    "beforeRouteLeave",
+    "beforeRouteUpdate",
+  ]);
 
-  return ctx.use(Router)
+  return ctx.use(Router);
 }
 
 /**
@@ -61,6 +61,6 @@ export function useRouter(ctx = Vue) {
  * @param ctx
  */
 export default function createRouter(options = routerOptions, ctx = Vue) {
-  useRouter(ctx)
-  return new Router(options)
+  useRouter(ctx);
+  return new Router(options);
 }

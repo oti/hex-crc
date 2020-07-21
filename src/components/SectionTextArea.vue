@@ -39,38 +39,38 @@
 </template>
 
 <script lang="ts">
-import { HTMLElementEvent } from '@/models/HTMLElementEvent'
-import { UiViewModel } from '@/store/modules/ui/models'
+import { HTMLElementEvent } from "@/models/HTMLElementEvent";
+import { UiViewModel } from "@/store/modules/ui/models";
 import {
   DataActionDispatchers,
-  DataViewModel
-} from '@/store/modules/data/models'
-import { Component, Vue } from 'vue-property-decorator'
-import { Action, Getter } from 'vuex-class'
+  DataViewModel,
+} from "@/store/modules/data/models";
+import { Component, Vue } from "vue-property-decorator";
+import { Action, Getter } from "vuex-class";
 
 @Component
 export default class SectionTextArea extends Vue {
   /**
    * viewModel を引き当てる
    */
-  @Getter('data/viewModel') data!: DataViewModel
-  @Getter('ui/viewModel') ui!: UiViewModel
+  @Getter("data/viewModel") data!: DataViewModel;
+  @Getter("ui/viewModel") ui!: UiViewModel;
 
   /**
    * アクションを引き当てる
    */
-  @Action('data/convertStringToColorItems')
-  convertStringToColorItems!: DataActionDispatchers['convertStringToColorItems']
-  @Action('data/convertColorItemsToString')
-  convertColorItemsToString!: DataActionDispatchers['convertColorItemsToString']
-  @Action('data/updateTextAreaValue')
-  updateTextAreaValue!: DataActionDispatchers['updateTextAreaValue']
+  @Action("data/convertStringToColorItems")
+  convertStringToColorItems!: DataActionDispatchers["convertStringToColorItems"];
+  @Action("data/convertColorItemsToString")
+  convertColorItemsToString!: DataActionDispatchers["convertColorItemsToString"];
+  @Action("data/updateTextAreaValue")
+  updateTextAreaValue!: DataActionDispatchers["updateTextAreaValue"];
 
   /**
    * @listens textarea@input
    */
   handleInputTextArea(event: HTMLElementEvent<HTMLTextAreaElement>) {
-    this.updateTextAreaValue(event.target.value)
+    this.updateTextAreaValue(event.target.value);
   }
 }
 </script>

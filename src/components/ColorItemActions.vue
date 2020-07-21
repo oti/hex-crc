@@ -19,14 +19,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class ColorItemActions extends Vue {
   /**
    * 入力プロパティを定義する
    */
-  @Prop({ default: true }) clearable!: boolean
-  @Prop({ default: true }) removable!: boolean
+  @Prop({ default: true }) clearable!: boolean;
+  @Prop({ default: true }) removable!: boolean;
 }
 </script>

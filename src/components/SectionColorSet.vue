@@ -16,14 +16,14 @@
         updateColor({
           target: 'front',
           color: $event,
-          index: i
+          index: i,
         })
       "
       @input:back="
         updateColor({
           target: 'back',
           color: $event,
-          index: i
+          index: i,
         })
       "
     />
@@ -31,45 +31,45 @@
 </template>
 
 <script lang="ts">
-import ColorItemRow from '@/components/ColorItemRow.vue'
-import TextSizeToggler from '@/components/TextSizeToggler.vue'
+import ColorItemRow from "@/components/ColorItemRow.vue";
+import TextSizeToggler from "@/components/TextSizeToggler.vue";
 import {
   DataActionDispatchers,
-  DataViewModel
-} from '@/store/modules/data/models'
-import { Component, Vue } from 'vue-property-decorator'
-import { Action, Getter } from 'vuex-class'
+  DataViewModel,
+} from "@/store/modules/data/models";
+import { Component, Vue } from "vue-property-decorator";
+import { Action, Getter } from "vuex-class";
 
 @Component({
   components: {
     ColorItemRow,
-    TextSizeToggler
-  }
+    TextSizeToggler,
+  },
 })
 export default class SectionColorSet extends Vue {
   /**
    * viewModel を引き当てる
    */
-  @Getter('data/viewModel') data!: DataViewModel
+  @Getter("data/viewModel") data!: DataViewModel;
 
   /**
    * アクションを引き当てる
    */
-  @Action('data/addColorItem')
-  addColorItem!: DataActionDispatchers['addColorItem']
-  @Action('data/clearColorItem')
-  clearColorItem!: DataActionDispatchers['clearColorItem']
-  @Action('data/removeColorItem')
-  removeColorItem!: DataActionDispatchers['removeColorItem']
-  @Action('data/updateColor')
-  updateColor!: DataActionDispatchers['updateColor']
+  @Action("data/addColorItem")
+  addColorItem!: DataActionDispatchers["addColorItem"];
+  @Action("data/clearColorItem")
+  clearColorItem!: DataActionDispatchers["clearColorItem"];
+  @Action("data/removeColorItem")
+  removeColorItem!: DataActionDispatchers["removeColorItem"];
+  @Action("data/updateColor")
+  updateColor!: DataActionDispatchers["updateColor"];
 
   /**
    * @method - カラーセットアイテムのタイトルを返す
    * @param i
    */
   itemTitle(i: number) {
-    return `カラーセット${i + 1}`
+    return `カラーセット${i + 1}`;
   }
 }
 </script>

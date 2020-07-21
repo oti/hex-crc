@@ -65,13 +65,13 @@
 </template>
 
 <script lang="ts">
-import ThemeToggler from '@/components/ThemeToggler.vue'
-import { Component, Vue } from 'vue-property-decorator'
+import ThemeToggler from "@/components/ThemeToggler.vue";
+import { Component, Vue } from "vue-property-decorator";
 
 @Component({
   components: {
-    ThemeToggler
-  }
+    ThemeToggler,
+  },
 })
 export default class SectionIntro extends Vue {}
 </script>

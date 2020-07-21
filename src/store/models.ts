@@ -1,22 +1,22 @@
-import { UiState } from '@/store/modules/ui/models'
-import { ActionContext, Module, Store } from 'vuex'
+import { UiState } from "@/store/modules/ui/models";
+import { ActionContext, Module, Store } from "vuex";
 
 /**
  * ルートステート
  */
 export interface RootState {
-  ui?: UiState
+  ui?: UiState;
 }
 
 /**
  * ルートストア
  */
-export type RootStore = Store<RootState>
+export type RootStore = Store<RootState>;
 
 /**
  * ステート初期化関数
  */
-export type StateCreator<T> = () => T
+export type StateCreator<T> = () => T;
 
 /**
  * getter関数
@@ -26,7 +26,7 @@ export type DefinedGetter<State, GetterReturns, Return> = (
   getters: GetterReturns,
   rootState: RootState,
   rootGetters: any
-) => Return
+) => Return;
 
 /**
  * mutation関数
@@ -34,7 +34,7 @@ export type DefinedGetter<State, GetterReturns, Return> = (
 export type DefinedMutation<State, MutationPayload> = (
   state: State,
   payload: MutationPayload
-) => void
+) => void;
 
 /**
  * action関数
@@ -43,7 +43,7 @@ export type DefinedAction<State, ActionPayload, Return = any> = (
   this: RootStore,
   injectee: ActionContext<State, RootState>,
   payload: ActionPayload
-) => Return
+) => Return;
 
 /**
  * getterツリー
@@ -57,8 +57,8 @@ export type DefinedGetterTree<
     State,
     GetterReturns & ModuleGetterReturns,
     GetterReturns[K]
-  >
-}
+  >;
+};
 
 /**
  * getterの返り値ツリー
@@ -67,22 +67,22 @@ export type VuexGetterReturns<
   ViewModel extends { [k: string]: any },
   GetterReturns extends { [k: string]: any }
 > = { [K in keyof GetterReturns]: GetterReturns[K] } & {
-  viewModel: ViewModel
-}
+  viewModel: ViewModel;
+};
 
 /**
  * mutationツリー
  */
 export type DefinedMutationTree<State, MutationPayloads> = {
-  [K in keyof MutationPayloads]: DefinedMutation<State, MutationPayloads[K]>
-}
+  [K in keyof MutationPayloads]: DefinedMutation<State, MutationPayloads[K]>;
+};
 
 /**
  * actionツリー
  */
 export type DefinedActionTree<State, ActionPayloads> = {
-  [K in keyof ActionPayloads]: DefinedAction<State, ActionPayloads[K]>
-}
+  [K in keyof ActionPayloads]: DefinedAction<State, ActionPayloads[K]>;
+};
 
 /**
  * ストアモジュール
@@ -94,9 +94,9 @@ export interface DefinedModule<
   ActionPayloads = {},
   ModuleGetterReturns = {}
 > extends Module<State, RootState> {
-  getters?: DefinedGetterTree<State, GetterReturns, ModuleGetterReturns>
-  mutations?: DefinedMutationTree<State, MutationPayloads>
-  actions?: DefinedActionTree<State, ActionPayloads>
+  getters?: DefinedGetterTree<State, GetterReturns, ModuleGetterReturns>;
+  mutations?: DefinedMutationTree<State, MutationPayloads>;
+  actions?: DefinedActionTree<State, ActionPayloads>;
 }
 
 /**
@@ -109,5 +109,5 @@ export type VuexActionDispatchers<
 > = {
   [K in keyof ActionTree]: ActionPayloads[K] extends undefined
     ? <R = any>() => Promise<R>
-    : <R = any>(payload: ActionPayloads[K]) => Promise<R>
-}
+    : <R = any>(payload: ActionPayloads[K]) => Promise<R>;
+};
