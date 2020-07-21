@@ -9,6 +9,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@decomoji/colors": "^1.1.0",
     "@maboroshi/math-utils": "^1.4.3",
     "@maboroshi/selector": "^1.0.6",
     "@maboroshi/shoshiki": "^1.2.2",
