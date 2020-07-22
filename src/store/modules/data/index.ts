@@ -1,26 +1,19 @@
 import { PresetColorItems } from "@/configs/PresetColorItems";
-import { DefinedModule, StateCreator } from "@/store/models";
-import { actions } from "@/store/modules/data/actions";
-import { getters } from "@/store/modules/data/getters";
-import {
-  DataActionPayloads,
-  DataGetterReturns,
-  DataMutationPayloads,
-  DataState,
-} from "@/store/modules/data/models";
-import { mutations } from "@/store/modules/data/mutations";
+import { RootState } from "@/store/models";
+import { actions } from "./actions";
+import { getters } from "./getters";
+import { DataState as ThisState } from "./models";
+import { mutations } from "./mutations";
+import { Module } from "vuex";
 
-export const state: StateCreator<DataState> = () => ({
+export const state: () => ThisState = () => ({
   colorItems: PresetColorItems,
+  darkMode: false,
+  largeText: false,
   string: JSON.stringify(PresetColorItems),
 });
 
-export const storeModule: DefinedModule<
-  DataState,
-  DataGetterReturns,
-  DataMutationPayloads,
-  DataActionPayloads
-> = {
+export const storeModule: Module<ThisState, RootState> = {
   namespaced: true,
   state,
   getters,

@@ -40,11 +40,7 @@
 
 <script lang="ts">
 import { HTMLElementEvent } from "@/models/HTMLElementEvent";
-import { UiViewModel } from "@/store/modules/ui/models";
-import {
-  DataActionDispatchers,
-  DataViewModel,
-} from "@/store/modules/data/models";
+import { DataAction, DataViewModel } from "@/store/modules/data/models";
 import { Component, Vue } from "vue-property-decorator";
 import { Action, Getter } from "vuex-class";
 
@@ -54,17 +50,16 @@ export default class SectionTextArea extends Vue {
    * viewModel を引き当てる
    */
   @Getter("data/viewModel") data!: DataViewModel;
-  @Getter("ui/viewModel") ui!: UiViewModel;
 
   /**
    * アクションを引き当てる
    */
   @Action("data/convertStringToColorItems")
-  convertStringToColorItems!: DataActionDispatchers["convertStringToColorItems"];
+  convertStringToColorItems!: DataAction["convertStringToColorItems"];
   @Action("data/convertColorItemsToString")
-  convertColorItemsToString!: DataActionDispatchers["convertColorItemsToString"];
+  convertColorItemsToString!: DataAction["convertColorItemsToString"];
   @Action("data/updateTextAreaValue")
-  updateTextAreaValue!: DataActionDispatchers["updateTextAreaValue"];
+  updateTextAreaValue!: DataAction["updateTextAreaValue"];
 
   /**
    * @listens textarea@input

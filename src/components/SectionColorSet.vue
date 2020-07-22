@@ -33,10 +33,7 @@
 <script lang="ts">
 import ColorItemRow from "@/components/ColorItemRow.vue";
 import TextSizeToggler from "@/components/TextSizeToggler.vue";
-import {
-  DataActionDispatchers,
-  DataViewModel,
-} from "@/store/modules/data/models";
+import { DataAction, DataViewModel } from "@/store/modules/data/models";
 import { Component, Vue } from "vue-property-decorator";
 import { Action, Getter } from "vuex-class";
 
@@ -56,13 +53,13 @@ export default class SectionColorSet extends Vue {
    * アクションを引き当てる
    */
   @Action("data/addColorItem")
-  addColorItem!: DataActionDispatchers["addColorItem"];
+  addColorItem!: DataAction["addColorItem"];
   @Action("data/clearColorItem")
-  clearColorItem!: DataActionDispatchers["clearColorItem"];
+  clearColorItem!: DataAction["clearColorItem"];
   @Action("data/removeColorItem")
-  removeColorItem!: DataActionDispatchers["removeColorItem"];
+  removeColorItem!: DataAction["removeColorItem"];
   @Action("data/updateColor")
-  updateColor!: DataActionDispatchers["updateColor"];
+  updateColor!: DataAction["updateColor"];
 
   /**
    * @method - カラーセットアイテムのタイトルを返す

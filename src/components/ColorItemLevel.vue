@@ -13,7 +13,7 @@
 <script lang="ts">
 import { ColorItem } from "@/models/ColorItem";
 import { Result } from "@/models/Result";
-import { UiViewModel } from "@/store/modules/ui/models";
+import { DataViewModel } from "@/store/modules/data/models";
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Getter } from "vuex-class";
 
@@ -22,7 +22,7 @@ export default class ColorItemLevel extends Vue {
   /**
    * viewModel を引き当てる
    */
-  @Getter("ui/viewModel") ui!: UiViewModel;
+  @Getter("data/viewModel") data!: DataViewModel;
 
   /**
    * 入力プロパティを定義する
@@ -40,9 +40,9 @@ export default class ColorItemLevel extends Vue {
    * @get - 達成レベルを返す
    */
   get level() {
-    const { ratio, ui } = this;
-    const AAA: number = ui.largeText ? 4.5 : 7;
-    const AA: number = ui.largeText ? 3 : 4.5;
+    const { ratio, data } = this;
+    const AAA: number = data.largeText ? 4.5 : 7;
+    const AA: number = data.largeText ? 3 : 4.5;
     let level: number = 0;
 
     if (ratio >= 3) {

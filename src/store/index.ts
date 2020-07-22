@@ -1,6 +1,5 @@
 import { RootState } from "@/store/models";
 import { storeModule as data } from "@/store/modules/data";
-import { storeModule as ui } from "@/store/modules/ui";
 import Vue from "vue";
 import Vuex, { StoreOptions } from "vuex";
 
@@ -9,7 +8,6 @@ export const storeOptions: StoreOptions<RootState> = {
   state: {},
   modules: {
     data,
-    ui,
   },
   plugins: [],
 };

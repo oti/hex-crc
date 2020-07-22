@@ -2,7 +2,7 @@
   <div class="ThemeToggler">
     <input
       id="ThemeTogglerInput"
-      v-model="ui.darkMode"
+      v-model="data.darkMode"
       class="__input"
       type="checkbox"
       name="darkMode"
@@ -15,19 +15,19 @@
 </template>
 
 <script lang="ts">
-import { UiActionDispatchers, UiViewModel } from "@/store/modules/ui/models";
+import { DataAction, DataViewModel } from "@/store/modules/data/models";
 import { Component, Vue } from "vue-property-decorator";
 import { Action, Getter } from "vuex-class";
 
 @Component
 export default class ThemeToggler extends Vue {
   // viewModel を引き当てる
-  @Getter("ui/viewModel") ui!: UiViewModel;
+  @Getter("data/viewModel") data!: DataViewModel;
 
   /**
    * アクションを引き当てる
    */
-  @Action("ui/toggleDarkMode")
-  toggleDarkMode!: UiActionDispatchers["toggleDarkMode"];
+  @Action("data/toggleDarkMode")
+  toggleDarkMode!: DataAction["toggleDarkMode"];
 }
 </script>

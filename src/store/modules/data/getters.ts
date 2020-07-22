@@ -1,12 +1,15 @@
-import { DefinedGetterTree } from "@/store/models";
-import { state as defaultState } from "@/store/modules/data/index";
-import { DataGetterReturns, DataState } from "@/store/modules/data/models";
+import { RootState } from "@/store/models";
 import { pickState } from "@/store/utilities";
+import { state as defaultState } from "./index";
+import { DataGetters as ThisGetter, DataState as ThisState } from "./models";
+import { GetterTree } from "vuex";
 
-export const getters: DefinedGetterTree<DataState, DataGetterReturns> = {
+export const getters: GetterTree<ThisState, RootState> = {
   /**
    * ViewModel
    * @param state
    */
-  viewModel: (state) => pickState(defaultState, state),
+  viewModel: (state) => ({
+    ...pickState(defaultState, state),
+  }),
 };
