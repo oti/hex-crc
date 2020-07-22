@@ -1,6 +1,6 @@
 <template>
   <main class="Main" role="main">
-    <SectionIntro class="__intro" />
+    <SectionIntro />
 
     <SectionTextArea class="__textarea" />
 
