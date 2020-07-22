@@ -1,16 +1,30 @@
 <template>
-  <div class="TextSizeToggler">
-    <input
-      id="TextSizeTogglerInput"
-      v-model="data.largeText"
-      class="__input"
-      type="checkbox"
-      name="darkMode"
-      @change="toggleTextSize"
-    />
-    <label class="__label" for="TextSizeTogglerInput">
-      大きなテキスト
-    </label>
+  <div class="TextSizeToggler" @change="toggleTextSize">
+    <p class="VisuallyHidden">判定するテキストのサイズを切り替える</p>
+    <div class="__item">
+      <input
+        id="TextSizeTogglerBase"
+        :checked="!data.largeText"
+        class="__input"
+        name="textSize"
+        type="radio"
+      />
+      <label class="__label" for="TextSizeTogglerBase">
+        通常サイズのテキスト
+      </label>
+    </div>
+    <div class="__item">
+      <input
+        id="TextSizeTogglerBigger"
+        :checked="data.largeText"
+        class="__input"
+        name="textSize"
+        type="radio"
+      />
+      <label class="__label" for="TextSizeTogglerBigger">
+        大きなテキスト
+      </label>
+    </div>
   </div>
 </template>
 
