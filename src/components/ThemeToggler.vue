@@ -1,16 +1,30 @@
 <template>
-  <div class="ThemeToggler">
-    <input
-      id="ThemeTogglerInput"
-      v-model="data.darkMode"
-      class="__input"
-      type="checkbox"
-      name="darkMode"
-      @change="toggleDarkMode"
-    />
-    <label class="__label" for="ThemeTogglerInput">
-      ダークモードにする
-    </label>
+  <div class="ThemeToggler" @change="toggleDarkMode">
+    <p class="VisuallyHidden">ページの表示モードを切り替える</p>
+    <div class="__item">
+      <input
+        id="ThemeTogglerLight"
+        :checked="!data.darkMode"
+        class="__input"
+        name="darkMode"
+        type="radio"
+      />
+      <label class="__label" for="ThemeTogglerLight">
+        ライトモード
+      </label>
+    </div>
+    <div class="__item">
+      <input
+        id="ThemeTogglerDark"
+        :checked="data.darkMode"
+        class="__input"
+        name="darkMode"
+        type="radio"
+      />
+      <label class="__label" for="ThemeTogglerDark">
+        ダークモード
+      </label>
+    </div>
   </div>
 </template>
 

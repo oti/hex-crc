@@ -1,14 +1,19 @@
 .ThemeToggler
   float: right
-  display: flex
-  align-items: center
+  padding-left: calc(var(--spaceGap) * 1)
+  padding-bottom: calc(var(--spaceGap) * 1)
   font-size: var(--textSub)
+
+  .__item
+    display: flex
+    + .__item
+      margin-top: calc(var(--spaceGap) * 1)
 
   .__input
     margin: 0
     padding: 0
-    line-height: 0
-    vartical-align: top
+    line-height: 1
 
   .__label
-    margin-left: 5px
+    margin-left: calc(var(--spaceGap) * 0.5)
+    line-height: 1
