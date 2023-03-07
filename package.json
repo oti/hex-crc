@@ -37,7 +37,7 @@
     "@vue/test-utils": "^1.0.3",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
-    "commitizen": "^4.1.2",
+    "commitizen": "^4.3.0",
     "cz-customizable": "^6.2.1",
     "eslint": "^5.13.0",
     "eslint-plugin-vue": "^5.2.1",
