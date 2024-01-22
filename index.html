@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HEX Contrast Ratio Calculator</title>
+    <meta name="viewport" content="viewport-fit=cover, width=device-width" />
+    <meta
+      name="description"
+      content="TKGをそろえて今日１日をハッピーに過ごそう！"
+    />
+    <meta name="keywords" content="TKG,スロット,oti" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="image_src" href="og-image.jpg" />
+    <link rel="canonical" href="https://hex-crc.dskd.jp" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link href="index.css" rel="stylesheet" />
+    <script type="module">
+      import { Collection } from "./Collection.mjs";
+      new Collection(".Main");
+    </script>
+  </head>
+  <body>
+    <h1>HEX Contrast Ratio Calculator</h1>
+
+    <main class="Main">
+      <template class="ItemTemplate">
+        <div class="Item">
+          <div class="Action">
+            <button class="Add">
+              <span class="-invisible">カラーセットを追加</span>
+              <span class="material-symbols-outlined"> add_circle </span>
+            </button>
+            <button class="Del">
+              <span class="-invisible">カラーセットを削除</span>
+              <span class="material-symbols-outlined"> remove_circle </span>
+            </button>
+            <button class="Clear">
+              <span class="-invisible">カラーセットをクリア</span>
+              <span class="material-symbols-outlined">
+                format_color_reset
+              </span>
+            </button>
+          </div>
+          <div class="InputSet">
+            <label class="Label -f -invisible" for="f-0">前景色0</label>
+            <input class="Input -f" id="f-0" type="text" name="hex" />
+            <input class="Color" aria-hidden="true" type="color" name="color" />
+          </div>
+          <div class="InputSet">
+            <label class="Label -b -invisible" for="b-0">背景色0</label>
+            <input class="Input -b" id="b-0" type="text" name="hex" />
+            <input class="Color" aria-hidden="true" type="color" name="color" />
+          </div>
+          <div class="OntputSet">
+            <p class="-invisible">コントラスト比</p>
+            <output class="Ration"></output>
+            <p class="-invisible">達成度合い</p>
+            <output class="Result"></output>
+          </div>
+        </div>
+      </template>
+
+      <div class="List"></div>
+    </main>
+
+    <footer>
+      <address class="Address">
+        <p>
+          このウェブアプリは
+          <a href="https://x.com/otiext" target="_blank">oti</a>
+          が作りました。
+        </p>
+        <p>
+          <a href="https://github.com/oti/tkg-slot">GitHub</a>
+        </p>
+      </address>
+    </footer>
+  </body>
+</html>
