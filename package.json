@@ -1,0 +1,14 @@
+{
+  "name": "hex-crc",
+  "version": "1.3.0",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 3000",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "husky": "^8.0.3",
+    "prettier": "^3.2.4",
+    "pretty-quick": "^4.0.0"
+  }
+}
