@@ -1,0 +1,38 @@
+@charset 'UTF-8';
+@import url(//fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+:root {
+  --c-base: #30404f;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  margin: auto;
+  padding-inline: 1rem;
+  max-width: 768px;
+  min-height: 100vh;
+  font-size: 1.0625rem;
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.7;
+  color: var(--c-base);
+  hanging-punctuation: allow-end;
+}
+
+.-invisible {
+  position: absolute !important;
+  height: 1px !important;
+  width: 1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  clip-path: inset(50%) !important;
+}
