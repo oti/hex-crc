@@ -19,15 +19,15 @@
     />
     <link href="index.css" rel="stylesheet" />
     <script type="module">
-      import { Collection } from "./Collection.mjs";
-      new Collection(".Main");
+      import { CRC } from "./index.mjs";
+      new CRC(document.querySelector(".List"));
     </script>
   </head>
   <body>
     <h1>HEX Contrast Ratio Calculator</h1>
 
     <main class="Main">
-      <template class="ItemTemplate">
+      <div class="List">
         <div class="Item">
           <div class="Action">
             <button class="Add">
@@ -48,12 +48,22 @@
           <div class="InputSet">
             <label class="Label -f -invisible" for="f-0">前景色0</label>
             <input class="Input -f" id="f-0" type="text" name="hex" />
-            <input class="Color" aria-hidden="true" type="color" name="color" />
+            <input
+              class="Color -f"
+              aria-hidden="true"
+              type="color"
+              name="color"
+            />
           </div>
           <div class="InputSet">
             <label class="Label -b -invisible" for="b-0">背景色0</label>
             <input class="Input -b" id="b-0" type="text" name="hex" />
-            <input class="Color" aria-hidden="true" type="color" name="color" />
+            <input
+              class="Color -b"
+              aria-hidden="true"
+              type="color"
+              name="color"
+            />
           </div>
           <div class="OntputSet">
             <p class="-invisible">コントラスト比</p>
@@ -62,9 +72,7 @@
             <output class="Result"></output>
           </div>
         </div>
-      </template>
-
-      <div class="List"></div>
+      </div>
     </main>
 
     <footer>
