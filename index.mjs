@@ -3,110 +3,81 @@ import { Item } from "./Item.mjs";
 export class CRC {
   constructor($List) {
     this.$List = $List;
-    this.$Template = this.$List.querySelector(".Item");
+    this.$Item = this.$List.querySelector(".Item");
 
-    if (!this.$List || !this.$Template) return;
-
-    this.addEvent = this.handleClickAdd.bind(this);
-    this.delEvent = this.handleClickDel.bind(this);
-    this.clearEvent = this.handleClickClear.bind(this);
+    if (!this.$List || !this.$Item) return;
 
     this.items = [];
+    this.observer = new MutationObserver(this.watchList.bind(this));
+    this.init();
+  }
+
+  get newId() {
+    return new Date().getTime().toString();
+  }
+
+  init() {
+    // 最初のアイテムはHTMLに書いてあるのでインスタンス化して items に追加するのみにする
+    this.items.splice(0, 0, new Item(this.$Item, this.newId));
+    this.items[0].toggleDelState(false);
+    this.observer.observe(this.$List, { childList: true });
     this.attachEvent();
-    this.mountItems();
   }
 
   attachEvent() {
-    this.$List.querySelectorAll(".Item").forEach(($item) => {
-      $item
-        .querySelector(".Add")
-        .addEventListener("click", this.addEvent, false);
-      $item
-        .querySelector(".Delete")
-        .addEventListener("click", this.delEvent, false);
-    });
-  }
-
-  detacheEvent() {
-    this.$List.querySelectorAll(".Item").forEach(($item) => {
-      $item
-        .querySelector(".Add")
-        .removeEventListener("click", this.addEvent, false);
-      $item
-        .querySelector(".Delete")
-        .removeEventListener("click", this.delEvent, false);
-    });
-  }
-
-  mountItems() {
-    this.items = [...this.$List.querySelectorAll(".Item")].map(
-      ($item, index, items) => {
-        const itemId = `item-${index + 1}`;
-        const fId = `f-${index + 1}`;
-        const bId = `b-${index + 1}`;
-        const fText = `前景色${index + 1}`;
-        const bText = `背景色${index + 1}`;
-        $item
-          .querySelector(".Delete")
-          .toggleAttribute("disabled", items.length === 1);
-        $item.setAttribute("id", itemId);
-        $item.querySelector(".Label.-f").setAttribute("for", fId);
-        $item.querySelector(".Label.-f").textContent = fText;
-        $item.querySelector(".Input.-f").setAttribute("id", fId);
-        $item.querySelector(".Label.-b").setAttribute("for", bId);
-        $item.querySelector(".Label.-b").textContent = bText;
-        $item.querySelector(".Input.-b").setAttribute("id", bId);
-        $item
-          .querySelector(".Add")
-          .addEventListener("click", this.addEvent, false);
-        $item
-          .querySelector(".Delete")
-          .addEventListener("click", this.delEvent, false);
-        $item
-          .querySelector(".Clear")
-          .addEventListener("click", this.clearEvent, false);
-
-        return new Item($item);
-      },
+    this.$List.addEventListener(
+      "add",
+      ({ detail: { id } }) => this.handleAdd(id),
+      false,
+    );
+    this.$List.addEventListener(
+      "del",
+      ({ detail: { id } }) => this.handleDel(id),
+      false,
+    );
+    this.$List.addEventListener(
+      "clear",
+      ({ detail: { id } }) => this.handleClear(id),
+      false,
     );
   }
 
-  unmountItems() {
-    this.items = [...this.$List.querySelectorAll(".Item")].map(
-      ($item, index, items) => {
-        $item
-          .querySelector(".Add")
-          .removeEventListener("click", this.addEvent, false);
-        $item
-          .querySelector(".Delete")
-          .removeEventListener("click", this.delEvent, false);
-        $item
-          .querySelector(".Clear")
-          .removeEventListener("click", this.clearEvent, false);
+  addItem(invokerId) {
+    const insertIdx = this.items.findIndex((item) => item.id === invokerId) + 1;
+    const $Item = this.$Item.cloneNode(true);
+    const _Item = new Item($Item, this.newId);
+    this.items.splice(insertIdx, 0, _Item);
 
-        return new Item($item);
-      },
+    // リストにDOMを反映する
+    this.$List.insertBefore(
+      $Item,
+      [...this.$List.querySelectorAll(".Item")][insertIdx],
     );
   }
 
-  handleClickAdd(detail) {
-    console.log("add");
-    this.detacheEvent();
-    const item = this.$Template.cloneNode(true);
-    this.$List.appendChild(item);
-    this.attachEvent();
-    this.mountItems();
+  delItem(invokerId) {
+    const delIdx = this.items.findIndex((v) => v.id === invokerId);
+    this.items.splice(delIdx, 1);
+    [...this.$List.querySelectorAll(".Item")][delIdx].remove();
   }
 
-  handleClickDel(event) {
-    console.log("delete");
-    this.detacheEvent();
-    event.target.closest(".Item").remove();
-    this.attachEvent();
-    this.mountItems();
+  handleAdd(id) {
+    this.addItem(id);
   }
 
-  handleClickClear(detail) {
-    console.log("clear");
+  handleDel(id) {
+    this.delItem(id);
+  }
+
+  handleClear(id) {}
+
+  watchList(mutationsList) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === "childList") {
+        this.items.map((item) =>
+          item.toggleDelState(mutation.target.children.length > 1),
+        );
+      }
+    }
   }
 }
