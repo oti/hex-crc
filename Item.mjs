@@ -61,6 +61,14 @@ export class Item {
     this.$Del.toggleAttribute("disabled", !value);
   }
 
+  syncColorFront(color) {
+    console.log("syncColorFront", color);
+  }
+
+  syncColorBack(color) {
+    console.log("syncColorBack", color);
+  }
+
   handleClickAdd() {
     this.$Item.dispatchEvent(
       new CustomEvent("add", {

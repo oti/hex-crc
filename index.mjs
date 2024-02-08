@@ -40,6 +40,16 @@ export class CRC {
       ({ detail: { id } }) => this.handleClear(id),
       false,
     );
+    this.$List.addEventListener(
+      "input-front",
+      ({ detail: { id, value } }) => this.handleInputFront({ id, value }),
+      false,
+    );
+    this.$List.addEventListener(
+      "input-back",
+      ({ detail: { id, value } }) => this.handleInputBack({ id, value }),
+      false,
+    );
   }
 
   addItem(invokerId) {
@@ -70,6 +80,16 @@ export class CRC {
   }
 
   handleClear(id) {}
+
+  handleInputFront({ id, value }) {
+    const inputIdx = this.items.findIndex((v) => v.id === id);
+    this.items[inputIdx].syncColorFront(value);
+  }
+
+  handleInputBack({ id, value }) {
+    const inputIdx = this.items.findIndex((v) => v.id === id);
+    this.items[inputIdx].syncColorBack(value);
+  }
 
   watchList(mutationsList) {
     for (const mutation of mutationsList) {
