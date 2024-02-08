@@ -1,8 +1,7 @@
 export class Item {
-  constructor($Item) {
-    this.id = new Date().getTime().toString();
+  constructor($Item, id) {
+    this.id = id;
     this.$Item = $Item;
-    console.log($Item);
     this.$Add = this.$Item.querySelector(".Add");
     this.$Del = this.$Item.querySelector(".Del");
     this.$Clear = this.$Item.querySelector(".Clear");
@@ -38,53 +37,84 @@ export class Item {
     this.$Clear.addEventListener("click", () => this.handleClickClear(), false);
     this.$InputF.addEventListener(
       "input",
-      () => this.handleInputFront(),
+      (e) => this.handleInputFront(e),
       false,
     );
     this.$ColorF.addEventListener(
       "input",
-      () => this.handleInputFront(),
+      (e) => this.handleInputFront(e),
       false,
     );
-    this.$InputB.addEventListener("input", () => this.handleInputBack(), false);
-    this.$ColorB.addEventListener("input", () => this.handleInputBack(), false);
+    this.$InputB.addEventListener(
+      "input",
+      (e) => this.handleInputBack(e),
+      false,
+    );
+    this.$ColorB.addEventListener(
+      "input",
+      (e) => this.handleInputBack(e),
+      false,
+    );
   }
 
-  handleClickAdd(event) {
-    console.log("add", this.id);
+  toggleDelState(value) {
+    this.$Del.toggleAttribute("disabled", !value);
+  }
+
+  handleClickAdd() {
     this.$Item.dispatchEvent(
       new CustomEvent("add", {
         bubbles: true,
-        details: "add",
+        detail: {
+          id: this.id,
+        },
       }),
     );
   }
 
-  handleClickDel(event) {
-    console.log("del", this.id);
+  handleClickDel() {
     this.$Item.dispatchEvent(
       new CustomEvent("del", {
         bubbles: true,
-        details: "del",
+        detail: {
+          id: this.id,
+        },
       }),
     );
   }
 
-  handleClickClear(event) {
-    console.log("clear", this.id);
-    // this.$Item.dispatchEvent(new CustomEvent("clear", {
-    //   bubbles: true,
-    //   details: "hoge"
-    // }))
+  handleClickClear() {
+    this.$Item.dispatchEvent(
+      new CustomEvent("clear", {
+        bubbles: true,
+        detail: {
+          id: this.id,
+        },
+      }),
+    );
   }
 
-  handleInputFront(event) {
-    console.log(event.target.value);
-    // this.$Input.value = event.target.value;
+  handleInputFront({ target: { value } }) {
+    this.$Item.dispatchEvent(
+      new CustomEvent("input-front", {
+        bubbles: true,
+        detail: {
+          id: this.id,
+          value,
+        },
+      }),
+    );
   }
 
-  handleInputBack(event) {
-    console.log(event.target.value);
-    // this.$Input.value = event.target.value;
+  handleInputBack({ target: { value } }) {
+    this.$Item.dispatchEvent(
+      new CustomEvent("input-back", {
+        bubbles: true,
+        detail: {
+          id: this.id,
+          value,
+        },
+      }),
+    );
   }
 }
