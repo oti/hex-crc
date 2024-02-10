@@ -12,23 +12,18 @@ export class Item {
     this.$InputB = this.$Item.querySelector(".Input.-b");
     this.$ColorB = this.$Item.querySelector(".Color.-b");
 
-    this.mountItem();
+    this.init();
     this.attachEvent();
   }
 
-  mountItem() {
-    const itemId = `item-${this.id}`;
-    const fId = `f-${this.id}`;
-    const bId = `b-${this.id}`;
-    const fText = `前景色${this.id}`;
-    const bText = `背景色${this.id}`;
-    this.$Item.setAttribute("id", itemId);
-    this.$LabelF.setAttribute("for", fId);
-    this.$LabelF.textContent = fText;
-    this.$InputF.setAttribute("id", fId);
-    this.$LabelB.setAttribute("for", bId);
-    this.$LabelB.textContent = bText;
-    this.$InputB.setAttribute("id", bId);
+  init() {
+    this.$Item.setAttribute("id", `item-${id}`);
+    this.$LabelF.setAttribute("for", `f-${id}`);
+    this.$LabelF.textContent = `前景色${id}`;
+    this.$InputF.setAttribute("id", `f-${id}`);
+    this.$LabelB.setAttribute("for", `b-${id}`);
+    this.$LabelB.textContent = `背景色${id}`;
+    this.$InputB.setAttribute("id", `b-${id}`);
   }
 
   attachEvent() {
