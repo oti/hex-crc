@@ -1,5 +1,5 @@
 export class Item {
-  constructor($Item, id) {
+  constructor($Item, id, colors) {
     this.id = id;
     this.$Item = $Item;
     this.$Add = this.$Item.querySelector(".Add");
@@ -12,18 +12,28 @@ export class Item {
     this.$InputB = this.$Item.querySelector(".Input.-b");
     this.$ColorB = this.$Item.querySelector(".Color.-b");
 
+    this.colors = {
+      front: colors?.front ? colors.front : "#000000",
+      back: colors?.back ? colors.back : "#ffffff",
+    };
+
     this.init();
     this.attachEvent();
   }
 
   init() {
+    const { id, colors } = this;
     this.$Item.setAttribute("id", `item-${id}`);
     this.$LabelF.setAttribute("for", `f-${id}`);
     this.$LabelF.textContent = `前景色${id}`;
     this.$InputF.setAttribute("id", `f-${id}`);
+    this.$InputF.value = colors.front;
+    this.$ColorF.value = colors.front;
     this.$LabelB.setAttribute("for", `b-${id}`);
     this.$LabelB.textContent = `背景色${id}`;
     this.$InputB.setAttribute("id", `b-${id}`);
+    this.$InputB.value = colors.back;
+    this.$ColorB.value = colors.back;
   }
 
   attachEvent() {
@@ -56,12 +66,20 @@ export class Item {
     this.$Del.toggleAttribute("disabled", !value);
   }
 
-  syncColorFront(color) {
-    console.log("syncColorFront", color);
+  setColors({ front, back }) {
+    this.colors = { front, back };
+    this.$InputF.value = front;
+    this.$ColorF.value = front;
+    this.$InputB.value = back;
+    this.$ColorB.value = back;
   }
 
-  syncColorBack(color) {
-    console.log("syncColorBack", color);
+  syncColorFront(front) {
+    this.setColors({ front, back: this.colors.back });
+  }
+
+  syncColorBack(back) {
+    this.setColors({ front: this.colors.front, back });
   }
 
   handleClickAdd() {
