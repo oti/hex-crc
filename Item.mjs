@@ -105,6 +105,10 @@ export class Item {
   }
 
   handleClickClear() {
+    this.setColors({
+      front: "#000000",
+      back: "#ffffff",
+    });
     this.$Item.dispatchEvent(
       new CustomEvent("clear", {
         bubbles: true,
