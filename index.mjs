@@ -53,9 +53,10 @@ export class CRC {
   }
 
   addItem(invokerId) {
+    const colors = this.items.find((item) => item.id === invokerId).colors;
     const insertIdx = this.items.findIndex((item) => item.id === invokerId) + 1;
     const $Item = this.$Item.cloneNode(true);
-    const _Item = new Item($Item, this.newId);
+    const _Item = new Item($Item, this.newId, colors);
     this.items.splice(insertIdx, 0, _Item);
 
     // リストにDOMを反映する
