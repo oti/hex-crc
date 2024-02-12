@@ -18,7 +18,6 @@ export class Item {
     };
 
     this.init();
-    this.attachEvent();
   }
 
   init() {
@@ -34,6 +33,8 @@ export class Item {
     this.$InputB.setAttribute("id", `b-${id}`);
     this.$InputB.value = colors.back;
     this.$ColorB.value = colors.back;
+
+    this.attachEvent();
   }
 
   attachEvent() {
