@@ -3,6 +3,20 @@ import { Item } from "./Item.mjs";
 export class CRC {
   constructor($Main) {
     this.number = 0;
+    this.presetColors = [
+      { front: "#dd3b40", back: "#f6f6f6" },
+      { front: "#c05b2c", back: "#f6f6f6" },
+      { front: "#9f7e00", back: "#f6f6f6" },
+      { front: "#688200", back: "#f6f6f6" },
+      { front: "#008c22", back: "#f6f6f6" },
+      { front: "#008780", back: "#f6f6f6" },
+      { front: "#0081b1", back: "#f6f6f6" },
+      { front: "#477f9b", back: "#f6f6f6" },
+      { front: "#5d79aa", back: "#f6f6f6" },
+      { front: "#a156d2", back: "#f6f6f6" },
+      { front: "#d43892", back: "#f6f6f6" },
+      { front: "#a36969", back: "#f6f6f6" },
+    ];
     this.$List = $Main.querySelector(".List");
     this.$Item = this.$List.querySelector(".Item");
 
