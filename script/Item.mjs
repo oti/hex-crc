@@ -13,6 +13,7 @@ export class Item {
     this.$LabelB = this.$Item.querySelector(".Label.-b");
     this.$InputB = this.$Item.querySelector(".Input.-b");
     this.$ColorB = this.$Item.querySelector(".Color.-b");
+    this.$Ratio = this.$Item.querySelector(".Ratio");
 
     this.colors = {
       front: colors?.front ? colors.front : "#000000",
@@ -47,6 +48,7 @@ export class Item {
     this.$InputB.setAttribute("id", `b-${id}`);
     this.$InputB.value = colors.back;
     this.$ColorB.value = colors.back;
+    this.$Ratio.value = this.calcurator.ratio;
 
     this.attachEvent();
   }
@@ -140,6 +142,8 @@ export class Item {
       back: this.colors.back,
     });
 
+    this.$Ratio.value = this.calcurator.ratio;
+
     this.$Item.dispatchEvent(
       new CustomEvent("input-front", {
         bubbles: true,
@@ -156,6 +160,8 @@ export class Item {
       front: this.colors.front,
       back: value,
     });
+
+    this.$Ratio.value = this.calcurator.ratio;
 
     this.$Item.dispatchEvent(
       new CustomEvent("input-back", {
