@@ -1,12 +1,7 @@
 import { isStringOfNotEmpty } from "./utility/isString.mjs";
 
-export class Calcurator {
-  constructor(value) {
-    this.value = value;
-  }
-
-  get ratio() {
-    const { front, back } = this.value;
+export class Ratio {
+  calcurate({ front, back }) {
     return isStringOfNotEmpty(front) && isStringOfNotEmpty(back)
       ? Math.round(this.calculateContrastRatio({ front, back }) * 1000) / 1000
       : NaN;
@@ -52,9 +47,5 @@ export class Calcurator {
     const bright = L1 > L2 ? L1 : L2; // 明るい方の相対輝度
     const dark = L1 < L2 ? L1 : L2; // 暗い方の相対輝度
     return (bright + 0.05) / (dark + 0.05);
-  }
-
-  setColor(value) {
-    this.value = value;
   }
 }
