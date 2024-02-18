@@ -79,6 +79,16 @@ export class Item {
     );
   }
 
+  getBubblingOption(value) {
+    return {
+      bubbles: true,
+      detail: {
+        id: this.id,
+        value,
+      },
+    }
+  }
+
   toggleDelState(value) {
     this.$Del.toggleAttribute("disabled", !value);
   }
@@ -145,13 +155,7 @@ export class Item {
     this.$Ratio.value = this.calcurator.ratio;
 
     this.$Item.dispatchEvent(
-      new CustomEvent("input-front", {
-        bubbles: true,
-        detail: {
-          id: this.id,
-          value,
-        },
-      }),
+      new CustomEvent("input-front", this.getBubblingOption(value)),
     );
   }
 
@@ -164,13 +168,7 @@ export class Item {
     this.$Ratio.value = this.calcurator.ratio;
 
     this.$Item.dispatchEvent(
-      new CustomEvent("input-back", {
-        bubbles: true,
-        detail: {
-          id: this.id,
-          value,
-        },
-      }),
+      new CustomEvent("input-back", this.getBubblingOption(value)),
     );
   }
 }
