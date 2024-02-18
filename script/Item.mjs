@@ -3,10 +3,7 @@ import { getResult } from "./utility/getResult.mjs";
 
 export class Item {
   constructor($Item, id, colors) {
-    this.colors = {
-      front: colors?.front ? colors.front : "#000000",
-      back: colors?.back ? colors.back : "#ffffff",
-    };
+    this.colors = colors;
     this.ratio = getContrastRatio(this.colors);
     this.result = getResult(this.ratio);
 
@@ -25,7 +22,14 @@ export class Item {
     this.$ResultN = this.$Item.querySelector(".Result.-normal");
     this.$ResultL = this.$Item.querySelector(".Result.-large");
 
-    this.init();
+    this.bubblingOption = {
+      bubbles: true,
+      detail: {
+        id: this.id,
+      },
+    };
+
+    this.init(colors);
   }
 
   init() {
@@ -45,6 +49,7 @@ export class Item {
     this.$InputB.value = back;
     this.$ColorB.value = back;
 
+    this.updateColors(this.colors);
     this.updateRatio({ front, back });
     this.updateLevel();
     this.attachEvent();
@@ -54,43 +59,55 @@ export class Item {
     this.$Add.addEventListener("click", () => this.handleClickAdd(), false);
     this.$Del.addEventListener("click", () => this.handleClickDel(), false);
     this.$Clear.addEventListener("click", () => this.handleClickClear(), false);
-    this.$InputF.addEventListener(
-      "input",
-      (e) => this.handleInputFront(e),
-      false,
-    );
-    this.$ColorF.addEventListener(
-      "input",
-      (e) => this.handleInputFront(e),
-      false,
-    );
-    this.$InputB.addEventListener(
-      "input",
-      (e) => this.handleInputBack(e),
-      false,
-    );
-    this.$ColorB.addEventListener(
-      "input",
-      (e) => this.handleInputBack(e),
-      false,
-    );
+
+    [this.$InputF, this.$ColorF].forEach(($) => {
+      $.addEventListener("input", (e) => this.handleInputFront(e), false);
+    });
+    [this.$InputB, this.$ColorB].forEach(($) => {
+      $.addEventListener("input", (e) => this.handleInputBack(e), false);
+    });
   }
 
-  getBubblingOption(value) {
-    return {
-      bubbles: true,
-      detail: {
-        id: this.id,
-        value,
-      },
-    };
+  handleClickAdd() {
+    this.$Item.dispatchEvent(new CustomEvent("add", this.bubblingOption));
+  }
+
+  handleClickDel() {
+    this.$Item.dispatchEvent(new CustomEvent("del", this.bubblingOption));
+  }
+
+  handleClickClear() {
+    this.updateColors({ front: null, back: null });
+    this.updateRatio({ front: null, back: null });
+  }
+
+  handleInputFront({ target: { value: front } }) {
+    this.updateColors({ front, back: this.colors.back });
+
+    this.updateRatio({
+      front,
+      back: this.colors.back,
+    });
+
+    this.updateLevel();
+  }
+
+  handleInputBack({ target: { value: back } }) {
+    this.updateColors({ front: this.colors.front, back });
+
+    this.updateRatio({
+      front: this.colors.front,
+      back: value,
+    });
+
+    this.updateLevel();
   }
 
   toggleDelState(value) {
     this.$Del.toggleAttribute("disabled", !value);
   }
 
-  setColors({ front, back }) {
+  updateColors({ front, back }) {
     this.colors = { front, back };
     this.$InputF.value = front;
     this.$ColorF.value = front;
@@ -102,14 +119,6 @@ export class Item {
     this.$ResultL.style.backgroundColor = back;
   }
 
-  syncColorFront(front) {
-    this.setColors({ front, back: this.colors.back });
-  }
-
-  syncColorBack(back) {
-    this.setColors({ front: this.colors.front, back });
-  }
-
   updateLevel() {
     this.result = getResult(this.ratio);
     this.$ResultN.value = this.result.normal;
@@ -119,55 +128,5 @@ export class Item {
   updateRatio(colors) {
     this.ratio = getContrastRatio(colors);
     this.$Ratio.value = this.ratio;
-  }
-
-  handleClickAdd() {
-    this.$Item.dispatchEvent(new CustomEvent("add", this.getBubblingOption()));
-  }
-
-  handleClickDel() {
-    this.$Item.dispatchEvent(new CustomEvent("del", this.getBubblingOption()));
-  }
-
-  handleClickClear() {
-    const colors = {
-      front: "#000000",
-      back: "#ffffff",
-    };
-    this.setColors(colors);
-    this.updateRatio(colors);
-    this.$Item.dispatchEvent(
-      new CustomEvent("clear", this.getBubblingOption()),
-    );
-  }
-
-  handleInputFront({ target: { value } }) {
-    this.syncColorFront(value);
-
-    this.updateRatio({
-      front: value,
-      back: this.colors.back,
-    });
-
-    this.updateLevel();
-
-    this.$Item.dispatchEvent(
-      new CustomEvent("input-front", this.getBubblingOption(value)),
-    );
-  }
-
-  handleInputBack({ target: { value } }) {
-    this.syncColorBack(value);
-
-    this.updateRatio({
-      front: this.colors.front,
-      back: value,
-    });
-
-    this.updateLevel();
-
-    this.$Item.dispatchEvent(
-      new CustomEvent("input-back", this.getBubblingOption(value)),
-    );
   }
 }
