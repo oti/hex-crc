@@ -90,6 +90,16 @@ export class CRC {
     [...this.$List.querySelectorAll(".Item")][delIdx].remove();
   }
 
+  replaceItems(colorSet) {
+    this.$List.querySelectorAll(".Item").forEach((item) => item.remove());
+
+    this.items = colorSet.map((colors) => {
+      const $Item = this.$Item.cloneNode(true);
+      this.$List.append($Item);
+      return new Item($Item, this.idGenerator(), colors);
+    });
+  }
+
   handleAdd(id) {
     this.addItem(id);
   }
