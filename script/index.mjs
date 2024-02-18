@@ -2,6 +2,7 @@ import { Item } from "./Item.mjs";
 
 export class CRC {
   constructor($Main) {
+    this.number = 0;
     this.$List = $Main.querySelector(".List");
     this.$Item = this.$List.querySelector(".Item");
 
@@ -12,15 +13,8 @@ export class CRC {
     this.init();
   }
 
-  /**
-   * TODO
-   *  JSONを受け取る機能
-   *  JSONに書き出す機能
-   *    カラーバンドを出す（いらないかも）
-   */
-
-  get newId() {
-    return new Date().getTime().toString();
+  idGenerator() {
+    return ++this.number;
   }
 
   init() {
@@ -63,7 +57,7 @@ export class CRC {
     const colors = this.items.find((item) => item.id === invokerId).colors;
     const insertIdx = this.items.findIndex((item) => item.id === invokerId) + 1;
     const $Item = this.$Item.cloneNode(true);
-    const _Item = new Item($Item, this.newId, colors);
+    const _Item = new Item($Item, this.idGenerator(), colors);
     this.items.splice(insertIdx, 0, _Item);
 
     // リストにDOMを反映する
