@@ -28,7 +28,7 @@
 
     <main class="Main">
       <div class="Convert">
-        <textarea id="Textarea"></textarea>
+        <textarea id="Textarea" name="array"></textarea>
         <div class="ConvertAction">
           <button id="ConvertToItems">
             フォームに変換
@@ -59,32 +59,45 @@
               </span>
             </button>
           </div>
-          <div class="InputSet">
-            <label class="Label -f -invisible" for="f-0">前景色0</label>
-            <input class="Input -f" id="f-0" type="text" name="hex" />
-            <input
-              class="Color -f"
-              aria-hidden="true"
-              type="color"
-              name="color"
-            />
+          <div class="Inputs">
+            <div class="InputItem">
+              <label class="Label -f -invisible" for="f-0">前景色0</label>
+              <input class="Input -f" id="f-0" type="text" name="hex" />
+              <input
+                class="Color -f"
+                aria-hidden="true"
+                type="color"
+                name="color"
+              />
+            </div>
+            <div class="InputItem">
+              <label class="Label -b -invisible" for="b-0">背景色0</label>
+              <input class="Input -b" id="b-0" type="text" name="hex" />
+              <input
+                class="Color -b"
+                aria-hidden="true"
+                type="color"
+                name="color"
+              />
+            </div>
           </div>
-          <div class="InputSet">
-            <label class="Label -b -invisible" for="b-0">背景色0</label>
-            <input class="Input -b" id="b-0" type="text" name="hex" />
-            <input
-              class="Color -b"
-              aria-hidden="true"
-              type="color"
-              name="color"
-            />
-          </div>
-          <div class="OntputSet">
-            <p class="-invisible">コントラスト比</p>
-            <output class="Ratio"></output>
-            <p class="-invisible">達成度合い</p>
-            <output class="Result -normal"></output>
-            <output class="Result -large"></output>
+          <div class="Outputs">
+            <div class="OutputItem">
+              <p class="Label -ratio -invisible">コントラスト比</p>
+              <output class="Ratio"></output>
+            </div>
+            <div class="OutputItem">
+              <p class="Label -result -normal -invisible">
+                通常サイズのテキスト
+              </p>
+              <output class="Result -normal"></output>
+            </div>
+            <div class="OutputItem">
+              <p class="Label -result -large -invisible">
+                大きなサイズのテキスト
+              </p>
+              <output class="Result -large"></output>
+            </div>
           </div>
         </div>
       </div>
