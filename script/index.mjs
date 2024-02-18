@@ -1,8 +1,8 @@
 import { Item } from "./Item.mjs";
 
 export class CRC {
-  constructor($List) {
-    this.$List = $List;
+  constructor($Main) {
+    this.$List = $Main.querySelector(".List");
     this.$Item = this.$List.querySelector(".Item");
 
     if (!this.$List || !this.$Item) return;
