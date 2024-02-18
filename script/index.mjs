@@ -43,6 +43,11 @@ export class CRC {
   }
 
   attachEvent() {
+    this.$ConvertToItems.addEventListener(
+      "click",
+      () => this.handleClickConvertToItems(),
+      false,
+    );
     this.$List.addEventListener(
       "add",
       ({ detail: { id } }) => this.handleAdd(id),
