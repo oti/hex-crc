@@ -1,4 +1,5 @@
 import { getContrastRatio } from "./utility/getContrastRatio.mjs";
+import { getResult } from "./utility/getResult.mjs";
 
 export class Item {
   constructor($Item, id, colors) {
@@ -7,6 +8,8 @@ export class Item {
       back: colors?.back ? colors.back : "#ffffff",
     };
     this.ratio = getContrastRatio(this.colors);
+    this.result = getResult(this.ratio);
+
     this.id = id;
     this.$Item = $Item;
     this.$Add = this.$Item.querySelector(".Add");
@@ -19,6 +22,8 @@ export class Item {
     this.$InputB = this.$Item.querySelector(".Input.-b");
     this.$ColorB = this.$Item.querySelector(".Color.-b");
     this.$Ratio = this.$Item.querySelector(".Ratio");
+    this.$ResultN = this.$Item.querySelector(".Result.-normal");
+    this.$ResultL = this.$Item.querySelector(".Result.-large");
 
     this.init();
   }
@@ -41,6 +46,7 @@ export class Item {
     this.$ColorB.value = back;
 
     this.updateRatio({ front, back });
+    this.updateLevel();
     this.attachEvent();
   }
 
@@ -90,6 +96,10 @@ export class Item {
     this.$ColorF.value = front;
     this.$InputB.value = back;
     this.$ColorB.value = back;
+    this.$ResultN.style.color = front;
+    this.$ResultN.style.backgroundColor = back;
+    this.$ResultL.style.color = front;
+    this.$ResultL.style.backgroundColor = back;
   }
 
   syncColorFront(front) {
@@ -100,6 +110,11 @@ export class Item {
     this.setColors({ front: this.colors.front, back });
   }
 
+  updateLevel() {
+    this.result = getResult(this.ratio);
+    this.$ResultN.value = this.result.normal;
+    this.$ResultL.value = this.result.large;
+  }
 
   updateRatio(colors) {
     this.ratio = getContrastRatio(colors);
@@ -134,6 +149,8 @@ export class Item {
       back: this.colors.back,
     });
 
+    this.updateLevel();
+
     this.$Item.dispatchEvent(
       new CustomEvent("input-front", this.getBubblingOption(value)),
     );
@@ -146,6 +163,8 @@ export class Item {
       front: this.colors.front,
       back: value,
     });
+
+    this.updateLevel();
 
     this.$Item.dispatchEvent(
       new CustomEvent("input-back", this.getBubblingOption(value)),
