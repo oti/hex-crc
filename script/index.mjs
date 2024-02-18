@@ -17,6 +17,7 @@ export class CRC {
       { front: "#d43892", back: "#f6f6f6" },
       { front: "#a36969", back: "#f6f6f6" },
     ];
+    this.$Textarea = $Main.querySelector("#Textarea");
     this.$List = $Main.querySelector(".List");
     this.$Item = this.$List.querySelector(".Item");
 
