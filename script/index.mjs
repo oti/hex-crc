@@ -47,6 +47,11 @@ export class CRC {
       () => this.handleClickConvertToItems(),
       false,
     );
+    this.$ConvertToArray.addEventListener(
+      "click",
+      () => this.handleClickConvertToArray(),
+      false,
+    );
     this.$List.addEventListener(
       "add",
       ({ detail: { id } }) => this.handleAdd(id),
