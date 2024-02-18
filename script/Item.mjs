@@ -1,3 +1,5 @@
+import { Calcurator } from "./Calcurator.mjs";
+
 export class Item {
   constructor($Item, id, colors) {
     this.id = id;
@@ -16,6 +18,18 @@ export class Item {
       front: colors?.front ? colors.front : "#000000",
       back: colors?.back ? colors.back : "#ffffff",
     };
+    this.calcurator = new Calcurator({
+      front: this.colors.front,
+      back: this.colors.back,
+    });
+    /**
+     * TODO
+     *  コントラスト計算
+     *    大きいテキストか否か
+     *  WCAGとAPCTの切り替え
+     *  達成度合の表示
+     *
+     */
 
     this.init();
   }
@@ -121,6 +135,11 @@ export class Item {
   }
 
   handleInputFront({ target: { value } }) {
+    this.calcurator.setColor({
+      front: value,
+      back: this.colors.back,
+    });
+
     this.$Item.dispatchEvent(
       new CustomEvent("input-front", {
         bubbles: true,
@@ -133,6 +152,11 @@ export class Item {
   }
 
   handleInputBack({ target: { value } }) {
+    this.calcurator.setColor({
+      front: this.colors.front,
+      back: value,
+    });
+
     this.$Item.dispatchEvent(
       new CustomEvent("input-back", {
         bubbles: true,
