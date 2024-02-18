@@ -97,7 +97,7 @@ export class Item {
 
     this.updateRatio({
       front: this.colors.front,
-      back: value,
+      back,
     });
 
     this.updateLevel();
