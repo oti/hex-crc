@@ -35,9 +35,8 @@ export class CRC {
   }
 
   init() {
-    // 最初のアイテムはHTMLに書いてあるのでインスタンス化して items に追加するのみにする
-    this.items.splice(0, 0, new Item(this.$Item, this.newId));
-    this.items[0].toggleDelState(false);
+    this.$Textarea.value = JSON.stringify(this.presetColors);
+    this.replaceItems(this.presetColors);
     this.observer.observe(this.$List, { childList: true });
     this.attachEvent();
   }
