@@ -19,6 +19,7 @@ export class CRC {
     ];
     this.$Textarea = $Main.querySelector("#Textarea");
     this.$ConvertToItems = $Main.querySelector("#ConvertToItems");
+    this.$ConvertToArray = $Main.querySelector("#ConvertToArray");
     this.$List = $Main.querySelector(".List");
     this.$Item = this.$List.querySelector(".Item");
 
