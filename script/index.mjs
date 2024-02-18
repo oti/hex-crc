@@ -36,7 +36,7 @@ export class CRC {
 
   init() {
     this.$Textarea.value = JSON.stringify(this.presetColors);
-    this.replaceItems(this.presetColors);
+    this.updateItems(this.presetColors);
     this.observer.observe(this.$List, { childList: true });
     this.attachEvent();
   }
@@ -62,25 +62,10 @@ export class CRC {
       ({ detail: { id } }) => this.handleDel(id),
       false,
     );
-    this.$List.addEventListener(
-      "clear",
-      ({ detail: { id } }) => this.handleClear(id),
-      false,
-    );
-    this.$List.addEventListener(
-      "input-front",
-      ({ detail: { id, value } }) => this.handleInputFront({ id, value }),
-      false,
-    );
-    this.$List.addEventListener(
-      "input-back",
-      ({ detail: { id, value } }) => this.handleInputBack({ id, value }),
-      false,
-    );
   }
 
-  addItem(invokerId) {
-    const colors = this.items.find((item) => item.id === invokerId).colors;
+  handleAdd(invokerId) {
+    const { colors } = this.items.find((item) => item.id === invokerId);
     const insertIdx = this.items.findIndex((item) => item.id === invokerId) + 1;
     const $Item = this.$Item.cloneNode(true);
     const _Item = new Item($Item, this.idGenerator(), colors);
@@ -93,31 +78,11 @@ export class CRC {
     );
   }
 
-  delItem(invokerId) {
+  handleDel(invokerId) {
     const delIdx = this.items.findIndex((v) => v.id === invokerId);
     this.items.splice(delIdx, 1);
     [...this.$List.querySelectorAll(".Item")][delIdx].remove();
   }
-
-  replaceItems(colorSet) {
-    this.$List.querySelectorAll(".Item").forEach((item) => item.remove());
-
-    this.items = colorSet.map((colors) => {
-      const $Item = this.$Item.cloneNode(true);
-      this.$List.append($Item);
-      return new Item($Item, this.idGenerator(), colors);
-    });
-  }
-
-  handleAdd(id) {
-    this.addItem(id);
-  }
-
-  handleDel(id) {
-    this.delItem(id);
-  }
-
-  handleClear(id) {}
 
   handleClickConvertToArray() {
     this.$Textarea.value = JSON.stringify(
@@ -131,31 +96,28 @@ export class CRC {
       const data = JSON.parse(value);
       // 配列でアイテムが１つ以上ある場合のみフォームに変換する
       if (Array.isArray(data) && data.length > 0) {
-        this.replaceItems(data);
+        this.updateItems(data);
       }
     } catch (e) {
       throw Error(e);
     }
   }
 
-  handleInputFront({ id, value }) {
-    // const inputIdx = this.items.findIndex((v) => v.id === id);
-    // this.items[inputIdx].syncColorFront(value);
-  }
-
-  handleInputBack({ id, value }) {
-    // const inputIdx = this.items.findIndex((v) => v.id === id);
-    // this.items[inputIdx].syncColorBack(value);
-  }
-
-  handleChangeList(value) {
-    this.items.map((item) => item.toggleDelState(value));
+  updateItems(colorSet) {
+    this.$List.querySelectorAll(".Item").forEach((item) => item.remove());
+    this.items = colorSet.map((colors) => {
+      const $Item = this.$Item.cloneNode(true);
+      this.$List.append($Item);
+      return new Item($Item, this.idGenerator(), colors);
+    });
   }
 
   watchList(mutationsList) {
     for (const mutation of mutationsList) {
       if (mutation.type === "childList") {
-        this.handleChangeList(mutation.target.children.length > 1);
+        this.items.map((item) =>
+          item.toggleDelState(mutation.target.children.length > 1),
+        );
       }
     }
   }
