@@ -99,12 +99,14 @@ export class CRC {
     this.items[inputIdx].syncColorBack(value);
   }
 
+  handleChangeList(value) {
+    this.items.map((item) => item.toggleDelState(value));
+  }
+
   watchList(mutationsList) {
     for (const mutation of mutationsList) {
       if (mutation.type === "childList") {
-        this.items.map((item) =>
-          item.toggleDelState(mutation.target.children.length > 1),
-        );
+        this.handleChangeList(mutation.target.children.length > 1);
       }
     }
   }
