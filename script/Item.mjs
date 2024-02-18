@@ -125,10 +125,12 @@ export class Item {
   }
 
   handleClickClear() {
-    this.setColors({
+    const colors = {
       front: "#000000",
       back: "#ffffff",
-    });
+    };
+    this.setColors(colors);
+    this.updateRatio(colors);
     this.$Item.dispatchEvent(
       new CustomEvent("clear", this.getBubblingOption()),
     );
