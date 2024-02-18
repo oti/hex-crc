@@ -20,15 +20,6 @@ export class Item {
       back: colors?.back ? colors.back : "#ffffff",
     };
     this.ratio = new Ratio();
-    /**
-     * TODO
-     *  コントラスト計算
-     *    大きいテキストか否か
-     *  WCAGとAPCTの切り替え
-     *  達成度合の表示
-     *
-     */
-
     this.init();
   }
 
@@ -137,6 +128,8 @@ export class Item {
   }
 
   handleInputFront({ target: { value } }) {
+    this.syncColorFront(value);
+
     this.updateRatio({
       front: value,
       back: this.colors.back,
@@ -148,6 +141,8 @@ export class Item {
   }
 
   handleInputBack({ target: { value } }) {
+    this.syncColorBack(value);
+
     this.updateRatio({
       front: this.colors.front,
       back: value,

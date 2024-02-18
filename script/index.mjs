@@ -90,13 +90,13 @@ export class CRC {
   handleClear(id) {}
 
   handleInputFront({ id, value }) {
-    const inputIdx = this.items.findIndex((v) => v.id === id);
-    this.items[inputIdx].syncColorFront(value);
+    // const inputIdx = this.items.findIndex((v) => v.id === id);
+    // this.items[inputIdx].syncColorFront(value);
   }
 
   handleInputBack({ id, value }) {
-    const inputIdx = this.items.findIndex((v) => v.id === id);
-    this.items[inputIdx].syncColorBack(value);
+    // const inputIdx = this.items.findIndex((v) => v.id === id);
+    // this.items[inputIdx].syncColorBack(value);
   }
 
   handleChangeList(value) {
