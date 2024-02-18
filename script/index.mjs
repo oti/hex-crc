@@ -12,6 +12,13 @@ export class CRC {
     this.init();
   }
 
+  /**
+   * TODO
+   *  JSONを受け取る機能
+   *  JSONに書き出す機能
+   *    カラーバンドを出す（いらないかも）
+   */
+
   get newId() {
     return new Date().getTime().toString();
   }
