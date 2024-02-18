@@ -115,9 +115,10 @@ export class CRC {
   watchList(mutationsList) {
     for (const mutation of mutationsList) {
       if (mutation.type === "childList") {
-        this.items.map((item) =>
-          item.toggleDelState(mutation.target.children.length > 1),
-        );
+        this.items.map((item, i) => {
+          item.toggleDelState(mutation.target.children.length > 1);
+          item.toggleLabelState(i === 0);
+        });
       }
     }
   }
