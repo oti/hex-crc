@@ -21,6 +21,9 @@ export class Item {
     this.$Ratio = this.$Item.querySelector(".Ratio");
     this.$ResultN = this.$Item.querySelector(".Result.-normal");
     this.$ResultL = this.$Item.querySelector(".Result.-large");
+    this.$LabelRatio = this.$Item.querySelector(".Label.-ratio");
+    this.$LabelNormal = this.$Item.querySelector(".Label.-result.-normal");
+    this.$LabelLarge = this.$Item.querySelector(".Label.-result.-large");
 
     this.bubblingOption = {
       bubbles: true,
@@ -105,6 +108,16 @@ export class Item {
 
   toggleDelState(value) {
     this.$Del.toggleAttribute("disabled", !value);
+  }
+
+  toggleLabelState(value) {
+    [
+      this.$LabelF,
+      this.$LabelB,
+      this.$LabelRatio,
+      this.$LabelNormal,
+      this.$LabelLarge,
+    ].forEach(($) => $.classList.toggle("-invisible", !value));
   }
 
   updateColors({ front, back }) {
