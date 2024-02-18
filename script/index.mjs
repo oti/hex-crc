@@ -114,6 +114,12 @@ export class CRC {
 
   handleClear(id) {}
 
+  handleClickConvertToArray() {
+    this.$Textarea.value = JSON.stringify(
+      this.items.map((item) => item.colors),
+    );
+  }
+
   handleClickConvertToItems() {
     const value = this.$Textarea.value;
     try {
