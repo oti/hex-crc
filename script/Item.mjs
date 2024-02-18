@@ -117,25 +117,11 @@ export class Item {
   }
 
   handleClickAdd() {
-    this.$Item.dispatchEvent(
-      new CustomEvent("add", {
-        bubbles: true,
-        detail: {
-          id: this.id,
-        },
-      }),
-    );
+    this.$Item.dispatchEvent(new CustomEvent("add", this.getBubblingOption()));
   }
 
   handleClickDel() {
-    this.$Item.dispatchEvent(
-      new CustomEvent("del", {
-        bubbles: true,
-        detail: {
-          id: this.id,
-        },
-      }),
-    );
+    this.$Item.dispatchEvent(new CustomEvent("del", this.getBubblingOption()));
   }
 
   handleClickClear() {
@@ -144,12 +130,7 @@ export class Item {
       back: "#ffffff",
     });
     this.$Item.dispatchEvent(
-      new CustomEvent("clear", {
-        bubbles: true,
-        detail: {
-          id: this.id,
-        },
-      }),
+      new CustomEvent("clear", this.getBubblingOption()),
     );
   }
 
