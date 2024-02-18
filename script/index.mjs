@@ -110,6 +110,19 @@ export class CRC {
 
   handleClear(id) {}
 
+  handleClickConvertToItems() {
+    const value = this.$Textarea.value;
+    try {
+      const data = JSON.parse(value);
+      // 配列でアイテムが１つ以上ある場合のみフォームに変換する
+      if (Array.isArray(data) && data.length > 0) {
+        this.replaceItems(data);
+      }
+    } catch (e) {
+      throw Error(e);
+    }
+  }
+
   handleInputFront({ id, value }) {
     // const inputIdx = this.items.findIndex((v) => v.id === id);
     // this.items[inputIdx].syncColorFront(value);
