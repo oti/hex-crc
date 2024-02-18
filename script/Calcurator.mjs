@@ -56,6 +56,5 @@ export class Calcurator {
 
   setColor(value) {
     this.value = value;
-    console.log(this.value);
   }
 }
