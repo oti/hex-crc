@@ -36,8 +36,8 @@ export class CRC {
 
   init() {
     this.$Textarea.value = JSON.stringify(this.presetColors);
-    this.updateItems(this.presetColors);
     this.observer.observe(this.$List, { childList: true });
+    this.updateItems(this.presetColors);
     this.attachEvent();
   }
 
