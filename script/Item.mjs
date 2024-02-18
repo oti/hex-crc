@@ -1,4 +1,4 @@
-import { Calcurator } from "./Calcurator.mjs";
+import { Ratio } from "./Ratio.mjs";
 
 export class Item {
   constructor($Item, id, colors) {
@@ -19,10 +19,7 @@ export class Item {
       front: colors?.front ? colors.front : "#000000",
       back: colors?.back ? colors.back : "#ffffff",
     };
-    this.calcurator = new Calcurator({
-      front: this.colors.front,
-      back: this.colors.back,
-    });
+    this.ratio = new Ratio();
     /**
      * TODO
      *  コントラスト計算
@@ -36,20 +33,23 @@ export class Item {
   }
 
   init() {
-    const { id, colors } = this;
+    const {
+      id,
+      colors: { front, back },
+    } = this;
     this.$Item.setAttribute("id", `item-${id}`);
     this.$LabelF.setAttribute("for", `f-${id}`);
     this.$LabelF.textContent = `前景色${id}`;
     this.$InputF.setAttribute("id", `f-${id}`);
-    this.$InputF.value = colors.front;
-    this.$ColorF.value = colors.front;
+    this.$InputF.value = front;
+    this.$ColorF.value = front;
     this.$LabelB.setAttribute("for", `b-${id}`);
     this.$LabelB.textContent = `背景色${id}`;
     this.$InputB.setAttribute("id", `b-${id}`);
-    this.$InputB.value = colors.back;
-    this.$ColorB.value = colors.back;
-    this.$Ratio.value = this.calcurator.ratio;
+    this.$InputB.value = back;
+    this.$ColorB.value = back;
 
+    this.updateRatio({ front, back });
     this.attachEvent();
   }
 
@@ -86,7 +86,7 @@ export class Item {
         id: this.id,
         value,
       },
-    }
+    };
   }
 
   toggleDelState(value) {
@@ -107,6 +107,13 @@ export class Item {
 
   syncColorBack(back) {
     this.setColors({ front: this.colors.front, back });
+  }
+
+  updateRatio({ front, back }) {
+    this.$Ratio.value = this.ratio.calcurate({
+      front,
+      back,
+    });
   }
 
   handleClickAdd() {
@@ -147,12 +154,10 @@ export class Item {
   }
 
   handleInputFront({ target: { value } }) {
-    this.calcurator.setColor({
+    this.updateRatio({
       front: value,
       back: this.colors.back,
     });
-
-    this.$Ratio.value = this.calcurator.ratio;
 
     this.$Item.dispatchEvent(
       new CustomEvent("input-front", this.getBubblingOption(value)),
@@ -160,12 +165,10 @@ export class Item {
   }
 
   handleInputBack({ target: { value } }) {
-    this.calcurator.setColor({
+    this.updateRatio({
       front: this.colors.front,
       back: value,
     });
-
-    this.$Ratio.value = this.calcurator.ratio;
 
     this.$Item.dispatchEvent(
       new CustomEvent("input-back", this.getBubblingOption(value)),
