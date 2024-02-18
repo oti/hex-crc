@@ -1,7 +1,12 @@
-import { Ratio } from "./Ratio.mjs";
+import { getContrastRatio } from "./utility/getContrastRatio.mjs";
 
 export class Item {
   constructor($Item, id, colors) {
+    this.colors = {
+      front: colors?.front ? colors.front : "#000000",
+      back: colors?.back ? colors.back : "#ffffff",
+    };
+    this.ratio = getContrastRatio(this.colors);
     this.id = id;
     this.$Item = $Item;
     this.$Add = this.$Item.querySelector(".Add");
@@ -15,11 +20,6 @@ export class Item {
     this.$ColorB = this.$Item.querySelector(".Color.-b");
     this.$Ratio = this.$Item.querySelector(".Ratio");
 
-    this.colors = {
-      front: colors?.front ? colors.front : "#000000",
-      back: colors?.back ? colors.back : "#ffffff",
-    };
-    this.ratio = new Ratio();
     this.init();
   }
 
@@ -100,11 +100,10 @@ export class Item {
     this.setColors({ front: this.colors.front, back });
   }
 
-  updateRatio({ front, back }) {
-    this.$Ratio.value = this.ratio.calcurate({
-      front,
-      back,
-    });
+
+  updateRatio(colors) {
+    this.ratio = getContrastRatio(colors);
+    this.$Ratio.value = this.ratio;
   }
 
   handleClickAdd() {
