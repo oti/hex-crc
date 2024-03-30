@@ -24,26 +24,35 @@
     </script>
   </head>
   <body>
-    <h1>HEX Contrast Ratio Calculator</h1>
+    <h1 class="Title">HEX Contrast Ratio Calculator</h1>
 
     <main class="Main">
-      <div class="Convert">
-        <textarea id="Textarea" name="array"></textarea>
-        <div class="ConvertAction">
-          <button id="ConvertToItems" class="-buttonReset">
-            フォームに変換
-            <span class="material-symbols-outlined" aria-hidden="true">
-              download
-            </span>
-          </button>
-          <button id="ConvertToArray" class="-buttonReset">
-            配列に変換
-            <span class="material-symbols-outlined" aria-hidden="true">
-              upload
-            </span>
-          </button>
+      <p>
+        HEXの2色（前景色と背景色）のカラーセットからコントラスト比を計算し、<a
+          href="https://waic.jp/translations/WCAG21/#contrast-minimum"
+          >WCAG2.1</a
+        >が定める基準を達成しているかを検証します。
+      </p>
+      <details class="Convert">
+        <summary>コードとの変換</summary>
+        <div class="ConvertBody">
+          <textarea class="Textarea" id="Textarea" name="array"></textarea>
+          <div class="ConvertActions">
+            <button id="ConvertToItems" class="ConvertButton -buttonReset">
+              フォームに変換
+              <span class="material-symbols-outlined" aria-hidden="true">
+                download
+              </span>
+            </button>
+            <button id="ConvertToArray" class="ConvertButton -buttonReset">
+              配列に変換
+              <span class="material-symbols-outlined" aria-hidden="true">
+                upload
+              </span>
+            </button>
+          </div>
         </div>
-      </div>
+      </details>
 
       <div class="Labels" aria-hidden="true">
         <p class="Label InputLabel" id="FrontColorLabel">前景色</p>
