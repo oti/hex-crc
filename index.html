@@ -43,62 +43,66 @@
 
       <div class="List">
         <div class="Item">
-          <div class="Action">
-            <button class="Add">
-              <span class="-invisible">カラーセットを追加</span>
-              <span class="material-symbols-outlined"> add_circle </span>
-            </button>
-            <button class="Del">
-              <span class="-invisible">カラーセットを削除</span>
-              <span class="material-symbols-outlined"> remove_circle </span>
-            </button>
-            <button class="Clear">
-              <span class="-invisible">カラーセットをクリア</span>
-              <span class="material-symbols-outlined">
-                format_color_reset
-              </span>
-            </button>
+          <button class="Add -buttonReset">
+            <span class="-invisible">カラーセットを追加</span>
+            <span class="material-symbols-outlined" aria-hidden="true">
+              add_circle
+            </span>
+          </button>
+          <button class="Del -buttonReset">
+            <span class="-invisible">カラーセットを削除</span>
+            <span class="material-symbols-outlined" aria-hidden="true">
+              remove_circle
+            </span>
+          </button>
+          <button class="Clear -buttonReset">
+            <span class="-invisible">カラーセットをクリア</span>
+            <span class="material-symbols-outlined" aria-hidden="true">
+              format_color_reset
+            </span>
+          </button>
+
+          <div class="InputItem">
+            <input
+              class="Input -f"
+              aria-labelledby="FrontColorLabel"
+              type="text"
+              name="hex"
+            />
+            <input
+              class="Color -f -buttonReset"
+              aria-hidden="true"
+              type="color"
+              name="color"
+            />
           </div>
-          <div class="Inputs">
-            <div class="InputItem">
-              <label class="Label -f -invisible" for="f-0">前景色0</label>
-              <input class="Input -f" id="f-0" type="text" name="hex" />
-              <input
-                class="Color -f"
-                aria-hidden="true"
-                type="color"
-                name="color"
-              />
-            </div>
-            <div class="InputItem">
-              <label class="Label -b -invisible" for="b-0">背景色0</label>
-              <input class="Input -b" id="b-0" type="text" name="hex" />
-              <input
-                class="Color -b"
-                aria-hidden="true"
-                type="color"
-                name="color"
-              />
-            </div>
+          <div class="InputItem">
+            <input
+              class="Input -b"
+              aria-labelledby="BackColorLabel"
+              type="text"
+              name="hex"
+            />
+            <input
+              class="Color -b -buttonReset"
+              aria-hidden="true"
+              type="color"
+              name="color"
+            />
           </div>
-          <div class="Outputs">
-            <div class="OutputItem">
-              <p class="Label -ratio -invisible">コントラスト比</p>
-              <output class="Ratio"></output>
-            </div>
-            <div class="OutputItem">
-              <p class="Label -result -normal -invisible">
-                通常サイズのテキスト
-              </p>
-              <output class="Result -normal"></output>
-            </div>
-            <div class="OutputItem">
-              <p class="Label -result -large -invisible">
-                大きなサイズのテキスト
-              </p>
-              <output class="Result -large"></output>
-            </div>
-          </div>
+
+          <output
+            class="OutputItem Ratio"
+            aria-labelledby="ContrastRatioLabel"
+          ></output>
+          <output
+            class="OutputItem Result -normal"
+            aria-labelledby="NormalSizeLabel"
+          ></output>
+          <output
+            class="OutputItem Result -large"
+            aria-labelledby="LargeSizeLabel"
+          ></output>
         </div>
       </div>
     </main>

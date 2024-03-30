@@ -12,18 +12,13 @@ export class Item {
     this.$Add = this.$Item.querySelector(".Add");
     this.$Del = this.$Item.querySelector(".Del");
     this.$Clear = this.$Item.querySelector(".Clear");
-    this.$LabelF = this.$Item.querySelector(".Label.-f");
     this.$InputF = this.$Item.querySelector(".Input.-f");
     this.$ColorF = this.$Item.querySelector(".Color.-f");
-    this.$LabelB = this.$Item.querySelector(".Label.-b");
     this.$InputB = this.$Item.querySelector(".Input.-b");
     this.$ColorB = this.$Item.querySelector(".Color.-b");
     this.$Ratio = this.$Item.querySelector(".Ratio");
     this.$ResultN = this.$Item.querySelector(".Result.-normal");
     this.$ResultL = this.$Item.querySelector(".Result.-large");
-    this.$LabelRatio = this.$Item.querySelector(".Label.-ratio");
-    this.$LabelNormal = this.$Item.querySelector(".Label.-result.-normal");
-    this.$LabelLarge = this.$Item.querySelector(".Label.-result.-large");
 
     this.bubblingOption = {
       bubbles: true,
@@ -40,15 +35,8 @@ export class Item {
       id,
       colors: { front, back },
     } = this;
-    this.$Item.setAttribute("id", `item-${id}`);
-    this.$LabelF.setAttribute("for", `f-${id}`);
-    this.$LabelF.textContent = `前景色${id}`;
-    this.$InputF.setAttribute("id", `f-${id}`);
     this.$InputF.value = front;
     this.$ColorF.value = front;
-    this.$LabelB.setAttribute("for", `b-${id}`);
-    this.$LabelB.textContent = `背景色${id}`;
-    this.$InputB.setAttribute("id", `b-${id}`);
     this.$InputB.value = back;
     this.$ColorB.value = back;
 
@@ -111,13 +99,9 @@ export class Item {
   }
 
   toggleLabelState(value) {
-    [
-      this.$LabelF,
-      this.$LabelB,
-      this.$LabelRatio,
-      this.$LabelNormal,
-      this.$LabelLarge,
-    ].forEach(($) => $.classList.toggle("-invisible", !value));
+    [this.$LabelRatio, this.$LabelNormal, this.$LabelLarge].forEach(($) =>
+      $.classList.toggle("-invisible", !value),
+    );
   }
 
   updateColors({ front, back }) {
